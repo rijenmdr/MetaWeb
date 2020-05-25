@@ -64,6 +64,7 @@ const actions = {
     commit("LOGOUT");
     console.log("log action");
   },
+  
 };
 const getters = {
   getToken: (state) => {

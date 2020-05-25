@@ -1,13 +1,11 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../metaWeb/home/home";
-import Portfolio from "../components/portfolio/Portfolio";
-import Books from "../components/NewBooks/books";
-import Login from "../components/oldbooks/login";
-import Try from "../components/Auth/login";
-import LoginMain from '../metaWeb/auth/login'
-import SignUpMain from '../metaWeb/auth/signup'
-import Dashboard from '../metaWeb/dashboard/dashboard'
+import LoginMain from "../metaWeb/auth/login";
+import SignUpMain from "../metaWeb/auth/signup";
+import Dashboard from "../metaWeb/dashboard/dashboard";
+import CreateWebsite from "../metaWeb/dashboard/functions/createWebsite";
+import UserWebsite from "../userSite/userSite";
 
 Vue.use(VueRouter);
 
@@ -18,17 +16,25 @@ const routes = [
     component: Home,
   },
   {
-    path:'/login',
-    component:LoginMain
+    path: "/login",
+    component: LoginMain,
   },
   {
-    path:'/signup',
-    component:SignUpMain
+    path: "/signup",
+    component: SignUpMain,
   },
   {
-    path:'/dashboard',
-    component:Dashboard
-  }
+    path: "/dashboard",
+    component: Dashboard,
+  },
+  {
+    path: "/createWebsite",
+    component: CreateWebsite,
+  },
+  {
+    path: "/userWebsite",
+    component: UserWebsite,
+  },
 ];
 
 const router = new VueRouter({

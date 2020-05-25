@@ -85,7 +85,8 @@
                       <i class="fas fa-pencil-alt"></i>1
           
                     </h4>
-                  <a href="/website/index.html" class="btn btn-outline-light btn-sm">See more</a>
+                    <router-link class="btn btn-outline-light btn-sm" to="/createWebsite">Create</router-link>
+                 
                   </div>
               </div>
               <div class="card text-center bg-success text-white mb-3">
