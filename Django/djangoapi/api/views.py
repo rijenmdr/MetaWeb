@@ -55,7 +55,7 @@ def get_website(request, id):
         website = Website.objects.get(id=id)
         print(website)
         serializer = WebsiteSerializer(website)
-        return JsonResponse({'book': serializer.data}, safe=False, status=status.HTTP_200_OK)
+        return JsonResponse({'website': serializer.data}, safe=False, status=status.HTTP_200_OK)
     except ObjectDoesNotExist as e:
         return JsonResponse({'error': str(e)}, safe=False, status=status.HTTP_404_NOT_FOUND)
     except Exception:

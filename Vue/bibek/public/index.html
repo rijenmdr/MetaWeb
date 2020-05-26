@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
     <title><%= htmlWebpackPlugin.options.title %></title>
-    
 
     <link
       rel="stylesheet"
@@ -26,10 +25,34 @@
       integrity="sha256-HAaDW5o2+LelybUhfuk0Zh2Vdk8Y2W2UeKmbaXhalfA="
       crossorigin="anonymous"
     />
+    <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+    integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+    integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css"
+    integrity="sha256-3h45mwconzsKjTUULjY+EoEkoRhXcOIU4l5YAw2tSOU="
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css"
+    integrity="sha256-etrwgFLGpqD4oNAFW08ZH9Bzif5ByXK2lXNHKy7LQGo="
+    crossorigin="anonymous"
+  />
 
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="./bootstrap.css" />
-    
+
     <link rel="stylesheet" href="./main.css" />
     <link rel="stylesheet" href="./mero.css" />
   </head>
@@ -89,6 +112,15 @@
       $(document).on("click", '[data-toggle="lightbox"]', function(event) {
         event.preventDefault();
         $(this).ekkoLightbox();
+      });
+
+      // Get the current year for the copyright
+      $("#year").text(new Date().getFullYear());
+      //configure slider
+      $(".slider").slick({
+        infinite: true,
+        slideToShow: 1,
+        slideToScroll: 1,
       });
     </script>
   </body>

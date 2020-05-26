@@ -13,7 +13,7 @@
                   <input
                     type="text"
                     class="form-control"
-                    v-model="title"
+                    v-model="nameOfSiteH"
                     placeholder="Name of Website"
                   />
                 </div>
@@ -21,7 +21,7 @@
                   <input
                     type="text"
                     class="form-control"
-                    v-model="description"
+                    v-model="headingOneH"
                     placeholder="heading one"
                   />
                 </div>
@@ -29,18 +29,23 @@
                   <input
                     type="text"
                     class="form-control"
-                    v-model="username"
+                    v-model="descriptionOneH"
                     placeholder="description one"
                   />
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" v-model="menus" placeholder="heading two" />
                 </div>
                 <div class="form-group">
                   <input
                     type="text"
                     class="form-control"
-                    v-model="menu1"
+                    v-model="headingTwoH"
+                    placeholder="heading two"
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    v-model="descriptionTwoH"
                     placeholder="description two"
                   />
                 </div>
@@ -48,7 +53,7 @@
                   <input
                     type="text"
                     class="form-control"
-                    v-model="menu2"
+                    v-model="headingThreeH"
                     placeholder="heading three"
                   />
                 </div>
@@ -56,21 +61,31 @@
                   <input
                     type="text"
                     class="form-control"
-                    v-model="menu3"
+                    v-model="descriptionThreeH"
                     placeholder="description three"
                   />
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" v-model="menu4" placeholder="feature one" />
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" v-model="menu5" placeholder="feature two" />
                 </div>
                 <div class="form-group">
                   <input
                     type="text"
                     class="form-control"
-                    v-model="menu5"
+                    v-model="featureOneH"
+                    placeholder="feature one"
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    v-model="featureTwoH"
+                    placeholder="feature two"
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    v-model="featureThreeH"
                     placeholder="Feature three"
                   />
                 </div>
@@ -88,7 +103,7 @@
                   <input
                     type="text"
                     class="form-control"
-                    v-model="title"
+                    v-model="introductionA"
                     placeholder="Introduction"
                   />
                 </div>
@@ -96,33 +111,9 @@
                   <input
                     type="text"
                     class="form-control"
-                    v-model="description"
+                    v-model="whatWeDoA"
                     placeholder="What we do"
                   />
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" v-model="username" placeholder="title" />
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" v-model="menus" placeholder="title" />
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" v-model="menu1" placeholder="title" />
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" v-model="menu2" placeholder="title" />
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" v-model="menu3" placeholder="title" />
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" v-model="menu4" placeholder="title" />
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" v-model="menu5" placeholder="title" />
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" v-model="menu5" placeholder="title" />
                 </div>
               </div>
             </div>
@@ -135,28 +126,28 @@
               </div>
               <div class="card-body">
                 <div class="form-group">
-                  <input type="text" class="form-control" v-model="title" placeholder="title" />
+                  <input type="text" class="form-control" v-model="titleC" placeholder="title" />
                 </div>
                 <div class="form-group">
                   <input
                     type="text"
                     class="form-control"
-                    v-model="description"
+                    v-model="descriptionC"
                     placeholder="description"
                   />
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" v-model="username" placeholder="email" />
+                  <input type="text" class="form-control" v-model="emailC" placeholder="email" />
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" v-model="menus" placeholder="phone" />
+                  <input type="text" class="form-control" v-model="phoneC" placeholder="phone" />
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" v-model="menu1" placeholder="address" />
+                  <input type="text" class="form-control" v-model="addressC" placeholder="address" />
                 </div>
 
                 <div class="form-group">
-                  <button class="btn bg-success text-white btn-block border-white">Create</button>
+                  <button @click="createWebsite" class="btn bg-success text-white btn-block border-white">Create</button>
                 </div>
                 <div class="form-group">
                   <button class="btn bg-danger text-white btn-block border-white">Cancel</button>

@@ -10,12 +10,10 @@
         <div class="carousel-item carousel-image-1 active">
           <div class="container">
             <div class="carousel-caption d-none d-sm-block text-right mb-5">
-              <h1 class="display-3">Heading one</h1>
+              <h1 class="display-3">{{headingOneH}}</h1>
 
               <p class="lead">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Reprehenderit iste harum possimus sed. Provident fugit omnis
-                ullam, labore necessitatibus quibusdam.
+                {{descriptionOneH}}
               </p>
               <a href="#" class="btn btn-danger btn-lg">Sign Up Now</a>
             </div>
@@ -25,12 +23,10 @@
         <div class="carousel-item carousel-image-2">
           <div class="container">
             <div class="carousel-caption d-none d-sm-block mb-5">
-              <h1 class="display-3">Heading two</h1>
+              <h1 class="display-3">{{headingTwoH}}</h1>
 
               <p class="lead">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Reprehenderit iste harum possimus sed. Provident fugit omnis
-                ullam, labore necessitatibus quibusdam.
+                {{descriptionTwoH}}
               </p>
               <a href="#" class="btn btn-info btn-lg">Learn More</a>
             </div>
@@ -40,12 +36,10 @@
         <div class="carousel-item carousel-image-3">
           <div class="container">
             <div class="carousel-caption d-none d-sm-block text-right mb-5">
-              <h1 class="display-3">Heading Three</h1>
+              <h1 class="display-3">{{headingThreeH}}</h1>
 
               <p class="lead">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Reprehenderit iste harum possimus sed. Provident fugit omnis
-                ullam, labore necessitatibus quibusdam.
+                {{descriptionThreeH}}
               </p>
               <a href="#" class="btn btn-success btn-lg">Play Now</a>
             </div>
@@ -61,6 +55,11 @@
     </div>
   </section>
 </template>
+<script>
+export default {
+  props:['headingOneH','descriptionOneH','headingTwoH','descriptionTwoH','headingThreeH','descriptionThreeH']
+}
+</script>
 <style scoped>
 .carousel-item {
   height: 450px;

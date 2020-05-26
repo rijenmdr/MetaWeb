@@ -6,6 +6,7 @@ import SignUpMain from "../metaWeb/auth/signup";
 import Dashboard from "../metaWeb/dashboard/dashboard";
 import CreateWebsite from "../metaWeb/dashboard/functions/createWebsite";
 import UserWebsite from "../userSite/userSite";
+import UserWebsiteAbout from "../userSite/components/about";
 
 Vue.use(VueRouter);
 
@@ -34,6 +35,10 @@ const routes = [
   {
     path: "/userWebsite",
     component: UserWebsite,
+  },
+  {
+    path: "/userWebsite/about",
+    component: UserWebsiteAbout,
   },
 ];
 
