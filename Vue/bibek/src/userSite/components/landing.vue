@@ -12,9 +12,7 @@
             <div class="carousel-caption d-none d-sm-block text-right mb-5">
               <h1 class="display-3">{{headingOneH}}</h1>
 
-              <p class="lead">
-                {{descriptionOneH}}
-              </p>
+              <p class="lead">{{descriptionOneH}}</p>
               <a href="#" class="btn btn-danger btn-lg">Sign Up Now</a>
             </div>
           </div>
@@ -25,9 +23,7 @@
             <div class="carousel-caption d-none d-sm-block mb-5">
               <h1 class="display-3">{{headingTwoH}}</h1>
 
-              <p class="lead">
-                {{descriptionTwoH}}
-              </p>
+              <p class="lead">{{descriptionTwoH}}</p>
               <a href="#" class="btn btn-info btn-lg">Learn More</a>
             </div>
           </div>
@@ -38,9 +34,7 @@
             <div class="carousel-caption d-none d-sm-block text-right mb-5">
               <h1 class="display-3">{{headingThreeH}}</h1>
 
-              <p class="lead">
-                {{descriptionThreeH}}
-              </p>
+              <p class="lead">{{descriptionThreeH}}</p>
               <a href="#" class="btn btn-success btn-lg">Play Now</a>
             </div>
           </div>
@@ -57,8 +51,15 @@
 </template>
 <script>
 export default {
-  props:['headingOneH','descriptionOneH','headingTwoH','descriptionTwoH','headingThreeH','descriptionThreeH']
-}
+  props: [
+    "headingOneH",
+    "headingTwoH",
+    "headingThreeH",
+    "descriptionOneH",
+    "descriptionTwoH",
+    "descriptionThreeH"
+  ]
+};
 </script>
 <style scoped>
 .carousel-item {
@@ -76,5 +77,4 @@ export default {
   background: url("../../assets/image3.jpg");
   background-size: cover;
 }
-
 </style>

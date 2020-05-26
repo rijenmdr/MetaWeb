@@ -235,7 +235,7 @@ export default {
         )
         .then(res => {
           this.$store.dispatch("setId", res.data.website.id);
-          this.$router.push("/userWebsite");
+          this.$router.push("/userWebsite/"+res.data.website.id);
         })
         .catch(err => {
           console.log(err);

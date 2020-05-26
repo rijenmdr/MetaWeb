@@ -1,12 +1,12 @@
 <template>
     <div>
-        <Header/>
+        <Header :nameOfSite="nameOfSite" :id="1"/>
         <header id="page-header">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 m-auto text-center">
                     <h1>About Us</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, alias!</p>
+                    <p>{{introduction}}</p>
                 </div>
             </div>
         </div>
@@ -17,8 +17,8 @@
             <div class="row">
                 <div class="col-md-6">
                     <h1>What We Do</h1>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus debitis exercitationem quo corporis maiores veniam? Amet sit ipsam explicabo praesentium repudiandae accusamus veniam, minus hic ipsum voluptates deserunt. Doloribus earum velit laborum corporis tempore officia cupiditate possimus totam reprehenderit, molestias accusamus dicta natus numquam aliquam commodi vitae deleniti voluptatibus nostrum.</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci quibusdam fuga molestias totam placeat repudiandae laboriosam exercitationem deserunt illum culpa pariatur expedita, non quidem quas doloribus obcaecati rerum eaque optio? Officiis, fugiat, dicta cupiditate quas amet laboriosam magni aut commodi facere in est, dolorum molestias earum dolor cumque atque cum!</p>
+                    <p>{{whatWeDoA}}</p>
+                  
                     
                 </div>
                 <div class="col-md-6">
@@ -148,10 +148,18 @@
     </div>
 </template>
 <script>
-import Header from './header'
+import Header from './componentHead'
 export default {
     components:{
         Header
+    },
+    data(){
+        return{
+            introduction:this.$store.getters.getWebsite.introductionA,
+            whatWeDoA:this.$store.getters.getWebsite.whatWeDoA,
+            nameOfSite: this.$store.getters.getWebsite.nameOfSiteH,
+            id: this.$store.getters.getWebsite.id
+        }
     }
 }
 </script>

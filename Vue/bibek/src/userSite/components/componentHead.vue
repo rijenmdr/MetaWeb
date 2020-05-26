@@ -7,23 +7,23 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarcollapse">
         <ul class="navbar-nav ml-auto">
-         
+          <li class="nav-item">
+            <router-link :to='home' class="nav-link">{{menu1}}</router-link>
+          </li>
           <li class="nav-item">
             <router-link to="/userWebsite/about" class="nav-link">{{menu2}}</router-link>
-           
           </li>
           <li class="nav-item">
-             <router-link to="/userWebsite/contact" class="nav-link">{{menu3}}</router-link>
+            <router-link to="/userWebsite/contact" class="nav-link">{{menu3}}</router-link>
           </li>
           <li class="nav-item">
-             <router-link to="/userWebsite/about" class="nav-link">{{menu4}}</router-link>
+            <router-link to="/userWebsite/about" class="nav-link">{{menu4}}</router-link>
           </li>
           <li class="nav-item">
             <a href="contact.html" class="nav-link">{{menu5}}</a>
           </li>
           <li class="nav-item">
-             <router-link v-if='loggedin' to="/dashboard" class="nav-link">Dashboard</router-link>
-             <a v-else href="/" class="nav-link">metaWeb</a>
+            <a href="/" class="nav-link">metaWeb</a>
           </li>
         </ul>
       </div>
@@ -33,7 +33,7 @@
 <script>
 import axios from "axios";
 export default {
-  props:['nameOfSite'],
+  props: ["nameOfSite"],
   data() {
     return {
       title: "this",
@@ -42,8 +42,11 @@ export default {
       menu3: "Contact",
       menu4: "",
       menu5: "",
-      loggedin:this.$store.getters.getToken
+      home:this.$store.getters.getWebsite.id.toString()
     };
+  },
+  created(){
+      console.log(this.$store.getters.getWebsite.id)
   }
 };
 </script>

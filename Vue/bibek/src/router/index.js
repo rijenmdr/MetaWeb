@@ -7,6 +7,8 @@ import Dashboard from "../metaWeb/dashboard/dashboard";
 import CreateWebsite from "../metaWeb/dashboard/functions/createWebsite";
 import UserWebsite from "../userSite/userSite";
 import UserWebsiteAbout from "../userSite/components/about";
+import UserWebsiteLanding from "../userSite/components/landing";
+import UserWebsiteContact from "../userSite/components/contact";
 
 Vue.use(VueRouter);
 
@@ -32,13 +34,18 @@ const routes = [
     path: "/createWebsite",
     component: CreateWebsite,
   },
-  {
-    path: "/userWebsite",
-    component: UserWebsite,
-  },
+  
   {
     path: "/userWebsite/about",
     component: UserWebsiteAbout,
+  },
+  {
+    path: "/userWebsite/contact",
+    component: UserWebsiteContact,
+  },
+  {
+    path: "/userWebsite/:id",
+    component: UserWebsite,
   },
 ];
 
