@@ -91,12 +91,12 @@
               </div>
               <div class="card text-center bg-success text-white mb-3">
                 <div class="card-body">
-                  <h3>Orders</h3>
+                  <h3>Edit</h3>
                   <h4 class="display-4"> 
-                    <i class="fas fa-folder"></i>3
+                   <i class="fas fa-edit"></i>
         
                   </h4>
-                <a href="categories.html" class="btn btn-outline-light btn-sm">See more</a>
+                <a href="categories.html" class="btn btn-outline-light btn-sm">edit</a>
                 </div>
             </div>
             <div class="card text-center bg-warning text-white mb-3">

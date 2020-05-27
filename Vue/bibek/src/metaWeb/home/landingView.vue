@@ -3,7 +3,7 @@
     <div class="primary-overlay dark-overlay mb-5 home">
       <div class="home-inner container home">
         <div class="row">
-          <div class="col-lg-8 d-none d-lg-block mt-5">
+          <div class="col-lg-8 d-none d-lg-block mt-4">
             <h1 class="display-4">
               Build
               <strong>Website</strong> easily
@@ -40,31 +40,43 @@
                 class="p-2 slign-self-end"
               >Create account and maintain your site and reach out more customers online</div>
             </div>
-            <router-link to="/signup">
-              <div class="sign-up-now mt-5">Sign Up Now</div>
-            </router-link>
+            <div class="d-flex ml-5">
+              <div class="p-2 slign-self-start">
+                <i class="fas fa-user fa-2x p-2"></i>
+              </div>
+              <router-link to="/signup">
+                <div class="p-3 signUp">Sign Up Now</div>
+              </router-link>
+            </div>
           </div>
-          <div class="col-lg-4 mt-5 mb-5">
-            <!--form-->
-            <div class="card formCenter text-center card-form">
+          <div class="col-lg-4 mt-4 mb-5">
+            <div class="card formCenter text-center card-form mb-5">
               <div class="card-body">
                 <h3>SEARCH FOR STORES</h3>
                 <p>Enter the details of the shop around you and find their website easily</p>
 
                 <div class="form-group">
-                  <input type="text" class="form-control form-control-lg" placeholder="keywords" />
+                  <input type="text" class="form-control" placeholder="keywords" />
                 </div>
                 <div class="form-group">
-                  <input type="email" class="form-control form-control-lg" placeholder="city" />
+                  <input type="email" class="form-control" placeholder="city" />
                 </div>
                 <div class="form-group">
-                  <input v-model="shopId" type="number" class="form-control form-control-lg" placeholder="shop no" />
+                  <input
+                    v-model="shopId"
+                    type="number"
+                    class="form-control form-control"
+                    placeholder="shop no"
+                  />
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control form-control-lg" placeholder="category" />
+                  <input type="text" class="form-control" placeholder="category" />
                 </div>
-
-                <button @click="search" class="btn bg-success text-white btn-block">Search</button>
+                <div>
+                  <div>
+                    <div class="buttonSearch">Search</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -75,14 +87,14 @@
 </template>
 <script>
 export default {
-  data(){
-    return{
-      shopId:''
-    }
+  data() {
+    return {
+      shopId: ""
+    };
   },
   methods: {
     search() {
-      this.$router.push('/userWebsite/'+this.shopId)
+      this.$router.push("/userWebsite/" + this.shopId);
     }
   }
 };
@@ -94,16 +106,32 @@ export default {
 .formCenter {
   background: #1b838f;
 }
-.sign-up-now {
-  background: #45a416;
+.signUp {
   color: white;
-  width: 25vw;
-  padding-top: 10px;
-  text-align: center;
-  height: 7vh;
-  border-radius: 10px;
+  font-size: 22px;
 }
-a {
+a:hover {
   text-decoration: none;
+}
+.signUp:hover {
+  color: black;
+  border: 1px solid red;
+  font-size: 32px;
+  text-decoration: none;
+  transition: 0.5s;
+  border-radius: 20px;
+}
+.buttonSearch {
+  background: #63b839;
+  width: 22vw;
+  height: 7vh;
+  color: white;
+  border-radius: 10px;
+  box-shadow: none;
+  text-align: center;
+  padding-top: 10px;
+}
+.buttonSearch:hover {
+  opacity: 0.7;
 }
 </style>
