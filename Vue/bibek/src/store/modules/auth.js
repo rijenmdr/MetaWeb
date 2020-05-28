@@ -2,7 +2,7 @@ import axios from "axios";
 const state = {
   token: "",
   error: false,
-  user:''
+  user: "",
 };
 const mutations = {
   SET_TOKEN(state, token) {
@@ -12,7 +12,6 @@ const mutations = {
     state.error = bol;
   },
   SET_USER(state, user) {
-    
     state.user = user.username;
   },
   LOGOUT(state) {
@@ -28,7 +27,7 @@ const actions = {
         password: credential.password,
       })
       .then((res) => {
-        commit("SET_USER",credential)
+        commit("SET_USER", credential);
         commit("SET_TOKEN", res.data.key);
         if (credential.remember) {
           localStorage.setItem("token", res.data.key);
@@ -42,7 +41,7 @@ const actions = {
       });
   },
   async signUp({ commit }, data) {
-    console.log(data);
+    commit("SET_ERROR", false);
     await axios
       .post("http://localhost:8000/registration/", {
         username: data.username,
@@ -56,6 +55,10 @@ const actions = {
         localStorage.setItem("expiresIn", expirationDate);
         localStorage.setItem("token", res.data.key);
         commit("SET_TOKEN", res.data.key);
+      })
+      .catch((err) => {
+        console.log("error aayo")
+        commit("SET_ERROR", true);
       });
   },
   logout({ commit }) {
@@ -64,7 +67,6 @@ const actions = {
     commit("LOGOUT");
     console.log("log action");
   },
-  
 };
 const getters = {
   getToken: (state) => {
