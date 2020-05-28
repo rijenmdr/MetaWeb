@@ -92,3 +92,20 @@ def delete_website(request, id):
         return JsonResponse({'error': str(e)}, safe=False, status=status.HTTP_404_NOT_FOUND)
     except Exception:
         return JsonResponse({'error': "Something went wrong"}, safe=False, status=status.HTTP_404_NOT_FOUND)
+
+@api_view(["PUT"])
+@csrf_exempt
+def update_website(request,id):
+    payload = json.loads(request.body)
+    user = request.user.id
+    print(id)
+    try:
+        website_item = Website.objects.filter(id=id)
+        website_item.update(**payload)
+        website = Website.objects.get(id=id)
+        serializer = WebsiteSerializer(website)
+        return JsonResponse({'websites': serializer.data}, safe=False, status=status.HTTP_200_OK)
+    except ObjectDoesNotExist as e:
+        return JsonResponse({'error': str(e)}, safe=False, status=status.HTTP_404_NOT_FOUND)
+    except Exception:
+        return JsonResponse({'error': "Something went wrong"}, safe=False, status=status.HTTP_404_NOT_FOUND)

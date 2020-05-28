@@ -21,7 +21,7 @@ const actions = {
     commit("SET_WEBID", data);
   },
   async setUserSite({ commit }, data) {
-    console.log('vayo')
+   
     let JWTToken = data.token;
     await axios
       .post(

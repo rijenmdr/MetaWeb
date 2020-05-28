@@ -9,8 +9,9 @@ import UserWebsite from "../userSite/userSite";
 import UserWebsiteAbout from "../userSite/components/about";
 import UserWebsiteLanding from "../userSite/components/landing";
 import UserWebsiteContact from "../userSite/components/contact";
-import DashboardMain from '../metaWeb/dashboard/mainDash'
-import DashboardDelete from '../metaWeb/dashboard/functions/deleteWebsite'
+import DashboardMain from "../metaWeb/dashboard/mainDash";
+import DashboardDelete from "../metaWeb/dashboard/functions/deleteWebsite";
+import EditWebsite from "../metaWeb/dashboard/functions/editWebsite";
 
 Vue.use(VueRouter);
 
@@ -30,18 +31,15 @@ const routes = [
   },
   {
     path: "/dashboard",
-     component: Dashboard,
-     children:[
-       {path:'',component:DashboardMain},
-       {path:'delete',component:DashboardDelete},
-     ]
-    
+    component: Dashboard,
+    children: [
+      { path: "", component: DashboardMain },
+      { path: "delete", component: DashboardDelete },
+      { path: "/createWebsite", component: CreateWebsite},
+      { path: "/editWebsite/:id", component: EditWebsite},
+    ],
   },
-  {
-    path: "/createWebsite",
-    component: CreateWebsite,
-  },
-  
+
   {
     path: "/userWebsite/about",
     component: UserWebsiteAbout,
