@@ -26,8 +26,8 @@
                   />
                 </div>
                 <div class="form-group">
-                  <input
-                    type="text"
+                  <textarea
+                    rows="3"
                     class="form-control"
                     v-model="descriptionOneH"
                     placeholder="description one"
@@ -42,8 +42,8 @@
                   />
                 </div>
                 <div class="form-group">
-                  <input
-                    type="text"
+                  <textarea
+                    rows="3"
                     class="form-control"
                     v-model="descriptionTwoH"
                     placeholder="description two"
@@ -58,8 +58,8 @@
                   />
                 </div>
                 <div class="form-group">
-                  <input
-                    type="text"
+                  <textarea
+                    rows="3"
                     class="form-control"
                     v-model="descriptionThreeH"
                     placeholder="description three"
@@ -100,16 +100,16 @@
               </div>
               <div class="card-body">
                 <div class="form-group">
-                  <input
-                    type="text"
+                  <textarea
+                    rows="3"
                     class="form-control"
                     v-model="introductionA"
                     placeholder="Introduction"
                   />
                 </div>
                 <div class="form-group">
-                  <input
-                    type="text"
+                  <textarea
+                    rows=15
                     class="form-control"
                     v-model="whatWeDoA"
                     placeholder="What we do"
@@ -129,8 +129,8 @@
                   <input type="text" class="form-control" v-model="titleC" placeholder="title" />
                 </div>
                 <div class="form-group">
-                  <input
-                    type="text"
+                  <textarea
+                    rows=6
                     class="form-control"
                     v-model="descriptionC"
                     placeholder="description"
@@ -147,10 +147,16 @@
                 </div>
 
                 <div class="form-group">
-                  <button @click="createWebsite" class="btn bg-success text-white btn-block border-white">Create</button>
+                  <button
+                    @click="createWebsite"
+                    class="btn bg-success text-white btn-block border-white"
+                  >Create</button>
                 </div>
                 <div class="form-group">
-                  <button class="btn bg-danger text-white btn-block border-white">Cancel</button>
+                  <button
+                    @click="dashboard"
+                    class="btn bg-danger text-white btn-block border-white"
+                  >Cancel</button>
                 </div>
               </div>
             </div>
@@ -197,6 +203,9 @@ export default {
     };
   },
   methods: {
+    dashboard() {
+      this.$router.push("/dashboard");
+    },
     async createWebsite() {
       let JWTToken = localStorage.getItem("token");
       if (!JWTToken) {
@@ -235,7 +244,7 @@ export default {
         )
         .then(res => {
           this.$store.dispatch("setId", res.data.website.id);
-          this.$router.push("/userWebsite/"+res.data.website.id);
+          this.$router.push("/userWebsite/" + res.data.website.id);
         })
         .catch(err => {
           console.log(err);

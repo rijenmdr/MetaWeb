@@ -4,5 +4,7 @@ from . import views
 urlpatterns = [
     path('add_website', views.add_website),
     path('get_website/<int:id>', views.get_website),
+    path('dashboard', views.get_dashboard),
+    path('delete_website/<int:id>',views.delete_website),
 
 ]

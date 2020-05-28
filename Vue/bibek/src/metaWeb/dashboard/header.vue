@@ -2,7 +2,10 @@
     <div>
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark p-0">
       <div class="container">
-        <a href="../index.html" class="navbar-brand">meroStore</a>
+         <router-link to='/' class="navbar-brand">
+        <img src="../../assets/mlogo.png" width="50" height="50" alt="" />
+        <h3 class="d-inline align-middle">etaWeb</h3>
+         </router-link>
         <button
           class="navbar-toggler"
           data-toggle="collapse"
@@ -12,11 +15,11 @@
         </button>
         <div class="collapse navbar-collapse" id="collapseNavbar">
           <ul class="navbar-nav">
-            <li class="nav-item px-2">
+            <!-- <li class="nav-item px-2">
               <a class="nav-link active" href="index.html">
                 Dashboard
               </a>
-            </li>
+            </li> -->
 
             <li class="nav-item px-2">
               <a class="nav-link" href="posts.html">
@@ -56,7 +59,7 @@
             </li>
             <li class="nav-item"  @click="logout">
               <div class="nav-link">
-                <i class="fas fa-user-times"></i> Logout
+               Logout
               </div>
             </li>
           </ul>
@@ -67,7 +70,9 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6">
-            <h1><i class="fas fa-cog"></i> Dashboard</h1>
+            <router-link to="/dashboard" class="text-white dashboard">
+              <h1><i class="fas fa-cog"></i> Dashboard</h1>
+            </router-link>
           </div>
         </div>
       </div>
@@ -90,3 +95,10 @@ export default {
   }
 }
 </script>
+<style  scoped>
+  a:hover{
+    text-decoration: none;
+  }
+</style>>
+
+</style>

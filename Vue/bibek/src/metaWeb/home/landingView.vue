@@ -74,7 +74,7 @@
                 </div>
                 <div>
                   <div>
-                    <div class="buttonSearch">Search</div>
+                    <div @click="search" class="btn btn-success btn-block">Search</div>
                   </div>
                 </div>
               </div>

@@ -15,7 +15,7 @@ import json
 def add_website(request):
     payload = json.loads(request.body)
     user = request.user
-    print(payload)
+    # web = Website.objects.filter(user=user).count()
     try:
         website = Website.objects.create(
             nameOfSiteH=payload["nameOfSiteH"],
@@ -38,7 +38,7 @@ def add_website(request):
             user=payload["user"]
         )
         serializer = WebsiteSerializer(website)
-        print(serializer.data)
+
         return JsonResponse({'website': serializer.data}, safe=False, status=status.HTTP_201_CREATED)
     except ObjectDoesNotExist as e:
         return JsonResponse({'error': str(e)}, safe=False, status=status.HTTP_404_NOT_FOUND)
@@ -56,6 +56,38 @@ def get_website(request, id):
         print(website)
         serializer = WebsiteSerializer(website)
         return JsonResponse({'website': serializer.data}, safe=False, status=status.HTTP_200_OK)
+    except ObjectDoesNotExist as e:
+        return JsonResponse({'error': str(e)}, safe=False, status=status.HTTP_404_NOT_FOUND)
+    except Exception:
+        return JsonResponse({'error': "Something went wrong"}, safe=False, status=status.HTTP_404_NOT_FOUND)
+
+
+@api_view(["POST"])
+@csrf_exempt
+def get_dashboard(request):
+    # payload = json.loads(request.body)
+    # user=request.user
+    # web = Website.objects.all()
+    # print(web)
+    # return JsonResponse({web}, safe=False, status=status.HTTP_201_CREATED)
+    payload = json.loads(request.body)
+    data=payload['user']
+    website = Website.objects.filter(user=data)
+    serializer = WebsiteSerializer(website, many=True)
+    if website:
+        content = {'status': '200', "message": "website found", 'data': serializer.data}
+        return JsonResponse(content)
+    else:
+        content = {'status': 'error', "message": "website not found", 'data': 0}
+        return JsonResponse(content)
+    
+@api_view(["DELETE"])
+@csrf_exempt
+def delete_website(request, id):
+    try:
+        website = Website.objects.get(id=id)
+        website.delete()
+        return JsonResponse({'message': "Website deleted successfully"}, safe=False, status=status.HTTP_204_NO_CONTENT)
     except ObjectDoesNotExist as e:
         return JsonResponse({'error': str(e)}, safe=False, status=status.HTTP_404_NOT_FOUND)
     except Exception:
