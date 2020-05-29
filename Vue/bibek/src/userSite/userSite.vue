@@ -50,7 +50,7 @@ export default {
   async created() {
     let JWTToken = "4338ce3d59ee2663bbaa9a5bd51bd97f2ec1edd1";
     let id = this.$route.params.id;
-    console.log(id);
+    
     await axios
       .get("http://localhost:8000/api/get_website/" + id, {
         headers: {

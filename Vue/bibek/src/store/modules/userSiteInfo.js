@@ -1,6 +1,7 @@
 import axios from "axios";
 const state = {
   website: "",
+  
 };
 const mutations = {
   SET_WEBSITE(state, value) {

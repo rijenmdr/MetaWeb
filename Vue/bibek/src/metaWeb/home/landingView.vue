@@ -59,7 +59,11 @@
                   <input type="text" class="form-control" placeholder="keywords" />
                 </div>
                 <div class="form-group">
-                  <input type="email" class="form-control" placeholder="city" />
+                  <select v-model="val" class="form-control form-control">
+                    <option value="paknajol">Paknajol</option>
+                    <option value="kathnamdu">Kathmandu</option>
+                    <option value="balaju">Balaju</option>
+                  </select>
                 </div>
                 <div class="form-group">
                   <input
@@ -89,12 +93,22 @@
 export default {
   data() {
     return {
-      shopId: ""
+      shopId: "",
+      val: "this"
     };
+  },
+  created() {
+    //yeslay 2 hrs khayo . default ma value bind  nahune bug raixa so created ma value change garayrw garayko 
+    this.val = 'paknajol'
   },
   methods: {
     search() {
-      this.$router.push("/userWebsite/" + this.shopId);
+      console.log(this.val);
+      // this.$router.push("/userWebsite/" + this.shopId);
+  
+    },
+    select() {
+      console.log("ayo");
     }
   }
 };

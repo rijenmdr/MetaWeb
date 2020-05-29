@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header :nameOfSite="nameOfSite" id="1"/>
+    <Header :nameOfSite="nameOfSite" id="1" />
     <header id="page-header">
       <div class="container">
         <div class="row">
@@ -34,49 +34,86 @@
               <div class="card-body">
                 <h3 class="text-center">Please fill the form to contact us</h3>
                 <hr class="bg-warning" />
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <input type="text" name placeholder="First Name" id class="form-control" />
-                    </div>
-                  </div>
 
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <input type="text" name placeholder="Last Name" id class="form-control" />
+                <form @submit.prevent="submitFeedback">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group" :class="{invalid:$v.first_name.$error}">
+                        <input
+                          type="text"
+                          @blur="$v.first_name.$touch()"
+                          v-model="first_name"
+                          name
+                          placeholder="First Name"
+                          id
+                          class="form-control"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group" :class="{invalid:$v.last_name.$error}">
+                        <input
+                          type="text"
+                          @blur="$v.last_name.$touch()"
+                          v-model="last_name"
+                          name
+                          placeholder="Last Name"
+                          id
+                          class="form-control"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group" :class="{invalid:$v.email.$error}">
+                        <input
+                          type="text"
+                          @blur="$v.email.$touch()"
+                          v-model="email"
+                          name
+                          placeholder="Email"
+                          id
+                          class="form-control"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group" :class="{invalid:$v.address.$error}">
+                        <input
+                          type="text"
+                          @blur="$v.address.$touch()"
+                          v-model="address"
+                          name
+                          placeholder="Address"
+                          id
+                          class="form-control"
+                        />
+                      </div>
                     </div>
                   </div>
-
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <input type="text" name placeholder="Email" id class="form-control" />
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <textarea
+                          v-model="message"
+                          rows="5"
+                          class="form-control"
+                          placeholder="Enter Message"
+                        ></textarea>
+                      </div>
                     </div>
                   </div>
-
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <input type="text" name placeholder="Address" id class="form-control" />
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <input
+                          type="submit"
+                          value="Submit"
+                          class="form-control btn btn-outline-success bg-success text-white"
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="form-group">
-                      <textarea rows="5" class="form-control" placeholder="Enter Message"></textarea>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="form-group">
-                      <input
-                        type="submit"
-                        value="Submit"
-                        class="form-control btn btn-outline-success"
-                      />
-                    </div>
-                  </div>
-                </div>
+                </form>
               </div>
             </div>
           </div>
@@ -84,17 +121,32 @@
       </div>
     </section>
     <!-- Staff -->
-   
   </div>
 </template>
 <script>
+import axios from 'axios'
 import Header from "./componentHead";
+import {
+  required,
+  email,
+  maxLength,
+  minLength,
+  sameAs
+} from "vuelidate/lib/validators";
 export default {
   components: {
     Header
   },
   data() {
     return {
+      user: "",
+      first_name: "",
+      last_name: "",
+      email: "",
+      address: "",
+      message: "",
+      shopId: "",
+
       nameOfSite: this.$store.getters.getWebsite.nameOfSiteH,
       titleC: this.$store.getters.getWebsite.titleC,
       descriptionC: this.$store.getters.getWebsite.descriptionC,
@@ -102,6 +154,52 @@ export default {
       phoneC: this.$store.getters.getWebsite.phoneC,
       addressC: this.$store.getters.getWebsite.addressC
     };
+  },
+  created() {
+    // console.log(this.$store.getters.getWebsite.id);
+  },
+  validations: {
+    email: {
+      required,
+      email
+    },
+    first_name: {
+      required,
+      minLength: minLength(2),
+      maxLength: maxLength(15)
+    },
+    last_name: {
+      required,
+      minLength: minLength(2),
+      maxLength: maxLength(15)
+    },
+    address: {
+      required,
+      minLength: minLength(2),
+      maxLength: maxLength(15)
+    }
+  },
+  methods: {
+    submitFeedback() {
+      axios.post('http://localhost:8000/api/add_review',{
+        user:this.$store.getters.getWebsite.user,
+        first_name:this.first_name,
+        last_name:this.last_name,
+        email:this.email,
+        address:this.address,
+        message:this.message,
+        shopId:this.$store.getters.getWebsite.id
+      })
+      .then(res=>{
+        console.log(res)
+      })
+    }
   }
 };
 </script>
+<style scoped>
+.invalid input {
+  border: 1px solid red;
+  background-color: #ffc9aa;
+}
+</style>
