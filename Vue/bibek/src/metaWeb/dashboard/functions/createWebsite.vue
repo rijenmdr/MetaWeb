@@ -21,6 +21,14 @@
                   <input
                     type="text"
                     class="form-control"
+                    v-model="category"
+                    placeholder="Category"
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
                     v-model="headingOneH"
                     placeholder="heading one"
                   />
@@ -109,7 +117,7 @@
                 </div>
                 <div class="form-group">
                   <textarea
-                    rows=15
+                    rows="15"
                     class="form-control"
                     v-model="whatWeDoA"
                     placeholder="What we do"
@@ -130,7 +138,7 @@
                 </div>
                 <div class="form-group">
                   <textarea
-                    rows=6
+                    rows="6"
                     class="form-control"
                     v-model="descriptionC"
                     placeholder="description"
@@ -183,6 +191,7 @@ import axios from "axios";
 export default {
   data() {
     return {
+      category: "",
       nameOfSiteH: "",
       headingOneH: "",
       descriptionOneH: "",
@@ -217,6 +226,7 @@ export default {
           "http://localhost:8000/api/add_website",
 
           {
+            category: this.category,
             nameOfSiteH: this.nameOfSiteH,
             headingOneH: this.headingOneH,
             descriptionOneH: this.descriptionOneH,

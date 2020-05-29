@@ -28,6 +28,7 @@ def add_website(request):
     try:
         website = Website.objects.create(
             nameOfSiteH=payload["nameOfSiteH"],
+            category=payload["category"],
             headingOneH=payload["headingOneH"],
             descriptionOneH=payload["descriptionOneH"],
             headingTwoH=payload["headingTwoH"],

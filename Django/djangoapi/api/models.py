@@ -5,6 +5,7 @@ from django.utils import timezone
 
 class Website(models.Model):
     nameOfSiteH = models.CharField(max_length=255, default="default")
+    category = models.CharField(max_length=255, default="default")
     headingOneH = models.CharField(max_length=255, default="default")
     descriptionOneH = models.CharField(max_length=255, default="default")
     headingTwoH = models.CharField(max_length=255, default="default")

@@ -1,56 +1,61 @@
 <template>
-  <section id="showcase">
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-      </ol>
-      <div class="carousel-inner">
-        <div class="carousel-item carousel-image-1 active">
-          <div class="container">
-            <div class="carousel-caption d-none d-sm-block text-right mb-5">
-              <h1 class="display-3">{{headingOneH}}</h1>
+  <div>
+    <section id="showcase">
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item carousel-image-1 active">
+            <div class="container">
+              <div class="carousel-caption d-none d-sm-block text-right mb-5">
+                <h1 class="display-3">{{headingOneH}}</h1>
 
-              <p class="lead">{{descriptionOneH}}</p>
-              <a href="#" class="btn btn-danger btn-lg">Sign Up Now</a>
+                <p class="lead">{{descriptionOneH}}</p>
+                <a href="#" class="btn btn-danger btn-lg">Sign Up Now</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item carousel-image-2">
+            <div class="container">
+              <div class="carousel-caption d-none d-sm-block mb-5">
+                <h1 class="display-3">{{headingTwoH}}</h1>
+
+                <p class="lead">{{descriptionTwoH}}</p>
+                <a href="#" class="btn btn-info btn-lg">Learn More</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item carousel-image-3">
+            <div class="container">
+              <div class="carousel-caption d-none d-sm-block text-right mb-5">
+                <h1 class="display-3">{{headingThreeH}}</h1>
+
+                <p class="lead">{{descriptionThreeH}}</p>
+                <a href="#" class="btn btn-success btn-lg">Play Now</a>
+              </div>
             </div>
           </div>
         </div>
-
-        <div class="carousel-item carousel-image-2">
-          <div class="container">
-            <div class="carousel-caption d-none d-sm-block mb-5">
-              <h1 class="display-3">{{headingTwoH}}</h1>
-
-              <p class="lead">{{descriptionTwoH}}</p>
-              <a href="#" class="btn btn-info btn-lg">Learn More</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="carousel-item carousel-image-3">
-          <div class="container">
-            <div class="carousel-caption d-none d-sm-block text-right mb-5">
-              <h1 class="display-3">{{headingThreeH}}</h1>
-
-              <p class="lead">{{descriptionThreeH}}</p>
-              <a href="#" class="btn btn-success btn-lg">Play Now</a>
-            </div>
-          </div>
-        </div>
+        <a href="#myCarousel" class="carousel-control-prev" data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a href="#myCarousel" class="carousel-control-next" data-slide="prev">
+          <span class="carousel-control-next-icon"></span>
+        </a>
       </div>
-      <a href="#myCarousel" class="carousel-control-prev" data-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-      </a>
-      <a href="#myCarousel" class="carousel-control-next" data-slide="prev">
-        <span class="carousel-control-next-icon"></span>
-      </a>
-    </div>
-  </section>
+    </section>
+    <Features :featureOneH="featureOneH" :featureTwoH="featureTwoH" :featureThreeH="featureThreeH" />
+    <Footer />
+  </div>
 </template>
 <script>
-import Features from './features'
+import Features from "./features";
+import Footer from "./footer";
 export default {
   props: [
     "headingOneH",
@@ -58,10 +63,14 @@ export default {
     "headingThreeH",
     "descriptionOneH",
     "descriptionTwoH",
-    "descriptionThreeH"
+    "descriptionThreeH",
+    "featureOneH",
+    "featureTwoH",
+    "featureThreeH"
   ],
-  components:{
-    Features
+  components: {
+    Features,
+    Footer
   }
 };
 </script>
