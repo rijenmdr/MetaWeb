@@ -103,8 +103,8 @@ export default {
   },
   methods: {
     search() {
-      console.log(this.val);
-      // this.$router.push("/userWebsite/" + this.shopId);
+      // console.log(this.val);
+      this.$router.push("/userWebsite/" + this.shopId);
   
     },
     select() {

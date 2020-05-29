@@ -50,6 +50,7 @@
   </section>
 </template>
 <script>
+import Features from './features'
 export default {
   props: [
     "headingOneH",
@@ -58,7 +59,10 @@ export default {
     "descriptionOneH",
     "descriptionTwoH",
     "descriptionThreeH"
-  ]
+  ],
+  components:{
+    Features
+  }
 };
 </script>
 <style scoped>

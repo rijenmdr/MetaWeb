@@ -65,7 +65,7 @@
                 <i class="fas fa-folder"></i>
                 3
               </h4>
-              <a href="user.html" class="btn btn-outline-light btn-sm">See more</a>
+              <router-link to="/dashboard/feedback" class="btn btn-outline-light btn-sm">See More</router-link>
             </div>
           </div>
         </div>

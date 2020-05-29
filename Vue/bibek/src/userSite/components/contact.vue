@@ -32,7 +32,10 @@
           <div class="col-md-8">
             <div class="card p-4">
               <div class="card-body">
+               
                 <h3 class="text-center">Please fill the form to contact us</h3>
+                 <hr class="bg-warning" />
+                 <h5 class="text-center text-danger">{{done}}</h5>
                 <hr class="bg-warning" />
 
                 <form @submit.prevent="submitFeedback">
@@ -146,6 +149,7 @@ export default {
       address: "",
       message: "",
       shopId: "",
+      done:"",
 
       nameOfSite: this.$store.getters.getWebsite.nameOfSiteH,
       titleC: this.$store.getters.getWebsite.titleC,
@@ -191,7 +195,12 @@ export default {
         shopId:this.$store.getters.getWebsite.id
       })
       .then(res=>{
-        console.log(res)
+        this.done="feedback Sent"
+        this.first_name='',
+        this.last_name='',
+        this.email='',
+        this.address='',
+        this.message=''
       })
     }
   }
@@ -200,6 +209,6 @@ export default {
 <style scoped>
 .invalid input {
   border: 1px solid red;
-  background-color: #ffc9aa;
+ 
 }
 </style>

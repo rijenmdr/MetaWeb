@@ -7,7 +7,10 @@ urlpatterns = [
     path('get_website/<int:id>', views.get_website),
     path('dashboard', views.get_dashboard),
     path('delete_website/<int:id>',views.delete_website),
+    path('delete_feedback/<int:id>',views.delete_feedback),
     path('update_website/<int:id>',views.update_website),
     path('add_review',views.add_review),
+    path('get_review/<int:shopid>',views.get_review),
+    # path('get_review_count',views.get_review_count),
 
 ]

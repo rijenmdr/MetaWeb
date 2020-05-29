@@ -5,10 +5,11 @@ from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from .models import Website,Visitor
-from .serializers import WebsiteSerializer,VisitorSerializer
+from .models import Website, Visitor
+from .serializers import WebsiteSerializer, VisitorSerializer
 from django.core.exceptions import ObjectDoesNotExist
 import json
+
 
 @api_view(["GET"])
 @permission_classes([AllowAny])
@@ -16,6 +17,7 @@ import json
 def welcome(request):
     content = {"message": "Test works"}
     return JsonResponse(content)
+
 
 @api_view(["POST"])
 @csrf_exempt
@@ -78,16 +80,19 @@ def get_dashboard(request):
     # print(web)
     # return JsonResponse({web}, safe=False, status=status.HTTP_201_CREATED)
     payload = json.loads(request.body)
-    data=payload['user']
+    data = payload['user']
     website = Website.objects.filter(user=data)
     serializer = WebsiteSerializer(website, many=True)
     if website:
-        content = {'status': '200', "message": "website found", 'data': serializer.data}
+        content = {'status': '200', "message": "website found",
+                   'data': serializer.data}
         return JsonResponse(content)
     else:
-        content = {'status': 'error', "message": "website not found", 'data': 0}
+        content = {'status': 'error',
+                   "message": "website not found", 'data': 0}
         return JsonResponse(content)
-    
+
+
 @api_view(["DELETE"])
 @csrf_exempt
 def delete_website(request, id):
@@ -100,9 +105,10 @@ def delete_website(request, id):
     except Exception:
         return JsonResponse({'error': "Something went wrong"}, safe=False, status=status.HTTP_404_NOT_FOUND)
 
+
 @api_view(["PUT"])
 @csrf_exempt
-def update_website(request,id):
+def update_website(request, id):
     payload = json.loads(request.body)
     user = request.user.id
     print(id)
@@ -116,6 +122,7 @@ def update_website(request,id):
         return JsonResponse({'error': str(e)}, safe=False, status=status.HTTP_404_NOT_FOUND)
     except Exception:
         return JsonResponse({'error': "Something went wrong"}, safe=False, status=status.HTTP_404_NOT_FOUND)
+
 
 @api_view(["POST"])
 @permission_classes([AllowAny])
@@ -144,3 +151,51 @@ def add_review(request):
         return JsonResponse({'error': str(e)}, safe=False, status=status.HTTP_404_NOT_FOUND)
     except Exception:
         return JsonResponse({'error': "Something went wrong"}, safe=False, status=status.HTTP_404_NOT_FOUND)
+
+
+@api_view(["GET"])
+@csrf_exempt
+@permission_classes([AllowAny])
+def get_review(request, shopid):
+
+    try:
+        visitor = Visitor.objects.filter(shopId=shopid)
+        serializer = VisitorSerializer(visitor, many=True)
+        return JsonResponse({'feedback': serializer.data}, safe=False, status=status.HTTP_200_OK)
+    except ObjectDoesNotExist as e:
+        return JsonResponse({'error': str(e)}, safe=False, status=status.HTTP_404_NOT_FOUND)
+    except Exception:
+        return JsonResponse({'error': "Something went wrong"}, safe=False, status=status.HTTP_404_NOT_FOUND)
+
+
+@api_view(["DELETE"])
+@csrf_exempt
+@permission_classes([AllowAny])
+def delete_feedback(request, id):
+    try:
+        feedback = Visitor.objects.get(id=id)
+        feedback.delete()
+        return JsonResponse({'message': "feedback deleted successfully"}, safe=False, status=status.HTTP_204_NO_CONTENT)
+    except ObjectDoesNotExist as e:
+        return JsonResponse({'error': str(e)}, safe=False, status=status.HTTP_404_NOT_FOUND)
+    except Exception:
+        return JsonResponse({'error': "Something went wrong"}, safe=False, status=status.HTTP_404_NOT_FOUND)
+
+
+# @api_view(["POST"])
+# @csrf_exempt
+# @permission_classes([AllowAny])
+# def get_review_count(request):
+#     payload = json.loads(request.body)
+#     user=payload["user"]
+#     print(user)
+#     try:
+#         website = Website.objects.filter(user=user)
+#         visitor = Visitor.objects.filter(user=user)
+#         print(visitor)
+#         serializer = VisitorSerializer(visitor, many=True)
+#         return JsonResponse({'feedback': serializer.data}, safe=False, status=status.HTTP_200_OK)
+#     except ObjectDoesNotExist as e:
+#         return JsonResponse({'error': str(e)}, safe=False, status=status.HTTP_404_NOT_FOUND)
+#     except Exception:
+#         return JsonResponse({'error': "Something went wrong"}, safe=False, status=status.HTTP_404_NOT_FOUND)
