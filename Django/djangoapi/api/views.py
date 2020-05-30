@@ -5,7 +5,7 @@ from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from .models import Website, Visitor
+from .models import Website, Visitor, MetaWebFeedback
 from .serializers import WebsiteSerializer, VisitorSerializer
 from django.core.exceptions import ObjectDoesNotExist
 import json
@@ -177,6 +177,25 @@ def delete_feedback(request, id):
         feedback = Visitor.objects.get(id=id)
         feedback.delete()
         return JsonResponse({'message': "feedback deleted successfully"}, safe=False, status=status.HTTP_204_NO_CONTENT)
+    except ObjectDoesNotExist as e:
+        return JsonResponse({'error': str(e)}, safe=False, status=status.HTTP_404_NOT_FOUND)
+    except Exception:
+        return JsonResponse({'error': "Something went wrong"}, safe=False, status=status.HTTP_404_NOT_FOUND)
+
+
+@api_view(["POST"])
+@permission_classes([AllowAny])
+@csrf_exempt
+def add_message(request):
+    payload = json.loads(request.body)
+    print(payload)
+    try:
+        feedback = MetaWebFeedback.objects.create(
+            name=payload["name"],
+            email=payload["email"],
+            message=payload["message"])
+
+        return JsonResponse({'visitor': "Successfully submitted feedback"}, safe=False, status=status.HTTP_201_CREATED)
     except ObjectDoesNotExist as e:
         return JsonResponse({'error': str(e)}, safe=False, status=status.HTTP_404_NOT_FOUND)
     except Exception:

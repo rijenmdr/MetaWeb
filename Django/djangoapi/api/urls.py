@@ -11,6 +11,7 @@ urlpatterns = [
     path('update_website/<int:id>',views.update_website),
     path('add_review',views.add_review),
     path('get_review/<int:shopid>',views.get_review),
+    path('add_message',views.add_message),
     # path('get_review_count',views.get_review_count),
 
 ]

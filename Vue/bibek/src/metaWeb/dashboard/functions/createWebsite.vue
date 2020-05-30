@@ -18,12 +18,7 @@
                   />
                 </div>
                 <div class="form-group">
-                  <input
-                    type="text"
-                    class="form-control"
-                    v-model="category"
-                    placeholder="Category"
-                  />
+                  <input type="text" class="form-control" v-model="category" placeholder="Category" />
                 </div>
                 <div class="form-group">
                   <input
@@ -117,7 +112,7 @@
                 </div>
                 <div class="form-group">
                   <textarea
-                    rows="15"
+                    rows="10"
                     class="form-control"
                     v-model="whatWeDoA"
                     placeholder="What we do"
@@ -171,7 +166,7 @@
           </div>
 
           <div class="col-md-3 mx-auto">
-            <div>
+            <!-- <div>
               <img src="../../../assets/userWebsite/Home.png" height="250vh" width="350vw" />
             </div>
             <div>
@@ -179,11 +174,34 @@
             </div>
             <div>
               <img src="../../../assets/userWebsite/contact.png" height="250vh" width="350vw" />
+            </div>-->
+            <div class="card-header">
+              <h4>Images</h4>
+            </div>
+            <div class="form-group">
+              <input type="file" @change="onFileChanged" class="form-control" multiple="multiple"/>
+            </div>
+            <div class="form-group">
+              <input type="file" @change="onFileChanged(2)" class="form-control" />
+            </div>
+            <div class="form-group">
+              <input type="file" @change="onFileChanged(3)" class="form-control" />
+            </div>
+            <div class="form-group">
+              <input type="file" @change="onFileChanged(4)" class="form-control" />
+            </div>
+            <div class="form-group">
+              <input type="file" @change="onFileChanged(5)" class="form-control" />
             </div>
           </div>
         </div>
       </div>
     </section>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6"></div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -208,12 +226,20 @@ export default {
       emailC: "",
       descriptionC: "",
       phoneC: "",
-      addressC: ""
+      addressC: "",
+      photo1: "",
+      photo2: "",
+      photo3: "",
+      photo4: "",
+      photo5: ""
     };
   },
   methods: {
     dashboard() {
       this.$router.push("/dashboard");
+    },
+    onFileChanged(event) {
+      console.log(event.target.files[0]);
     },
     async createWebsite() {
       let JWTToken = localStorage.getItem("token");

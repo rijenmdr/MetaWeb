@@ -2,7 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../metaWeb/home/home";
 import LoginMain from "../metaWeb/auth/login";
-import SignUpMain from "../metaWeb/auth/signup";
+import SignUpMain from "../metaWeb/auth/signup/signup";
 import Dashboard from "../metaWeb/dashboard/dashboard";
 import CreateWebsite from "../metaWeb/dashboard/functions/createWebsite";
 import UserWebsite from "../userSite/userSite";
@@ -14,6 +14,7 @@ import DashboardDelete from "../metaWeb/dashboard/functions/deleteWebsite";
 import DashboardFeedback from "../metaWeb/dashboard/functions/feedbacks";
 import DashboardFeed from "../metaWeb/dashboard/functions/feed";
 import EditWebsite from "../metaWeb/dashboard/functions/editWebsite";
+import Search from "../metaWeb/search/search"
 
 Vue.use(VueRouter);
 
@@ -30,6 +31,10 @@ const routes = [
   {
     path: "/signup",
     component: SignUpMain,
+  },
+  {
+    path: "/search",
+    component: Search,
   },
   {
     path: "/dashboard",

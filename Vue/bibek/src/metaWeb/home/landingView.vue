@@ -56,10 +56,11 @@
                 <p>Enter the details of the shop around you and find their website easily</p>
 
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="keywords" />
+                  <input type="text" class="form-control" v-model="keywords" placeholder="keywords" />
                 </div>
                 <div class="form-group">
-                  <select v-model="val" class="form-control form-control">
+                  <select v-model="location" class="form-control form-control">
+                    <option value="location">Location</option>
                     <option value="paknajol">Paknajol</option>
                     <option value="kathnamdu">Kathmandu</option>
                     <option value="balaju">Balaju</option>
@@ -74,7 +75,12 @@
                   />
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="category" />
+                  <select v-model="category" class="form-control form-control">
+                    <option value="category">Category</option>
+                    <option value="fancyStore">Fancy Store</option>
+                    <option value="techStore">Tech Store</option>
+                    <option value="stationary">Stationary</option>
+                  </select>
                 </div>
                 <div>
                   <div>
@@ -94,18 +100,28 @@ export default {
   data() {
     return {
       shopId: "",
-      val: "this"
+      location: "",
+      category: "",
+      keywords: ""
     };
   },
   created() {
-    //yeslay 2 hrs khayo . default ma value bind  nahune bug raixa so created ma value change garayrw garayko 
-    this.val = 'paknajol'
+    //yeslay 2 hrs khayo . default ma value bind  nahune bug raixa so created ma value change garayrw garayko
+    this.location = "location";
+    this.category = "category";
   },
   methods: {
     search() {
-      // console.log(this.val);
-      this.$router.push("/userWebsite/" + this.shopId);
-  
+      if (
+        this.location == "location" &&
+        this.category == "category" &&
+        this.shopId != ""
+      ) {
+        this.$router.push("/userWebsite/" + this.shopId);
+      }
+      else{
+         this.$router.push("/search?keywords="+this.keywords+"&location="+this.location+"&category="+this.category);
+      }
     },
     select() {
       console.log("ayo");

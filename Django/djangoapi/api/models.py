@@ -24,19 +24,34 @@ class Website(models.Model):
     addressC = models.CharField(max_length=255, default="default")
     user = models.CharField(max_length=255, default="default")
     created_date = models.DateTimeField(default=timezone.now)
-    
+    photo_1 = models.ImageField(upload_to="%y/%m/%d", blank=True)
+    photo_2 = models.ImageField(upload_to="%y/%m/%d", blank=True)
+    photo_3 = models.ImageField(upload_to="%y/%m/%d", blank=True)
+    photo_4 = models.ImageField(upload_to="%y/%m/%d", blank=True)
+    photo_5 = models.ImageField(upload_to="%y/%m/%d", blank=True)
 
     def __str__(self):
         return self.user
 
+
 class Visitor(models.Model):
-    user=models.ForeignKey(Website,on_delete=models.CASCADE)
-    first_name=models.CharField(max_length=50)
-    last_name=models.CharField(max_length=50)
-    email=models.EmailField(max_length=100)
-    address=models.CharField(max_length=50)
-    message=models.CharField(max_length=250)
-    shopId=models.IntegerField()
+    user = models.ForeignKey(Website, on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    email = models.EmailField(max_length=100)
+    address = models.CharField(max_length=50)
+    message = models.CharField(max_length=250)
+    shopId = models.IntegerField()
 
     def __str__(self):
         return self.first_name
+
+
+class MetaWebFeedback(models.Model):
+
+    name = models.CharField(max_length=50)
+    email = models.CharField(max_length=50)
+    message = models.CharField(max_length=250)
+
+    def __str__(self):
+        return self.email
