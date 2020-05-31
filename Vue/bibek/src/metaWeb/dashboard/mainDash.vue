@@ -87,7 +87,11 @@ export default {
     if (!JWTToken) {
       JWTToken = this.$store.getters.getToken;
     }
-    let user = this.$store.getters.getUser;
+    let user = localStorage.getItem('user');
+    if (!user) {
+       user = this.$store.getters.getUser;
+    }
+    console.log(user)
     await axios
       .post(
         "http://localhost:8000/api/dashboard",

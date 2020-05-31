@@ -12,6 +12,7 @@ urlpatterns = [
     path('add_review',views.add_review),
     path('get_review/<int:shopid>',views.get_review),
     path('add_message',views.add_message),
+    path('search',views.search),
     # path('get_review_count',views.get_review_count),
 
 ]

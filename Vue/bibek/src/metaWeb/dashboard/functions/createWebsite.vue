@@ -77,6 +77,14 @@
                   />
                 </div>
                 <div class="form-group">
+                  <textarea
+                    rows="3"
+                    class="form-control"
+                    v-model="featureOneDesH"
+                    placeholder="feature description"
+                  />
+                </div>
+                <div class="form-group">
                   <input
                     type="text"
                     class="form-control"
@@ -85,11 +93,27 @@
                   />
                 </div>
                 <div class="form-group">
+                  <textarea
+                    rows="3"
+                    class="form-control"
+                    v-model="featureTwoDesH"
+                    placeholder="feature description"
+                  />
+                </div>
+                <div class="form-group">
                   <input
                     type="text"
                     class="form-control"
                     v-model="featureThreeH"
                     placeholder="Feature three"
+                  />
+                </div>
+                <div class="form-group">
+                  <textarea
+                    rows="3"
+                    class="form-control"
+                    v-model="featureThreeDesH"
+                    placeholder="feature description"
                   />
                 </div>
               </div>
@@ -119,9 +143,78 @@
                   />
                 </div>
               </div>
+              <div class="card-header">
+                <h4>Background Color</h4>
+              </div>
+              <div class="card-body">
+                <div class="form-group">
+                  <select v-model="backgroundColor" class="form-control form-control">
+                    <option value="green">Green</option>
+                    <option value="#30332E">Black</option>
+                    <option value="#DECA04">Yellow</option>
+                  </select>
+                </div>
+              </div>
             </div>
           </div>
+          <div class="col-md-3 mx-auto">
+            <div class="card">
+              <div class="card-header">
+                <h4>Service Page</h4>
+              </div>
+              <div class="card-body">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    v-model="serviceOne"
+                    placeholder="Service One"
+                  />
+                </div>
 
+                <div class="form-group">
+                  <textarea
+                    rows="3"
+                    class="form-control"
+                    v-model="serviceOneDes"
+                    placeholder="description of service one"
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    v-model="serviceTwo"
+                    placeholder="service two"
+                  />
+                </div>
+                <div class="form-group">
+                  <textarea
+                    rows="3"
+                    class="form-control"
+                    v-model="serviceTwoDes"
+                    placeholder="description two"
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    v-model="serviceThree"
+                    placeholder="service three"
+                  />
+                </div>
+                <div class="form-group">
+                  <textarea
+                    rows="3"
+                    class="form-control"
+                    v-model="serviceThreeDes"
+                    placeholder="description of service three"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="col-md-3 mx-auto">
             <div class="card">
               <div class="card-header">
@@ -175,7 +268,7 @@
             <div>
               <img src="../../../assets/userWebsite/contact.png" height="250vh" width="350vw" />
             </div>-->
-            <div class="card-header">
+            <!-- <div class="card-header">
               <h4>Images</h4>
             </div>
             <div class="form-group">
@@ -192,7 +285,7 @@
             </div>
             <div class="form-group">
               <input type="file" @change="onFileChanged(5)" class="form-control" />
-            </div>
+            </div>-->
           </div>
         </div>
       </div>
@@ -227,12 +320,22 @@ export default {
       descriptionC: "",
       phoneC: "",
       addressC: "",
-      photo1: "",
-      photo2: "",
-      photo3: "",
-      photo4: "",
-      photo5: ""
+      featureOneDesH: "",
+      featureTwoDesH: "",
+      featureThreeDesH: "",
+      serviceOne: "",
+      serviceTwo: "",
+      serviceOneDes: "",
+      serviceTwoDes: "",
+      serviceThree: "",
+      serviceThreeDes: "",
+      backgroundColor: ""
     };
+  },
+  created() {
+    //yeslay 2 hrs khayo . default ma value bind  nahune bug raixa so created ma value change garayrw garayko
+
+    this.backgroundColor = "green";
   },
   methods: {
     dashboard() {
@@ -246,7 +349,6 @@ export default {
       if (!JWTToken) {
         JWTToken = this.$store.getters.getToken;
       }
-      console.log(JWTToken);
       await axios
         .post(
           "http://localhost:8000/api/add_website",
@@ -270,7 +372,17 @@ export default {
             descriptionC: this.descriptionC,
             phoneC: this.phoneC,
             addressC: this.addressC,
-            user: this.$store.getters.getUser
+            user: this.$store.getters.getUser,
+            featureOneDesH: this.featureOneDesH,
+            featureTwoDesH: this.featureTwoDesH,
+            featureThreeDesH: this.featureThreeDesH,
+            serviceOne: this.serviceOne,
+            serviceTwo: this.serviceTwo,
+            serviceThree: this.serviceThree,
+            serviceOneDes: this.serviceOneDes,
+            serviceTwoDes: this.serviceTwoDes,
+            serviceThreeDes: this.serviceThreeDes,
+            backgroundColor: this.backgroundColor
           },
           {
             headers: {

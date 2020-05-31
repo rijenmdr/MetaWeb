@@ -1,9 +1,9 @@
 <template>
   <div>
     <Header />
-    
+
     <router-view></router-view>
-    
+
     <Footer />
   </div>
 </template>
@@ -21,11 +21,19 @@ export default {
     MainDash
   },
   async created() {
-    let data={
-      token:this.$store.getters.getToken,
-      user:this.$store.getters.getUser
+    let token = this.$store.getters.getToken;
+    if (!token) {
+      token = localStorage.getItem("token");
     }
-    await this.$store.dispatch("setUserSite",data);
+    let user = this.$store.getters.getUser;
+    if (!user) {
+      user = localStorage.getItem("user");
+    }
+    let data = {
+      token: token,
+      user: user
+    };
+    await this.$store.dispatch("setUserSite", data);
   }
 };
 </script>

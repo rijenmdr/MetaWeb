@@ -1,8 +1,8 @@
 <template>
   <div>
-    <Header :nameOfSite="nameOfSite" id="1" />
+    <Header :nameOfSite="nameOfSite" id="4" :backgroundColor="backgroundColor" />
     <header id="page-header">
-      <div class="container">
+      <div class="container mt-2">
         <div class="row">
           <div class="col-md-6 m-auto text-center">
             <h1>Contact Us</h1>
@@ -32,10 +32,9 @@
           <div class="col-md-8">
             <div class="card p-4">
               <div class="card-body">
-               
                 <h3 class="text-center">Please fill the form to contact us</h3>
-                 <hr class="bg-warning" />
-                 <h5 class="text-center text-danger">{{done}}</h5>
+                <hr class="bg-warning" />
+                <h5 class="text-center text-danger">{{done}}</h5>
                 <hr class="bg-warning" />
 
                 <form @submit.prevent="submitFeedback">
@@ -123,12 +122,13 @@
         </div>
       </div>
     </section>
-    <!-- Staff -->
+    <Footer :backgroundColor="backgroundColor" />
   </div>
 </template>
 <script>
-import axios from 'axios'
+import axios from "axios";
 import Header from "./componentHead";
+import Footer from "./footer";
 import {
   required,
   email,
@@ -138,7 +138,8 @@ import {
 } from "vuelidate/lib/validators";
 export default {
   components: {
-    Header
+    Header,
+    Footer
   },
   data() {
     return {
@@ -149,14 +150,15 @@ export default {
       address: "",
       message: "",
       shopId: "",
-      done:"",
+      done: "",
 
       nameOfSite: this.$store.getters.getWebsite.nameOfSiteH,
       titleC: this.$store.getters.getWebsite.titleC,
       descriptionC: this.$store.getters.getWebsite.descriptionC,
       emailC: this.$store.getters.getWebsite.emailC,
       phoneC: this.$store.getters.getWebsite.phoneC,
-      addressC: this.$store.getters.getWebsite.addressC
+      addressC: this.$store.getters.getWebsite.addressC,
+      backgroundColor: this.$store.getters.getWebsite.backgroundColor
     };
   },
   created() {
@@ -185,23 +187,24 @@ export default {
   },
   methods: {
     submitFeedback() {
-      axios.post('http://localhost:8000/api/add_review',{
-        user:this.$store.getters.getWebsite.user,
-        first_name:this.first_name,
-        last_name:this.last_name,
-        email:this.email,
-        address:this.address,
-        message:this.message,
-        shopId:this.$store.getters.getWebsite.id
-      })
-      .then(res=>{
-        this.done="feedback Sent"
-        this.first_name='',
-        this.last_name='',
-        this.email='',
-        this.address='',
-        this.message=''
-      })
+      axios
+        .post("http://localhost:8000/api/add_review", {
+          user: this.$store.getters.getWebsite.user,
+          first_name: this.first_name,
+          last_name: this.last_name,
+          email: this.email,
+          address: this.address,
+          message: this.message,
+          shopId: this.$store.getters.getWebsite.id
+        })
+        .then(res => {
+          this.done = "feedback Sent";
+          (this.first_name = ""),
+            (this.last_name = ""),
+            (this.email = ""),
+            (this.address = ""),
+            (this.message = "");
+        });
     }
   }
 };
@@ -209,6 +212,5 @@ export default {
 <style scoped>
 .invalid input {
   border: 1px solid red;
- 
 }
 </style>

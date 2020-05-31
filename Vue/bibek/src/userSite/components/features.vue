@@ -6,24 +6,21 @@
           <i class="fas fa-cog fa-3x mb-2"></i>
           <h3>{{featureOneH}}</h3>
           <p class="lead">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis,
-            aperiam.
+            {{featureOneDesH}}
           </p>
         </div>
         <div class="col-md-4 mb-4 text-center">
           <i class="fas fa-cloud fa-3x mb-2"></i>
           <h3>{{featureTwoH}}</h3>
           <p class="lead">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis,
-            aperiam.
+            {{featureTwoDesH}}
           </p>
         </div>
         <div class="col-md-4 mb-4 text-center">
           <i class="fas fa-cart-plus fa-3x mb-2"></i>
           <h3>{{featureThreeH}}</h3>
           <p class="lead">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis,
-            aperiam.
+            {{featureThreeDesH}}
           </p>
         </div>
       </div>
@@ -32,15 +29,18 @@
 </template>
 <script>
 export default {
-  props:[
+  props: [
     "featureOneH",
     "featureTwoH",
-    "featureThreeH"
+    "featureThreeH",
+    "featureOneDesH",
+    "featureTwoDesH",
+    "featureThreeDesH"
   ]
-}
+};
 </script>
 <style scoped>
-    .features{
-        margin-top: -20vh;
-    }
+.features {
+  margin-top: 0vh;
+}
 </style>

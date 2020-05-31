@@ -34,6 +34,7 @@ const actions = {
           const now = new Date();
           const expirationDate = new Date(now.getTime() + 3600000);
           localStorage.setItem("expiresIn", expirationDate);
+          localStorage.setItem('user',credential.username)
         }
       })
       .catch((err) => {

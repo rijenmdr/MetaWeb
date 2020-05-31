@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-sm navbar-dark" :style="{backgroundColor:backgroundColor}">
     <div class="container">
       <a href="index.html" class="navbar-brand">{{nameOfSite}}</a>
       <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarcollapse">
@@ -8,16 +8,16 @@
       <div class="collapse navbar-collapse" id="navbarcollapse">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <router-link :to='home' class="nav-link">{{menu1}}</router-link>
+            <router-link :to="home" class="nav-link">{{menu1}}</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/userWebsite/about" class="nav-link">{{menu2}}</router-link>
+            <router-link to="/userWebsite/about" class="nav-link" :class="{active:id==2}">{{menu2}}</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/userWebsite/contact" class="nav-link">{{menu3}}</router-link>
+            <router-link to="/userWebsite/services" class="nav-link" :class="{active:id==3}">{{menu3}}</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/userWebsite/about" class="nav-link">{{menu4}}</router-link>
+            <router-link to="/userWebsite/contact" class="nav-link" :class="{active:id==4}">{{menu4}}</router-link>
           </li>
           <li class="nav-item">
             <a href="contact.html" class="nav-link">{{menu5}}</a>
@@ -33,20 +33,21 @@
 <script>
 import axios from "axios";
 export default {
-  props: ["nameOfSite"],
+  props: ["nameOfSite","id"],
   data() {
     return {
       title: "this",
       menu1: "Home",
       menu2: "About",
-      menu3: "Contact",
-      menu4: "",
+      menu3: "Services",
+      menu4: "Contact",
       menu5: "",
-      home:this.$store.getters.getWebsite.id.toString()
+      backgroundColor: this.$store.getters.getWebsite.backgroundColor,
+      home: this.$store.getters.getWebsite.id.toString()
     };
   },
-  created(){
-      console.log(this.$store.getters.getWebsite.id)
+  created() {
+    console.log(this.$store.getters.getWebsite.id);
   }
 };
 </script>

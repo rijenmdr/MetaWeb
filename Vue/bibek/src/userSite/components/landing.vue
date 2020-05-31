@@ -14,7 +14,6 @@
                 <h1 class="display-3">{{headingOneH}}</h1>
 
                 <p class="lead">{{descriptionOneH}}</p>
-                <a href="#" class="btn btn-danger btn-lg">Sign Up Now</a>
               </div>
             </div>
           </div>
@@ -25,7 +24,6 @@
                 <h1 class="display-3">{{headingTwoH}}</h1>
 
                 <p class="lead">{{descriptionTwoH}}</p>
-                <a href="#" class="btn btn-info btn-lg">Learn More</a>
               </div>
             </div>
           </div>
@@ -36,7 +34,6 @@
                 <h1 class="display-3">{{headingThreeH}}</h1>
 
                 <p class="lead">{{descriptionThreeH}}</p>
-                <a href="#" class="btn btn-success btn-lg">Play Now</a>
               </div>
             </div>
           </div>
@@ -49,8 +46,14 @@
         </a>
       </div>
     </section>
-    <Features :featureOneH="featureOneH" :featureTwoH="featureTwoH" :featureThreeH="featureThreeH" />
-    <Footer />
+    <Features
+      :featureOneH="featureOneH"
+      :featureTwoH="featureTwoH"
+      :featureThreeH="featureThreeH"
+      :featureOneDesH="featureOneDesH"
+      :featureTwoDesH="featureTwoDesH"
+      :featureThreeDesH="featureThreeDesH"
+    />
   </div>
 </template>
 <script>
@@ -66,7 +69,10 @@ export default {
     "descriptionThreeH",
     "featureOneH",
     "featureTwoH",
-    "featureThreeH"
+    "featureThreeH",
+    "featureOneDesH",
+    "featureTwoDesH",
+    "featureThreeDesH"
   ],
   components: {
     Features,

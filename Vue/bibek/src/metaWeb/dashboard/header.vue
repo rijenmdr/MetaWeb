@@ -59,7 +59,7 @@
 export default {
   data() {
     return {
-      user: this.$store.getters.getUser
+      user: this.$store.getters.getUser || localStorage.getItem('user')
     };
   },
   methods: {

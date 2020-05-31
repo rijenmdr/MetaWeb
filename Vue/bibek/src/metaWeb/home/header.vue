@@ -1,10 +1,10 @@
 <template>
      <nav class="navbar navbar-expand-md navbar-light fixed-top py-4p" id="main-nav">
     <div class="container">
-      <a href="#home" class="navbar-brand">
+      <router-link to="/" class="navbar-brand">
         <img src="../../assets/mlogo.png" width="50" height="50" alt="" />
         <h3 class="d-inline align-middle">etaWeb</h3>
-      </a>
+      </router-link>
       <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
       </button>

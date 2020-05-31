@@ -45,7 +45,17 @@ def add_website(request):
             descriptionC=payload["descriptionC"],
             phoneC=payload["phoneC"],
             addressC=payload["addressC"],
-            user=payload["user"]
+            user=payload["user"],
+            featureOneDesH=payload['featureOneDesH'],
+            featureTwoDesH=payload['featureTwoDesH'],
+            featureThreeDesH=payload['featureThreeDesH'],
+            serviceOne=payload['serviceOne'],
+            serviceTwo=payload['serviceTwo'],
+            serviceThree=payload['serviceThree'],
+            serviceOneDes=payload['serviceOneDes'],
+            serviceTwoDes=payload['serviceTwoDes'],
+            serviceThreeDes=payload['serviceThreeDes'],
+            backgroundColor=payload['backgroundColor']
         )
         serializer = WebsiteSerializer(website)
 
@@ -57,6 +67,7 @@ def add_website(request):
 
 
 @api_view(["GET"])
+@permission_classes([AllowAny])
 @csrf_exempt
 def get_website(request, id):
     # user = request.user.id
@@ -201,6 +212,30 @@ def add_message(request):
     except Exception:
         return JsonResponse({'error': "Something went wrong"}, safe=False, status=status.HTTP_404_NOT_FOUND)
 
+
+@api_view(["POST"])
+@permission_classes([AllowAny])
+@csrf_exempt
+def search(request):
+    payload = json.loads(request.body)
+    try:
+        keyword = payload['keyword']
+        location = payload['location']
+        category = payload['category']
+        querry_list = Website.objects.order_by('created_date')
+        if(keyword):
+            querry_list = querry_list.filter(nameOfSiteH__icontains=keyword)
+        if(location):
+            querry_list = querry_list.filter(addressC__icontains=keyword)
+        if(category):
+            querry_list = querry_list.filter(category__icontains=keyword)
+        print(querry_list)
+        serializer = WebsiteSerializer(querry_list, many=True)
+        return JsonResponse({'websites': serializer.data}, safe=False, status=status.HTTP_200_OK)
+    except ObjectDoesNotExist as e:
+        return JsonResponse({'error': str(e)}, safe=False, status=status.HTTP_404_NOT_FOUND)
+    except Exception:
+        return JsonResponse({'error': "Something went wrong"}, safe=False, status=status.HTTP_404_NOT_FOUND)
 
 # @api_view(["POST"])
 # @csrf_exempt

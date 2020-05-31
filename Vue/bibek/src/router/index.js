@@ -8,6 +8,7 @@ import CreateWebsite from "../metaWeb/dashboard/functions/createWebsite";
 import UserWebsite from "../userSite/userSite";
 import UserWebsiteAbout from "../userSite/components/about";
 import UserWebsiteLanding from "../userSite/components/landing";
+import UserWebsiteServices from "../userSite/components/services";
 import UserWebsiteContact from "../userSite/components/contact";
 import DashboardMain from "../metaWeb/dashboard/mainDash";
 import DashboardDelete from "../metaWeb/dashboard/functions/deleteWebsite";
@@ -52,6 +53,10 @@ const routes = [
   {
     path: "/userWebsite/about",
     component: UserWebsiteAbout,
+  },
+  {
+    path: "/userWebsite/services",
+    component: UserWebsiteServices,
   },
   {
     path: "/userWebsite/contact",

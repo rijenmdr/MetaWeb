@@ -123,7 +123,7 @@ export default {
     },
     username: {
       required,
-      maxLength: maxLength(10)
+      maxLength: maxLength(15)
     },
     password1: {
       required,
