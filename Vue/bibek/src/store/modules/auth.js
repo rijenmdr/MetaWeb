@@ -19,7 +19,8 @@ const mutations = {
   },
 };
 const actions = {
-  async Login({ commit }, credential) {
+  async Login({ commit, dispatch }, credential) {
+    
     commit("SET_ERROR", false);
     await axios
       .post("http://localhost:8000/rest-auth/login/", {
@@ -34,14 +35,19 @@ const actions = {
           const now = new Date();
           const expirationDate = new Date(now.getTime() + 3600000);
           localStorage.setItem("expiresIn", expirationDate);
-          localStorage.setItem('user',credential.username)
+          localStorage.setItem("user", credential.username);
         }
+        dispatch("addNotifications", {
+          type: "success",
+          message: "login in successful",
+        });
       })
       .catch((err) => {
         commit("SET_ERROR", true);
       });
   },
-  async signUp({ commit }, data) {
+  async signUp({ commit,dispatch }, data) {
+    console.log(data)
     commit("SET_ERROR", false);
     await axios
       .post("http://localhost:8000/registration/", {
@@ -51,22 +57,33 @@ const actions = {
         password2: data.password2,
       })
       .then((res) => {
+        console.log(res);
         const now = new Date();
         const expirationDate = new Date(now.getTime() + 3600000);
         localStorage.setItem("expiresIn", expirationDate);
         localStorage.setItem("token", res.data.key);
         commit("SET_TOKEN", res.data.key);
+        localStorage.setItem("user", data.username);
+        commit("SET_TOKEN", res.data.key);
+        dispatch("addNotifications", {
+          type: "success",
+          message: "SignUp in successful",
+        });
       })
       .catch((err) => {
-        console.log("error aayo")
+        console.log(err);
+        console.log("error aayo");
         commit("SET_ERROR", true);
       });
   },
-  logout({ commit }) {
+  logout({ commit,dispatch }) {
     localStorage.removeItem("token");
     localStorage.removeItem("expiresIn");
     commit("LOGOUT");
-    console.log("log action");
+    dispatch("addNotifications", {
+      type: "danger",
+      message: "You are now logged out",
+    });
   },
 };
 const getters = {

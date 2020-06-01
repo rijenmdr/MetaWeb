@@ -43,6 +43,10 @@ export default {
           })
           .then(res=>
           {
+            this.$store.dispatch("addNotifications", {
+            type: "danger",
+            message: "Your site is deleted"
+          });
             this.$store.dispatch('setUserSite',{token:this.$store.getters.getToken,user:this.$store.getters.getUser})
              
           }

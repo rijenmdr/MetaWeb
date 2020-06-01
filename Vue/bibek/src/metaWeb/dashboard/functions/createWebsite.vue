@@ -391,6 +391,10 @@ export default {
           }
         )
         .then(res => {
+          this.$store.dispatch("addNotifications", {
+            type: "success",
+            message: "This is the view of your new website"
+          });
           this.$store.dispatch("setId", res.data.website.id);
           this.$router.push("/userWebsite/" + res.data.website.id);
         })

@@ -329,7 +329,7 @@ export default {
       serviceTwoDes: "",
       serviceThreeDes: "",
       backgroundColor: "",
-      category:''
+      category: ""
     };
   },
   created() {
@@ -408,16 +408,16 @@ export default {
             phoneC: this.phoneC,
             addressC: this.addressC,
             user: this.$store.getters.getUser,
-            featureOneDesH:this.featureOneDesH,
-            featureTwoDesH:this.featureTwoDesH,
-            featureThreeDesH:this.featureThreeDesH,
-            serviceOne:this.serviceOne,
-            serviceTwo:this.serviceTwo,
-            serviceThree:this.serviceThree,
-            backgroundColor:this.backgroundColor,
-            serviceOneDes:this.serviceOneDes,
-            serviceTwoDes:this.serviceTwoDes,
-            serviceThreeDes:this.serviceThreeDes
+            featureOneDesH: this.featureOneDesH,
+            featureTwoDesH: this.featureTwoDesH,
+            featureThreeDesH: this.featureThreeDesH,
+            serviceOne: this.serviceOne,
+            serviceTwo: this.serviceTwo,
+            serviceThree: this.serviceThree,
+            backgroundColor: this.backgroundColor,
+            serviceOneDes: this.serviceOneDes,
+            serviceTwoDes: this.serviceTwoDes,
+            serviceThreeDes: this.serviceThreeDes
           },
           {
             headers: {
@@ -426,6 +426,10 @@ export default {
           }
         )
         .then(res => {
+          this.$store.dispatch("addNotifications", {
+            type: "success",
+            message: "Update Successful"
+          });
           this.$router.push("/dashboard");
         })
         .catch(err => {
