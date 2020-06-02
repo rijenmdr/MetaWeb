@@ -1,5 +1,10 @@
-from rest_framework import serializers
+
 from .models import Website, Visitor
+from rest_framework import serializers
+
+
+###### IMPORT YOUR USER MODEL ######
+
 
 
 class WebsiteSerializer(serializers.ModelSerializer):
@@ -15,3 +20,7 @@ class VisitorSerializer(serializers.ModelSerializer):
         model = Visitor
         fields = ['id', 'user', 'first_name', 'last_name',
                   'email', 'address', 'message', 'shopId']
+
+
+
+

@@ -1,12 +1,11 @@
 <template>
   <div>
-    <Header />
     <div class="container h-100 loginMain">
       <div class="d-flex justify-content-center h-100">
         <div class="user_card">
           <div class="d-flex justify-content-center">
             <div class="brand_logo_container">
-              <img src="../../assets/mlogo.png" class="brand_logo" alt="Logo" />
+              <img src="../../../assets/mlogo.png" class="brand_logo" alt="Logo" />
             </div>
           </div>
 
@@ -63,39 +62,19 @@
           <div class="mt-4">
             <div class="d-flex justify-content-center links">
               Don't have an account?
-             
               <router-link class="ml-2" to="/signup">Sign Up</router-link>
             </div>
             <div class="d-flex justify-content-center links">
-              <a href="#">Forgot your password?</a>
+              <router-link to="/login/reset-password">Forgot your password?</router-link>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- Footer -->
-    <footer id="main-footer" class="text-center bg-dark text-white mt-5 p-5">
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <p class="lead">
-              copyright &copy;
-              <span id="year"></span>
-            </p>
-          </div>
-        </div>
-      </div>
-    </footer>
-    {{error}}
   </div>
 </template>
 <script>
-import Header from "./headerAuth";
 export default {
-  components: {
-    Header
-  },
-
   data() {
     return {
       username: null,
@@ -114,7 +93,7 @@ export default {
       });
 
       const error = this.$store.getters.getError;
-      console.log(this.$store.getters.getUser)
+      console.log(this.$store.getters.getUser);
       if (error) {
         this.error = "Username and Password didn't match";
       } else {
@@ -137,7 +116,11 @@ export default {
 };
 </script>
 
+
 <style scoped>
+a{
+  color:#DAD9D2;
+}
 body,
 html {
   margin: 0;

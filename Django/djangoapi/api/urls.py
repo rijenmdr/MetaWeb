@@ -1,5 +1,6 @@
-from django.urls import path
+from django.urls import path,include
 from . import views
+
 
 urlpatterns = [
     path('add_website', views.add_website),
@@ -13,6 +14,7 @@ urlpatterns = [
     path('get_review/<int:shopid>',views.get_review),
     path('add_message',views.add_message),
     path('search',views.search),
+    path(r'password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset'))
     # path('get_review_count',views.get_review_count),
 
 ]

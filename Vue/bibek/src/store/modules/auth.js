@@ -12,7 +12,7 @@ const mutations = {
     state.error = bol;
   },
   SET_USER(state, user) {
-    state.user = user.username;
+    state.user = user;
   },
   LOGOUT(state) {
     state.token = null;
@@ -20,7 +20,6 @@ const mutations = {
 };
 const actions = {
   async Login({ commit, dispatch }, credential) {
-    
     commit("SET_ERROR", false);
     await axios
       .post("http://localhost:8000/rest-auth/login/", {
@@ -28,7 +27,8 @@ const actions = {
         password: credential.password,
       })
       .then((res) => {
-        commit("SET_USER", credential);
+        console.log(credential.username)
+        commit("SET_USER", credential.username);
         commit("SET_TOKEN", res.data.key);
         if (credential.remember) {
           localStorage.setItem("token", res.data.key);
@@ -46,8 +46,7 @@ const actions = {
         commit("SET_ERROR", true);
       });
   },
-  async signUp({ commit,dispatch }, data) {
-    console.log(data)
+  async signUp({ commit, dispatch }, data) {
     commit("SET_ERROR", false);
     await axios
       .post("http://localhost:8000/registration/", {
@@ -57,13 +56,12 @@ const actions = {
         password2: data.password2,
       })
       .then((res) => {
-        console.log(res);
         const now = new Date();
         const expirationDate = new Date(now.getTime() + 3600000);
         localStorage.setItem("expiresIn", expirationDate);
         localStorage.setItem("token", res.data.key);
-        commit("SET_TOKEN", res.data.key);
         localStorage.setItem("user", data.username);
+        commit("SET_USER", data.username);
         commit("SET_TOKEN", res.data.key);
         dispatch("addNotifications", {
           type: "success",
@@ -76,9 +74,10 @@ const actions = {
         commit("SET_ERROR", true);
       });
   },
-  logout({ commit,dispatch }) {
+  logout({ commit, dispatch }) {
     localStorage.removeItem("token");
     localStorage.removeItem("expiresIn");
+    localStorage.removeItem("user");
     commit("LOGOUT");
     dispatch("addNotifications", {
       type: "danger",

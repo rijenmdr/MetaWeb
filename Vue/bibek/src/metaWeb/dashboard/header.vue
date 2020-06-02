@@ -43,11 +43,18 @@
     <header id="main-header" class="py-2 bg-primary text-white">
       <div class="container">
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-9">
             <router-link to="/dashboard" class="text-white dashboard">
               <h1>
                 <i class="fas fa-cog"></i> Dashboard
               </h1>
+            </router-link>
+          </div>
+          <div class="col-md-3 mt-2">
+            <router-link to="/upgradetopro" class="text-white dashboard">
+              <h4>
+                <i class="fas fa-shopping-cart"></i> Upgrade to Pro
+              </h4>
             </router-link>
           </div>
         </div>
@@ -59,7 +66,7 @@
 export default {
   data() {
     return {
-      user: this.$store.getters.getUser || localStorage.getItem('user')
+      user: this.$store.getters.getUser || localStorage.getItem("user")
     };
   },
   methods: {

@@ -399,6 +399,7 @@ export default {
           this.$router.push("/userWebsite/" + res.data.website.id);
         })
         .catch(err => {
+          console.log("err")
           console.log(err);
         });
     }

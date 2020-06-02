@@ -9,6 +9,14 @@ from .models import Website, Visitor, MetaWebFeedback
 from .serializers import WebsiteSerializer, VisitorSerializer
 from django.core.exceptions import ObjectDoesNotExist
 import json
+import re
+from email_validator import validate_email, EmailNotValidError
+from django.core.mail import EmailMultiAlternatives
+from django.dispatch import receiver
+from django.template.loader import render_to_string
+from django.urls import reverse
+from django_rest_passwordreset.signals import reset_password_token_created
+
 
 
 @api_view(["GET"])
@@ -57,6 +65,32 @@ def add_website(request):
             serviceThreeDes=payload['serviceThreeDes'],
             backgroundColor=payload['backgroundColor']
         )
+
+        # if not website.nameOfSiteH:
+        #     return JsonResponse({'error': 'Name of site cannot be empty'},
+        #              status=status.HTTP_400_BAD_REQUEST)
+
+        # if len(website.nameOfSiteH)>10:
+        #     return JsonResponse({'error': 'Length exceeded'},
+        #                         status=status.HTTP_400_BAD_REQUEST)
+        # if type(website.nameOfSiteH) != str:
+        #     return JsonResponse({'error': 'Please enter valid letter only'},
+        #                         status=status.HTTP_400_BAD_REQUEST)
+        # if bool(re.search(r'\d', website.nameOfSiteH)):
+        #     return JsonResponse({'error': 'Please enter valid letter only'},
+        #                         status=status.HTTP_400_BAD_REQUEST)
+        # #
+        # if not bool(re.search(r'\d{10}', website.phoneC)):
+        #     return JsonResponse({'error': 'Please enter valid phone number'},
+        #                         status=status.HTTP_400_BAD_REQUEST)
+        # try:
+        #     # Validate.
+        #     valid = validate_email(website.emailC)
+        # except EmailNotValidError as e:
+        #     # email is not valid, exception message is human-readable
+        #     return JsonResponse({'error': 'Please enter valid email'},
+        #                         status=status.HTTP_400_BAD_REQUEST)
+
         serializer = WebsiteSerializer(website)
 
         return JsonResponse({'website': serializer.data}, safe=False, status=status.HTTP_201_CREATED)
@@ -237,20 +271,31 @@ def search(request):
     except Exception:
         return JsonResponse({'error': "Something went wrong"}, safe=False, status=status.HTTP_404_NOT_FOUND)
 
-# @api_view(["POST"])
-# @csrf_exempt
-# @permission_classes([AllowAny])
-# def get_review_count(request):
-#     payload = json.loads(request.body)
-#     user=payload["user"]
-#     print(user)
-#     try:
-#         website = Website.objects.filter(user=user)
-#         visitor = Visitor.objects.filter(user=user)
-#         print(visitor)
-#         serializer = VisitorSerializer(visitor, many=True)
-#         return JsonResponse({'feedback': serializer.data}, safe=False, status=status.HTTP_200_OK)
-#     except ObjectDoesNotExist as e:
-#         return JsonResponse({'error': str(e)}, safe=False, status=status.HTTP_404_NOT_FOUND)
-#     except Exception:
-#         return JsonResponse({'error': "Something went wrong"}, safe=False, status=status.HTTP_404_NOT_FOUND)
+
+
+@receiver(reset_password_token_created)
+def password_reset_token_created(sender, instance, reset_password_token, *args, **kwargs):
+    # send an e-mail to the user
+    context = {
+        'current_user': reset_password_token.user,
+        'username': reset_password_token.user.username,
+        'email': reset_password_token.user.email,
+        'reset_password_url': "{}?token={}".format(reverse('password_reset:reset-password-request'), reset_password_token.key)
+    }
+
+    # render email text
+    email_html_message = render_to_string('email/user_reset_password.html', context)
+    email_plaintext_message = render_to_string('email/user_reset_password.txt', context)
+
+    msg = EmailMultiAlternatives(
+        # title:
+        "Password Reset for {title}".format(title="Some website title"),
+        # message:
+        email_plaintext_message,
+        # from:
+        "bibeklama67@gmail.com",
+        # to:
+        [reset_password_token.user.email]
+    )
+    msg.attach_alternative(email_html_message, "text/html")
+    msg.send()
