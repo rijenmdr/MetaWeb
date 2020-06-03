@@ -1,69 +1,32 @@
 <template>
-    <section id="how-it-works" class="py-5 text-center bg-light">
-    <div class="container how">
-      <div class="row">
-        <div class="col">
-          <div class="info-header mb-5">
-            <h1 class="texttitle pb-3">
-              How it works ?
-            </h1>
-            <p class="lead">
-             Website of websites : we want to make the website building easy to all the owners.Just create an account and share you shop ids. Gain more customers.
-            </p>
+  <div class="section features-6">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="info info-horizontal info-hover-primary">
+            <div class="description pl-4">
+              <h5 class="title">For Shop Owners</h5>
+              <p>Hosting a domain and its maintainance can be a difficult task. So create a website within our website easily and make your presence online easily. Reach more customres and enhance your sales. </p>
+              <router-link to="/signup" class="text-info">Get Started</router-link>
+            </div>
           </div>
-          <!-- accordian -->
-          <div id="accordion">
-            <div class="card">
-              <div class="card-header">
-                <h5 class="mb-0">
-                  <div href="#collapse1" data-toggle="collapse" data-parent="#accordion">
-                    <i class="fas fa-arrow-circle-down"></i> Why this website ?
-                  </div>
-                </h5>
-              </div>
-              <div id="collapse1" class="collapse show">
-                <div class="card-body">
-                  There are so many shop owners who cannot afford to host their own website.So we created a platform where you can easily create you website and make it available to the customers in the best possible way.
-                </div>
-              </div>
+          <div class="info info-horizontal info-hover-primary mt-5">
+            <div class="description pl-4">
+              <h5 class="title">For Customers</h5>
+              <p>Visiting various shop and not finding the product you want can be annoying and a great waste of time . So, here you can get to know about the shops around you and the servicces they offer. Save time , save energy , Go online .</p>
             </div>
-            <div class="card">
-              <div class="card-header">
-                <h5 class="mb-0">
-                  <div href="#collapse2" data-toggle="collapse" data-parent="#accordion">
-                    <i class="fas fa-arrow-circle-down"> working mechanism ?</i>
-                  </div>
-                </h5>
-              </div>
-              <div id="collapse2" class="collapse ">
-                <div class="card-body">
-                  Create account and share your id's with your customer and they can find your store easily on this website .
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-header">
-                <h5 class="mb-0">
-                  <div href="#collapse3" data-toggle="collapse" data-parent="#accordion">
-                    <i class="fas fa-arrow-circle-down"></i> As a cutomer ...
-                  </div>
-                </h5>
-              </div>
-              <div id="collapse3" class="collapse ">
-                <div class="card-body">
-                  As a customer you can easily search for the websites of the shops on one platform and can get to know a lot about their shops and the product available
-                </div>
-              </div>
+          </div>
+          <div class="info info-horizontal info-hover-primary mt-5">
+            <div class="description pl-4">
+              <h5 class="title">For Developers</h5>
+              <p>Since, our aim is to provide the feeling of website within our customers. We want more templates. We will incorporate the interested developers for building more and more templates.</p>
             </div>
           </div>
         </div>
+        <div class="col-lg-6 col-10 mx-md-auto">
+          <img class="ml-lg-5" src="./assets/img/ill/ill.png" width="100%" />
+        </div>
       </div>
     </div>
-  </section>
+  </div>
 </template>
-<style scoped>
-  .texttitle{
-    color:#1b838f;
-  }
-</style>>
-

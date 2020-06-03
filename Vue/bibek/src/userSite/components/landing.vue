@@ -11,9 +11,9 @@
           <div class="carousel-item carousel-image-1 active">
             <div class="container">
               <div class="carousel-caption d-none d-sm-block text-right mb-5">
-                <h1 class="display-3">{{headingOneH}}</h1>
+                <h1 class="display-3 text-white">{{headingOneH}}</h1>
 
-                <p class="lead">{{descriptionOneH}}</p>
+                <p class="lead text-white">{{descriptionOneH}}</p>
               </div>
             </div>
           </div>
@@ -21,9 +21,9 @@
           <div class="carousel-item carousel-image-2">
             <div class="container">
               <div class="carousel-caption d-none d-sm-block mb-5">
-                <h1 class="display-3">{{headingTwoH}}</h1>
+                <h1 class="display-3 text-white">{{headingTwoH}}</h1>
 
-                <p class="lead">{{descriptionTwoH}}</p>
+                <p class="lead text-white">{{descriptionTwoH}}</p>
               </div>
             </div>
           </div>
@@ -31,9 +31,9 @@
           <div class="carousel-item carousel-image-3">
             <div class="container">
               <div class="carousel-caption d-none d-sm-block text-right mb-5">
-                <h1 class="display-3">{{headingThreeH}}</h1>
+                <h1 class="display-3 text-white">{{headingThreeH}}</h1>
 
-                <p class="lead">{{descriptionThreeH}}</p>
+                <p class="lead text-white">{{descriptionThreeH}}</p>
               </div>
             </div>
           </div>

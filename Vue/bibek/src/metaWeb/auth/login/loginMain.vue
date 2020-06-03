@@ -1,77 +1,116 @@
 <template>
-  <div>
-    <div class="container h-100 loginMain">
-      <div class="d-flex justify-content-center h-100">
-        <div class="user_card">
-          <div class="d-flex justify-content-center">
-            <div class="brand_logo_container">
-              <img src="../../../assets/mlogo.png" class="brand_logo" alt="Logo" />
+  <section class="section section-shaped section-lg">
+    <div class="shape shape-style-1 bg-gradient-default">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="container pt-lg-1">
+      <div class="row justify-content-center">
+        <div class="col-lg-5">
+          <div class="card bg-secondary shadow border-0">
+            <div class="card-header bg-white pb-5">
+              <div class="text-muted text-center mb-3">
+                <small>Sign in with</small>
+              </div>
+              <div class="btn-wrapper text-center">
+                <a href="#" class="btn btn-neutral btn-icon">
+                  <span class="btn-inner--icon">
+                    <img src="../assets/img/icons/common/github.svg" />
+                  </span>
+                  <span class="btn-inner--text">Github</span>
+                </a>
+                <a href="#" class="btn btn-neutral btn-icon">
+                  <span class="btn-inner--icon">
+                    <img src="../assets/img/icons/common/google.svg" />
+                  </span>
+                  <span class="btn-inner--text">Google</span>
+                </a>
+              </div>
             </div>
-          </div>
+            <div class="card-body px-lg-5 py-lg-4">
+              <div v-if="!error" class="text-center text-muted mb-4">
+                <small>Or sign in with credentials</small>
+              </div>
+              <div v-else class="text-center text-muted mb-4">
+                <small class="error">{{error}}</small>
+              </div>
 
-          <div class="d-flex justify-content-center form_container">
-            <form @submit.prevent="login">
-              <div class="input-group mb-3 error">{{error}}</div>
-              <div class="input-group mb-3">
-                <div class="input-group-append">
-                  <span class="input-group-text">
-                    <i class="fas fa-user"></i>
-                  </span>
+              <form @submit.prevent="login">
+                <div class="form-group mb-3">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="ni ni-email-83"></i>
+                      </span>
+                    </div>
+                    <input
+                      v-model="username"
+                      class="form-control"
+                      placeholder="Username"
+                      type="text"
+                    />
+                  </div>
                 </div>
-                <input
-                  type="text"
-                  name
-                  class="form-control input_user"
-                  value
-                  placeholder="username"
-                  v-model="username"
-                />
-              </div>
-              <div class="input-group mb-2">
-                <div class="input-group-append">
-                  <span class="input-group-text">
-                    <i class="fas fa-key"></i>
-                  </span>
+                <div class="form-group focused">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="ni ni-lock-circle-open"></i>
+                      </span>
+                    </div>
+                    <input
+                      v-model="password"
+                      class="form-control"
+                      placeholder="Password"
+                      type="password"
+                    />
+                  </div>
                 </div>
-                <input
-                  type="password"
-                  name
-                  class="form-control input_pass"
-                  value
-                  placeholder="password"
-                  v-model="password"
-                />
-              </div>
-              <div class="form-group">
+                <!-- <div class="custom-control custom-control-alternative custom-checkbox">
+                  <input class="custom-control-input" id=" customCheckLogin" type="checkbox" />
+                  <label class="custom-control-label" for="customCheckLogin">
+                    <span>Remember me</span>
+                  </label>
+                </div>-->
                 <div class="custom-control custom-checkbox">
                   <input
-                    type="checkbox"
-                    class="custom-control-input"
-                    id="customControlInline"
                     v-model="remember"
+                    class="custom-control-input"
+                    id="customCheck2"
+                    type="checkbox"
                   />
-                  <label class="custom-control-label" for="customControlInline">Remember me</label>
+                  <label class="custom-control-label" for="customCheck2">
+                    <span>Remember me</span>
+                  </label>
                 </div>
-              </div>
-              <div class="d-flex justify-content-center mt-3 login_container">
-                <button type="submit" name="button" class="btn login_btn">Login</button>
-              </div>
-            </form>
-          </div>
-
-          <div class="mt-4">
-            <div class="d-flex justify-content-center links">
-              Don't have an account?
-              <router-link class="ml-2" to="/signup">Sign Up</router-link>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary my-4">Sign in</button>
+                </div>
+              </form>
             </div>
-            <div class="d-flex justify-content-center links">
-              <router-link to="/login/reset-password">Forgot your password?</router-link>
+          </div>
+          <div class="row mt-3">
+            <div class="col-6">
+              <router-link to="/reset-password" class="text-light">
+                <small>Forgot password?</small>
+              </router-link>
+            </div>
+            <div class="col-6 text-right">
+              <router-link to="/signup" class="text-light">
+                <small>Create new account</small>
+              </router-link>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 <script>
 export default {
@@ -116,85 +155,8 @@ export default {
 };
 </script>
 
-
 <style scoped>
-a{
-  color:#DAD9D2;
-}
-body,
-html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  background: #60a3bc !important;
-}
-.user_card {
-  height: 400px;
-  width: 350px;
-  margin-top: auto;
-  margin-bottom: auto;
-  background: #51c2cf;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  padding: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-    0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-    0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-radius: 5px;
-}
-.brand_logo_container {
-  position: absolute;
-  height: 170px;
-  width: 170px;
-  top: -75px;
-  border-radius: 50%;
-  background: #60a3bc;
-  padding: 10px;
-  text-align: center;
-}
-.brand_logo {
-  height: 150px;
-  width: 150px;
-  border-radius: 50%;
-  border: 2px solid white;
-}
-.form_container {
-  margin-top: 100px;
-}
-.login_btn {
-  width: 100%;
-  background: #1b838f !important;
-  color: white !important;
-}
-.login_btn:focus {
-  box-shadow: none !important;
-  outline: 0px !important;
-}
-.login_container {
-  padding: 0 2rem;
-}
-.input-group-text {
-  background: #1b838f !important;
-  color: white !important;
-  border: 0 !important;
-  border-radius: 0.25rem 0 0 0.25rem !important;
-}
-.input_user,
-.input_pass:focus {
-  box-shadow: none !important;
-  outline: 0px !important;
-}
-.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
-  background-color: #c0392b !important;
-}
-.loginMain {
-  margin-top: 5vh;
-}
 .error {
-  color: #963115;
+  color: red;
 }
 </style>

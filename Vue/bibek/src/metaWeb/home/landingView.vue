@@ -1,99 +1,76 @@
 <template>
-  <header id="home-section" class="landingView">
-    <div class="primary-overlay dark-overlay mb-5 home">
-      <div class="home-inner container home">
-        <div class="row">
-          <div class="col-lg-8 d-none d-lg-block mt-4">
-            <h1 class="display-4">
-              Build
-              <strong>Website</strong> easily
-              and
-              <strong>reach more customers</strong>
-            </h1>
-            <div class="d-flex ml-5">
-              <div class="p-2 slign-self-start">
-                <i class="fas fa-check fa-2x"></i>
-              </div>
-              <div
-                class="p-2 slign-self-end"
-              >Website of websites : maintain your website in our website</div>
-            </div>
-            <div class="d-flex ml-5">
-              <div class="p-2 slign-self-start">
-                <i class="fas fa-check fa-2x"></i>
-              </div>
-              <div
-                class="p-2 slign-self-end"
-              >Platform for the shop owners to maintain their website easily</div>
-            </div>
-            <div class="d-flex ml-5">
-              <div class="p-2 slign-self-start">
-                <i class="fas fa-check fa-2x"></i>
-              </div>
-              <div class="p-2 slign-self-end">Get rid of high hosting and domain costs</div>
-            </div>
-            <div class="d-flex ml-5">
-              <div class="p-2 slign-self-start">
-                <i class="fas fa-check fa-2x"></i>
-              </div>
-              <div
-                class="p-2 slign-self-end"
-              >Create account and maintain your site and reach out more customers online</div>
-            </div>
-            <div class="d-flex ml-5">
-              <div class="p-2 slign-self-start">
-                <i class="fas fa-user fa-2x p-2"></i>
-              </div>
-              <router-link to="/signup">
-                <div class="p-3 signUp">Sign Up Now</div>
-              </router-link>
-            </div>
-          </div>
-          <div class="col-lg-4 mt-4 mb-5">
-            <div class="card formCenter text-center card-form mb-5">
-              <div class="card-body">
-                <h3>SEARCH FOR STORES</h3>
-                <p>Enter the details of the shop around you and find their website easily</p>
-
-                <div class="form-group">
-                  <input type="text" class="form-control" v-model="keywords" placeholder="keywords" />
+  <div class="section section-hero section-shaped">
+    <div class="shape shape-style-1 shape-primary">
+      <span class="span-150"></span>
+      <span class="span-50"></span>
+      <span class="span-50"></span>
+      <span class="span-75"></span>
+      <span class="span-100"></span>
+      <span class="span-75"></span>
+      <span class="span-50"></span>
+      <span class="span-100"></span>
+      <span class="span-50"></span>
+      <span class="span-100"></span>
+    </div>
+    <div class="page-header">
+      <div class="container shape-container d-flex align-items-center py-lg">
+        <div class="col px-0">
+          <div class="row align-items-center justify-content-center">
+            <div class="col-lg-6 text-center">
+              <p
+                class="lead text-white"
+              >Search for the stores around you Or create website and promote your business with us</p>
+              <div class="col-lg-12 col-sm-6 d-flex mt-4">
+                <div class="form-group has-success">
+                  <input type="text" placeholder="Keywords" class="form-control is-valid" />
                 </div>
-                <div class="form-group">
-                  <select v-model="location" class="form-control form-control">
-                    <option value="location">Location</option>
-                    <option value="paknajol">Paknajol</option>
-                    <option value="kathnamdu">Kathmandu</option>
-                    <option value="balaju">Balaju</option>
-                  </select>
-                </div>
-                <div class="form-group">
+                <div class="form-group has-success ml-3">
                   <input
                     v-model="shopId"
                     type="number"
-                    class="form-control form-control"
-                    placeholder="shop no"
+                    placeholder="Shop Id"
+                    class="form-control is-valid"
                   />
                 </div>
-                <div class="form-group">
-                  <select v-model="category" class="form-control form-control">
-                    <option value="category">Category</option>
-                    <option value="fancyStore">Fancy Store</option>
-                    <option value="techStore">Tech Store</option>
-                    <option value="stationary">Stationary</option>
-                  </select>
-                </div>
-                <div>
-                  <div>
-                    <div @click="search" class="btn btn-success btn-block">Search</div>
-                  </div>
+              </div>
+              <div class="btn-wrapper mt-5">
+                <a
+                  href="https://www.creative-tim.com/product/argon-design-system"
+                  class="btn btn-lg btn-white btn-icon mb-3 mb-sm-0"
+                >
+                  <span class="btn-inner--icon">
+                    <i class="fas fa-search"></i>
+                  </span>
+                  <span class="btn-inner--text">Search WEBSITE</span>
+                </a>
+                <div @click="search" class="btn btn-lg btn-github btn-icon mb-3 mb-sm-0">
+                  <span class="btn-inner--icon">
+                    <i class="fas fa-hand-point-right"></i>
+                  </span>
+                  <span class="btn-inner--text">
+                    <span class="text-warning">Shop Id</span> Search
+                  </span>
                 </div>
               </div>
+              <div class="mt-5"></div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </header>
+    <div class="separator separator-bottom separator-skew zindex-100">
+      <svg
+        x="0"
+        y="0"
+        viewBox="0 0 2560 100"
+        preserveAspectRatio="none"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <polygon class="fill-white" points="2560 0 2560 100 0 100" />
+      </svg>
+    </div>
+  </div>
 </template>
 <script>
 export default {
@@ -118,9 +95,15 @@ export default {
         this.shopId != ""
       ) {
         this.$router.push("/userWebsite/" + this.shopId);
-      }
-      else{
-         this.$router.push("/search?keywords="+this.keywords+"&location="+this.location+"&category="+this.category);
+      } else {
+        this.$router.push(
+          "/search?keywords=" +
+            this.keywords +
+            "&location=" +
+            this.location +
+            "&category=" +
+            this.category
+        );
       }
     },
     select() {
@@ -130,6 +113,8 @@ export default {
 };
 </script>
 <style scoped>
+@import "../../assets/css/nucleo-icons.css";
+@import "../../assets/css/argon-design-system.css?v=1.2.0";
 .landingView {
   margin-top: 12vh;
 }

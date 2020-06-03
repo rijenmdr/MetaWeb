@@ -1,11 +1,11 @@
 <template>
   <div>
-    <Header :nameOfSite="nameOfSite" :id="2" :backgroundColor="backgroundColor"/>
+    <Header :nameOfSite="nameOfSite" :id="2" :backgroundColor="backgroundColor" />
     <header id="page-header">
       <div class="container">
         <div class="row">
           <div class="col-md-6 m-auto text-center">
-            <h1>About Us</h1>
+            <h1 class="text">About Us</h1>
             <p>{{introduction}}</p>
           </div>
         </div>
@@ -91,7 +91,7 @@
       </div>
     </section>
 
-    <Footer :backgroundColor="backgroundColor"/>
+    <Footer :backgroundColor="backgroundColor" />
   </div>
 </template>
 <script>
@@ -123,6 +123,8 @@ export default {
   border-bottom: 1px #eee solid;
   padding-top: 50px;
 }
-</style>>
-    
+.text {
+  color: white;
+}
 </style>
+    

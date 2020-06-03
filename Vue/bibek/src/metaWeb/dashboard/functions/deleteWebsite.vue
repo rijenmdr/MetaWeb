@@ -1,18 +1,35 @@
 <template>
-  <div class="deleteWebsite">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3" v-for="(site,i) in userSite">
-          <div class="card text-center bg-primary text-white mb-3">
-            <div class="card-body">
-              <h3>My Website {{i+1}}</h3>
-              <h4>{{site.nameOfSiteH}}</h4>
-              <h4>shop id: {{site.id}}</h4>
-              <h34My Website {{i+1}}</h4>
-              <h4 class="display-4">
-                <i class="fas fa-pencil-alt"></i>
-              </h4>
-              <div class="btn btn-outline-light btn-sm" @click="deleteSite(site.id)">Delete</div>
+  <div class="main-content" id="panel">
+    <div class="header bg-primary pb-6"></div>
+    <div class="deleteWebsite">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6" v-for="(site,i) in userSite">
+            <div class="col-xl-12 col-md-6">
+              <div class="card card-stats">
+                <!-- Card body -->
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">{{site.nameOfSiteH}}</h5>
+                      <span class="h2 font-weight-bold mb-0">{{site.id}}</span>
+                    </div>
+                    <div @click="deleteSite(site.id)" class="col-auto">
+                      <div
+                        class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow"
+                      >
+                         <i class="fas fa-trash"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mt-3 mb-0 text-sm">
+                    <span class="text-success mr-2">
+                      <i class="fa fa-arrow-up"></i> Created:
+                    </span>
+                    <span class="text-nowrap">{{site.created_date}}</span>
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -21,41 +38,40 @@
   </div>
 </template>
 <script>
-import axios from 'axios'
+import axios from "axios";
 export default {
   data() {
     return {
       userSite: this.$store.getters.getUserSite
     };
   },
-  methods:{
-    
-      async deleteSite(val){
-         let JWTToken = localStorage.getItem("token");
-         if (!JWTToken) {
-         JWTToken = this.$store.getters.getToken;
-         }
-          await axios.delete('http://localhost:8000/api/delete_website/'+val,
-           {
-            headers: {
-              Authorization: `Token ${JWTToken}`
-            }
-          })
-          .then(res=>
-          {
-            this.$store.dispatch("addNotifications", {
+  methods: {
+    async deleteSite(val) {
+      let JWTToken = localStorage.getItem("token");
+      if (!JWTToken) {
+        JWTToken = this.$store.getters.getToken;
+      }
+      await axios
+        .delete("http://localhost:8000/api/delete_website/" + val, {
+          headers: {
+            Authorization: `Token ${JWTToken}`
+          }
+        })
+        .then(res => {
+          this.$store.dispatch("addNotifications", {
             type: "danger",
             message: "Your site is deleted"
           });
-            this.$store.dispatch('setUserSite',{token:this.$store.getters.getToken,user:this.$store.getters.getUser})
-             
-          }
-          )
-          .catch(err=>{
-            console.log(err)
-          })
-          this.$router.push('/dashboard')
-      }
+          this.$store.dispatch("setUserSite", {
+            token: this.$store.getters.getToken,
+            user: this.$store.getters.getUser
+          });
+        })
+        .catch(err => {
+          console.log(err);
+        });
+      this.$router.push("/dashboard");
+    }
   }
 };
 </script>

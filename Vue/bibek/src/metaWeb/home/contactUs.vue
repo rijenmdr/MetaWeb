@@ -6,33 +6,37 @@
           <h3>Get In Touch</h3>
           <p class="lead">For any enquire , feel free to contact us !!</p>
           <form @submit.prevent="submitFeedBack">
-            <div class="input-group input-group-lg mb-3" :class="{invalid:$v.name.$error}">
-              <div class="input-group-prepend">
-                <span class="input-group-text">
-                  <i class="fas fa-user"></i>
-                </span>
+            <div class="form-group input-group-lg mb-3" :class="{invalid:$v.name.$error}">
+              <div class="input-group mb-4">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="fas fa-user"></i>
+                  </span>
+                </div>
+                <input
+                  @blur="$v.name.$touch()"
+                  v-model="name"
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter name"
+                />
               </div>
-              <input
-                @blur="$v.name.$touch()"
-                v-model="name"
-                type="text"
-                class="form-control"
-                placeholder="Enter name"
-              />
             </div>
-            <div class="input-group input-group-lg mb-3" :class="{invalid:$v.email.$error}">
-              <div class="input-group-prepend">
-                <span class="input-group-text">
-                  <i class="fas fa-envelope"></i>
-                </span>
+            <div class="form-group input-group-lg mb-3" :class="{invalid:$v.email.$error}">
+              <div class="input-group mb-4">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="fas fa-envelope"></i>
+                  </span>
+                </div>
+                <input
+                  @blur="$v.email.$touch()"
+                  v-model="email"
+                  type="email"
+                  class="form-control"
+                  placeholder="Enter email"
+                />
               </div>
-              <input
-                @blur="$v.email.$touch()"
-                v-model="email"
-                type="email"
-                class="form-control"
-                placeholder="Enter email"
-              />
             </div>
             <div class="input-group input-group-lg mb-3" :class="{invalid:$v.message.$error}">
               <div class="input-group-prepend">
@@ -99,7 +103,7 @@ export default {
           this.message = "";
           this.email = "";
           this.name = "";
-          this.$router.push('/success')
+          this.$router.push("/success");
         })
         .catch(err => {
           console.log(err);

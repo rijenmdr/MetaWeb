@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-sm navbar-dark" :style="{backgroundColor:backgroundColor}">
     <div class="container">
-      <a href="index.html" class="navbar-brand">{{nameOfSite}}</a>
+      <div class="navbar-brand text">{{nameOfSite}}</div>
       <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarcollapse">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -50,6 +50,7 @@ export default {
 };
 </script>
 <style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
 body {
   overflow-x: hidden;
 }
@@ -64,5 +65,11 @@ body {
 }
 .navbarUser {
   background: yellow;
+}
+.text {
+  color: white;
+  font-family: "Righteous", cursive;
+  font-size: 20px;
+  cursor: pointer;
 }
 </style>

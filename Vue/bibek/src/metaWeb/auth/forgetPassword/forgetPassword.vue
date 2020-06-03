@@ -80,7 +80,7 @@ export default {
           email: this.email
         })
         .then(res => {
-          this.$router.push("/login/new-password/" + this.email);
+          this.$router.push("/new-password/" + this.email);
         })
         .catch(err => {
           this.error = "This email in not associated with any account";
@@ -97,7 +97,7 @@ input.form-control:focus {
   box-shadow: none;
 }
 .invalid input {
-  border: 1px solid red;
+  
   background-color: #ffc9aa;
 }
 .error {

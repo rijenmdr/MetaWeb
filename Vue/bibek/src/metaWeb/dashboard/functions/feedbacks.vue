@@ -1,17 +1,47 @@
 <template>
-  <div class="feedback">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3" v-for="(site,i) in userSite">
-          <div class="card text-center bg-success text-white mb-3">
-            <div class="card-body">
-              <h3>My Website {{i+1}}</h3>
-              <h4>{{site.nameOfSiteH}}</h4>
-              <h4>shop id: {{site.id}}</h4>
-              <h4 class="display-4">
-                <i class="fas fa-envelope"></i>
-              </h4>
-              <div class="btn btn-outline-light btn-sm" @click="feedback(site.id)">Show Feedbacks</div>
+  <div class="main-content" id="panel">
+    <div class="header bg-primary pb-6"></div>
+    <div class="deleteWebsite">
+      <div class="container">
+        <div class="row mt-5">
+          <div class="col-md-6" v-for="(site,i) in userSite">
+            <div class="col-xl-12 col-md-6">
+              <div class="card card-stats">
+                <!-- Card body -->
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">{{site.nameOfSiteH}}</h5>
+                      <span class="h2 font-weight-bold mb-0">{{site.id}}</span>
+                    </div>
+                    <div class="col-auto">
+                      <div
+                        class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow"
+                      >
+                        <i class="fas fa-envelope"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mt-3 mb-0 text-sm">
+                    <span class="text-success mr-2">
+                      <i class="fa fa-user"></i> Owner:
+                    </span>
+                    <span class="text-nowrap">{{site.user}}</span>
+                  </p>
+                  <p class="mt-3 mb-0 text-sm">
+                    <span class="text-success mr-2">
+                      <i class="fa fa-arrow-up"></i> Created:
+                    </span>
+                    <span class="text-nowrap">{{site.created_date}}</span>
+                  </p>
+                  <div @click="feedback(site.id)" class="btn btn-neutral btn-icon mt-2 btn">
+                    <span class="btn-inner--icon">
+                      <i class="fas fa-hand-point-right"></i>
+                    </span>
+                    <span class="nav-link-inner--text text-success"> See Feedback</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -28,10 +58,8 @@ export default {
     };
   },
   created() {
-    
     // console.log(this.$store.getters.getUserSite.length)
     // let length=this.$store.getters.getUserSite.length
-    
     // axios.get("http://localhost:8000/api/get_review/" + shopid)
     // .then(res => {
     //     console.log(res)
@@ -46,9 +74,11 @@ export default {
 };
 </script>
 <style scoped>
-.feedback{
+.feedback {
   margin-top: 10vh;
   margin-bottom: 10vh;
 }
-
+.btn {
+  border: 1px solid green;
+}
 </style>

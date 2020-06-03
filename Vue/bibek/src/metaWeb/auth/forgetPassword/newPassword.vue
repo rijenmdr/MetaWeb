@@ -2,8 +2,8 @@
   <div>
     <div class="container">
       <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4 main">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 main">
           <div class="card text-center mt-5">
             <div class="card-body">
               <h3>
@@ -40,7 +40,7 @@
                   </div>
                   <input v-model="token" type="text" class="form-control" placeholder="Enter Token" />
                 </div>
-                <div v-if="$v.password.$error" class="error">Enter valid email</div>
+                <div v-if="$v.password.$error" class="error">Enter valid password</div>
                 <div class="error">{{error}}</div>
 
                 <button
@@ -51,6 +51,8 @@
               <router-link to="/login/reset-password">
                 <div class="again">Didn't receive email.Resend email again ?</div>
               </router-link>
+               <router-link to="/">
+              <div class="again1">Go back to home</div> </router-link>
             </div>
           </div>
         </div>
@@ -102,7 +104,6 @@ input.form-control:focus {
   box-shadow: none;
 }
 .invalid input {
-  border: 1px solid red;
   background-color: #ffc9aa;
 }
 .error {
@@ -114,6 +115,7 @@ input.form-control:focus {
   color: blue;
 }
 .again {
+  margin-top: 30px;
   color: teal;
   font-size: 12px;
 }

@@ -1,6 +1,7 @@
 <template>
-  <div>
-    <section id="login">
+  <div class="main-content" id="panel">
+    <div class="header pb-6">
+       <section id="login">
       <div class="container mt-3 mb-3">
         <div class="row">
           <div class="col-md-3 mx-auto">
@@ -290,10 +291,6 @@
         </div>
       </div>
     </section>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6"></div>
-      </div>
     </div>
   </div>
 </template>
@@ -399,7 +396,7 @@ export default {
           this.$router.push("/userWebsite/" + res.data.website.id);
         })
         .catch(err => {
-          console.log("err")
+          console.log("err");
           console.log(err);
         });
     }

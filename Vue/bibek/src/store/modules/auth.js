@@ -39,7 +39,7 @@ const actions = {
         }
         dispatch("addNotifications", {
           type: "success",
-          message: "login in successful",
+          message: "Login successful",
         });
       })
       .catch((err) => {
@@ -65,7 +65,7 @@ const actions = {
         commit("SET_TOKEN", res.data.key);
         dispatch("addNotifications", {
           type: "success",
-          message: "SignUp in successful",
+          message: "SignUp successful",
         });
       })
       .catch((err) => {

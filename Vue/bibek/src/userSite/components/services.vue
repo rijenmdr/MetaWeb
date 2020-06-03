@@ -6,8 +6,8 @@
         <div class="row">
           <div class="col-md-4">
             <div class="card text-center">
-              <div class="card-header bg-dark text-white">
-                <h3>Service One</h3>
+              <div class="card-header text-white bg-color">
+                <h3 class="text">Service One</h3>
               </div>
               <div class="card-body">
                 <h4 class="card-title">{{serviceOne}}</h4>
@@ -17,8 +17,8 @@
           </div>
           <div class="col-md-4">
             <div class="card text-center">
-              <div class="card-header bg-dark text-white">
-                <h3>Service Two</h3>
+              <div class="card-header bg-color text-white">
+                <h3 class="text">Service Two</h3>
               </div>
               <div class="card-body">
                 <h4 class="card-title">{{serviceTwo}}</h4>
@@ -28,8 +28,8 @@
           </div>
           <div class="col-md-4">
             <div class="card text-center">
-              <div class="card-header bg-dark text-white">
-                <h3>Service Three</h3>
+              <div class="card-header bg-color text-white">
+                <h3 class="text">Service Three</h3>
               </div>
               <div class="card-body">
                 <h4 class="card-title">{{serviceThree}}</h4>
@@ -65,3 +65,11 @@ export default {
   }
 };
 </script>
+<style scoped>
+.bg-color {
+  background: #787575;
+}
+.text {
+  color: white;
+}
+</style>

@@ -1,21 +1,19 @@
 <template>
   <div>
-    <Header />
-
+    <Sidebar/>
+    <!-- Main content -->
     <router-view></router-view>
-
-    <Footer />
   </div>
 </template>
 <script>
 import axios from "axios";
-import Header from "./header";
+import Sidebar from "./sidebar";
 import Actions from "./actions";
 import Footer from "../home/footer";
 import MainDash from "./mainDash";
 export default {
   components: {
-    Header,
+    Sidebar,
     Footer,
     Actions,
     MainDash
@@ -37,3 +35,8 @@ export default {
   }
 };
 </script>
+<style scoped>
+@import "../../assets/assetsDash/css/argon.css?v=1.2.0";
+
+</style>
+

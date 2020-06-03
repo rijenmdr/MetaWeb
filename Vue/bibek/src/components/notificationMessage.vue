@@ -1,5 +1,5 @@
 <template>
-  <div :class="typeClass" class="alert alert-dismissible fade show" role="alert">
+  <div :class="typeClass" class="alert alert-dismissible fade show custom" role="alert">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span arial-hidden="true">&times;</span>
     </button>
@@ -23,7 +23,7 @@ export default {
   created() {
     this.timeOut = setTimeout(() => {
       this.removeNotifi(this.notification);
-    }, 3000);
+    }, 10000);
   },
   methods:{
     removeNotifi(notification){
@@ -35,3 +35,8 @@ export default {
   }
 };
 </script>
+<style scoped>
+  .custom{
+    z-index: 100;
+  }
+</style>

@@ -1,30 +1,19 @@
 <template>
   <div>
-    <Header />
+   <Header/>
    <router-view></router-view>
     <!-- Footer -->
-    <footer id="main-footer" class="text-center bg-dark text-white mt-5 p-5">
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <p class="lead">
-              copyright &copy;
-              <span id="year"></span>
-            </p>
-          </div>
-        </div>
-      </div>
-    </footer>
-    {{error}}
+    <Footer/>
   </div>
 </template>
 <script>
 import Header from "../headerAuth";
 import LoginMain from "./loginMain";
+import Footer from "../../home/footer";
 export default {
   components: {
     Header,
-    LoginMain
+    LoginMain,Footer
   },
 
   data() {

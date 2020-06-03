@@ -1,7 +1,17 @@
 <template>
   <div>
     <Header />
-    <section class="signup">
+    <section class="section section-shaped section-lg">
+      <div class="shape shape-style-1 bg-gradient-default">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
       <div class="container">
         <div class="signup-content">
           <div class="signup-form">
@@ -143,7 +153,7 @@ export default {
       });
       const error = this.$store.getters.getError;
       if (error) {
-        this.error = "Username or email already exists";
+        this.error = "please enter valid credentials";
       } else {
         this.$router.push("/dashboard");
       }

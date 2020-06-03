@@ -19,8 +19,8 @@ import EditWebsite from "../metaWeb/dashboard/functions/editWebsite";
 import Search from "../metaWeb/search/search";
 import UpgradeToPro from "../metaWeb/upgrade/upgrade";
 
-import forgotPasswordEmail from '../metaWeb/auth/forgetPassword/forgetPassword'
-import NewPasswordEmail from '../metaWeb/auth/forgetPassword/newPassword'
+import forgotPasswordEmail from "../metaWeb/auth/forgetPassword/forgetPassword";
+import NewPasswordEmail from "../metaWeb/auth/forgetPassword/newPassword";
 
 Vue.use(VueRouter);
 
@@ -33,12 +33,10 @@ const routes = [
   {
     path: "/login",
     component: Login,
-    children: [
-      { path: "", component: LoginMain },
-      { path: "reset-password", component: forgotPasswordEmail },
-      { path: "new-password/:email", component: NewPasswordEmail },
-    ],
+    children: [{ path: "", component: LoginMain }]
   },
+  { path: "/new-password/:email", component: NewPasswordEmail },
+  { path: "/reset-password", component: forgotPasswordEmail },
   {
     path: "/signup",
     component: SignUpMain,
@@ -53,10 +51,14 @@ const routes = [
     children: [
       { path: "", component: DashboardMain },
       { path: "delete", component: DashboardDelete },
-      { path: "/createWebsite", component: CreateWebsite },
+      { path: "createWebsite", component: CreateWebsite },
       { path: "feedback", component: DashboardFeedback },
       { path: "feedback/:shopid", component: DashboardFeed },
       { path: "/editWebsite/:id", component: EditWebsite },
+      {
+        path: "/upgradetopro",
+        component: UpgradeToPro,
+      },
     ],
   },
 
@@ -64,6 +66,7 @@ const routes = [
     path: "/userWebsite/about",
     component: UserWebsiteAbout,
   },
+
   {
     path: "/userWebsite/services",
     component: UserWebsiteServices,
@@ -75,10 +78,6 @@ const routes = [
   {
     path: "/userWebsite/:id",
     component: UserWebsite,
-  },
-  {
-    path: "/upgradetopro",
-    component: UpgradeToPro,
   },
 ];
 

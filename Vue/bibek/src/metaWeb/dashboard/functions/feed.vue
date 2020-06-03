@@ -1,22 +1,30 @@
 <template>
-  <div>
-    <div class="container mainDash">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="card">
-            <div class="card-header">
-              <h4>FeedBacks :</h4>
+  <div class="main-content" id="panel">
+    <div class="header bg-primary pb-6"></div>
+    <div class="row">
+      <div class="col-xl-12">
+        <div class="card">
+          <div class="card-header border-0">
+            <div class="row align-items-center">
+              <div class="col">
+                <h3 class="mb-0">Your Websites</h3>
+              </div>
+              <div class="col text-right">
+                <a href="#!" class="btn btn-sm btn-primary">Delete all</a>
+              </div>
             </div>
-            <table class="table table-striped">
-              <thead class="thead-dark">
+          </div>
+          <div class="table-responsive">
+            <!-- Projects table -->
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
                 <tr>
-                  <th>Visitor Id</th>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                  <th>Email</th>
-
-                  <th>Message</th>
-                  <th>Action</th>
+                  <th scope="col">Visitor Id</th>
+                  <th scope="col">First Name</th>
+                  <th scope="col">Last Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Message</th>
+                  <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody>

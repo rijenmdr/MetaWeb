@@ -33,12 +33,10 @@
             <div class="card p-4">
               <div class="card-body">
                 <h3 class="text-center">Please fill the form to contact us</h3>
-                <hr class="bg-warning" />
-                <h5 class="text-center text-danger">{{done}}</h5>
-                <hr class="bg-warning" />
+              
 
                 <form @submit.prevent="submitFeedback">
-                  <div class="row">
+                  <div class="row mt-4">
                     <div class="col-md-6">
                       <div class="form-group" :class="{invalid:$v.first_name.$error}">
                         <input
@@ -65,7 +63,7 @@
                         />
                       </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 mt-3">
                       <div class="form-group" :class="{invalid:$v.email.$error}">
                         <input
                           type="text"
@@ -78,7 +76,7 @@
                         />
                       </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 mt-3">
                       <div class="form-group" :class="{invalid:$v.address.$error}">
                         <input
                           type="text"
@@ -92,7 +90,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="row">
+                  <div class="row mt-3">
                     <div class="col-md-12">
                       <div class="form-group">
                         <textarea
@@ -104,7 +102,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="row">
+                  <div class="row mt-3">
                     <div class="col-md-12">
                       <div class="form-group">
                         <input
@@ -204,6 +202,11 @@ export default {
             (this.email = ""),
             (this.address = ""),
             (this.message = "");
+          this.$store.dispatch("addNotifications", {
+            type: "success",
+            message: "Feedback sent successfully"
+          });
+          this.$router.push('/userWebsite/about')
         });
     }
   }

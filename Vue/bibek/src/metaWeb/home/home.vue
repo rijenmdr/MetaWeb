@@ -3,8 +3,9 @@
     <Header />
     <Landing />
     <HowItWorks />
+    <Premium />
     <OurTeam />
-    <Contact/>
+    <Contact />
     <Footer />
   </div>
 </template>
@@ -15,6 +16,7 @@ import HowItWorks from "./howItWorks";
 import OurTeam from "./ourTeam";
 import Contact from "./contactUs";
 import Footer from "./footer";
+import Premium from "./premium";
 export default {
   components: {
     Header,
@@ -22,7 +24,8 @@ export default {
     OurTeam,
     HowItWorks,
     Landing,
-    Footer
+    Footer,
+    Premium
   }
 };
 </script>
