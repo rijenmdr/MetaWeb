@@ -6,7 +6,10 @@ import store from "./store";
 import VueResource from "vue-resource";
 import Vuelidate from "vuelidate";
 
+
+
 Vue.use(Vuelidate);
+
 Vue.use(VueResource);
 
 Vue.config.productionTip = false;

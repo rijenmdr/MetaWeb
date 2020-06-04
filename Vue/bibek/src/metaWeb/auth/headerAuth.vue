@@ -4,8 +4,9 @@
     class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom"
   >
     <div class="container">
-      <router-link class="navbar-brand mr-lg-5" to="/">
-        <img src="../../assets/mlogo.png" />etaweb
+      <router-link class="navbar-brand mr-lg-5 logo" to="/">
+        Meta
+        <span class="text1">web</span>
       </router-link>
       <button
         class="navbar-toggler"
@@ -145,9 +146,19 @@
               </span>
               <span class="nav-link-inner--text">Login</span>
             </router-link>
-          </li> -->
+          </li>-->
         </ul>
       </div>
     </div>
   </nav>
 </template>
+<style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Cabin:wght@700&display=swap");
+.logo {
+  font-size: 22px;
+  font-family: "Cabin", sans-serif;
+}
+.text1 {
+  color: #d3b001;
+}
+</style>

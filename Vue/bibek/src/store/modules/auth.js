@@ -83,6 +83,7 @@ const actions = {
       type: "danger",
       message: "You are now logged out",
     });
+    dispatch("removePaidUser")
   },
 };
 const getters = {

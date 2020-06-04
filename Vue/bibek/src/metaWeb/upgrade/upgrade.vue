@@ -73,10 +73,10 @@
                 <input type="radio" name="optradio" checked /> e-sewa
               </label>
               <label class="radio-inline ml-5">
-                <input type="radio" name="optradio" />  khalti
+                <input type="radio" name="optradio" /> khalti
               </label>
               <label class="radio-inline ml-5">
-                <input type="radio" name="optradio" />  IME pay
+                <input type="radio" name="optradio" /> IME pay
               </label>
             </div>
             <div class="input-group input-group-lg mb-3">
@@ -87,21 +87,55 @@
               </div>
               <input v-model="password" type="email" class="form-control" placeholder="Card Number" />
             </div>
-
-            <button
-              @click="payDone"
-              class="btn btn-block bg-success text-white btn-large button"
+            <button @click="payDone"
+              type="button"
+              class="btn btn-block bg-success text-white button"
+              data-toggle="modal"
+              data-target="#exampleModalCenter"
             >Pay</button>
           </div>
         </div>
       </div>
     </div>
+   
   </div>
 </template>
 <script>
+import axios from "axios";
 export default {
+  data() {
+    return {
+      email: "",
+      password: ""
+    };
+  },
   methods: {
-    payDone() {}
+    payDone() {
+      let token = this.$store.getters.getToken;
+      if (!token) {
+        token = localStorage.getItem("token");
+      }
+      let user = this.$store.getters.getUser;
+      if (!user) {
+        user = localStorage.getItem("user");
+      }
+      axios
+        .post(
+          "http://localhost:8000/api/set_paid_user",
+          {
+            username: user
+          },
+          {
+            headers: {
+              Authorization: `Token ${token}`
+            }
+          }
+        )
+        .then(res => {
+          console.log(res);
+          this.$router.push("/payment-confirm");
+        });
+    }
   }
 };
 </script>
@@ -127,7 +161,7 @@ input[type="radio"] {
 .button {
   font-size: 20px;
 }
-.titleBox{
+.titleBox {
   background: #999898;
 }
 </style>

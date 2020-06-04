@@ -5,6 +5,7 @@ import Auth from "./modules/auth";
 import Dashboard from "./modules/dashboard";
 import UserSite from "./modules/userSiteInfo";
 import Notifications from "./modules/notifications";
+import PaidUser from "./modules/paidUser";
 
 Vue.use(Vuex);
 
@@ -14,5 +15,6 @@ export default new Vuex.Store({
     Dashboard,
     UserSite,
     Notifications,
+    PaidUser
   },
 });

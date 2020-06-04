@@ -22,15 +22,24 @@
                 <span class="nav-link-text">Dashboard</span>
               </router-link>
             </li>
-            <li class="nav-item">
+            
+            <li v-if="number <=1 || paidUser" class="nav-item">
               <router-link to="/dashboard/createWebsite" class="nav-link">
-                <i class="ni ni-planet text-orange"></i>
+                <i class="fas fa-edit text-success"></i>
                 <span class="nav-link-text">Create</span>
               </router-link>
             </li>
+            <li v-else class="nav-item">
+              <router-link to="/upgradetopro" class="nav-link">
+                <i class="fas fa-edit text-success"></i>
+                <span class="nav-link-text">Upgrate to Create</span>
+              </router-link>
+            </li>
+           
+
             <li class="nav-item">
               <router-link to="/dashboard/delete" class="nav-link">
-                <i class="fas fa-trash"></i>
+                <i class="fas fa-trash text-danger"></i>
                 <span class="nav-link-text">Delete</span>
               </router-link>
             </li>
@@ -62,17 +71,26 @@
   </nav>
 </template>
 <script>
+import axios from "axios";
+
 export default {
   data() {
     return {
-      user: this.$store.getters.getUser || localStorage.getItem("user")
+      paidUser:""
     };
   },
+  props: ["number"],
   methods: {
     logout() {
       this.$store.dispatch("logout");
       this.$router.push("/");
     }
+  },
+  created() {
+    setTimeout(() => {
+      console.log(this.$store.getters.getPaidUser)
+      this.paidUser =this.$store.getters.getPaidUser
+    }, 1000);
   }
 };
 </script>

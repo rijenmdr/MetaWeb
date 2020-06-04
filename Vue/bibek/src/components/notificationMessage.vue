@@ -23,7 +23,7 @@ export default {
   created() {
     this.timeOut = setTimeout(() => {
       this.removeNotifi(this.notification);
-    }, 10000);
+    }, 3000);
   },
   methods:{
     removeNotifi(notification){

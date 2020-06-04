@@ -7,17 +7,23 @@ class Website(models.Model):
     nameOfSiteH = models.CharField(max_length=255, default="NameOfSite")
     category = models.CharField(max_length=255, default="category")
     headingOneH = models.CharField(max_length=255, default="heading One")
-    descriptionOneH = models.CharField(max_length=255, default="description one")
+    descriptionOneH = models.CharField(
+        max_length=255, default="description one")
     headingTwoH = models.CharField(max_length=255, default="Heading Two")
-    descriptionTwoH = models.CharField(max_length=255, default="description two")
+    descriptionTwoH = models.CharField(
+        max_length=255, default="description two")
     headingThreeH = models.CharField(max_length=255, default="heading three")
-    descriptionThreeH = models.CharField(max_length=255, default="description three")
+    descriptionThreeH = models.CharField(
+        max_length=255, default="description three")
     featureOneH = models.CharField(max_length=255, default="feature One")
-    featureOneDesH = models.CharField(max_length=255, default="feature description one")
+    featureOneDesH = models.CharField(
+        max_length=255, default="feature description one")
     featureTwoH = models.CharField(max_length=255, default="feature Two")
-    featureTwoDesH = models.CharField(max_length=255, default="feature description two")
+    featureTwoDesH = models.CharField(
+        max_length=255, default="feature description two")
     featureThreeH = models.CharField(max_length=255, default="feature three")
-    featureThreeDesH = models.CharField(max_length=255, default="feature description three")
+    featureThreeDesH = models.CharField(
+        max_length=255, default="feature description three")
     introductionA = models.CharField(max_length=255, default="introduction")
     whatWeDoA = models.CharField(max_length=255, default="what we do")
     titleC = models.CharField(max_length=255, default="title")
@@ -26,12 +32,16 @@ class Website(models.Model):
     phoneC = models.CharField(max_length=255)
     addressC = models.CharField(max_length=255, default="address")
     serviceOne = models.CharField(max_length=255, default="Service One")
-    serviceOneDes = models.CharField(max_length=255, default="description of service one")
+    serviceOneDes = models.CharField(
+        max_length=255, default="description of service one")
     serviceTwo = models.CharField(max_length=255, default="Service Two")
-    serviceTwoDes = models.CharField(max_length=255, default="description of service two")
+    serviceTwoDes = models.CharField(
+        max_length=255, default="description of service two")
     serviceThree = models.CharField(max_length=255, default="Service Three")
-    serviceThreeDes = models.CharField(max_length=255, default="description of service three")
-    backgroundColor = models.CharField(max_length=255, default="backgroundColor")
+    serviceThreeDes = models.CharField(
+        max_length=255, default="description of service three")
+    backgroundColor = models.CharField(
+        max_length=255, default="backgroundColor")
     user = models.CharField(max_length=255, default="user")
     created_date = models.DateTimeField(default=timezone.now)
 
@@ -60,3 +70,12 @@ class MetaWebFeedback(models.Model):
 
     def __str__(self):
         return self.email
+
+
+class PaidUser(models.Model):
+
+    username = models.CharField(max_length=50)
+    created_date = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.username

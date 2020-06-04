@@ -16,15 +16,18 @@
       <div class="container shape-container d-flex align-items-center py-lg">
         <div class="col px-0">
           <div class="row align-items-center justify-content-center">
-            <div class="col-lg-6 text-center">
+            <div class="col-lg-8 text-center">
               <p
                 class="lead text-white"
-              >Search for the stores around you Or create website and promote your business with us</p>
-              <div class="col-lg-12 col-sm-6 d-flex mt-4">
-                <div class="form-group has-success">
+              >Search for the <span class="text1">stores</span> around you Or <span class="text1">create website</span> and promote your business with us. All in here</p>
+              <div class="col-lg-12 col-sm-12 d-inline d-md-flex mt-4">
+                <div class="form-group has-success d-flex col-lg-5 col-12">
                   <input type="text" placeholder="Keywords" class="form-control is-valid" />
                 </div>
-                <div class="form-group has-success ml-3">
+                <div class="form-group has-success col-lg-5 col-12">
+                  <input type="text" placeholder="Location" class="form-control is-valid" />
+                </div>
+                <div class="form-group has-success ml-0 col-lg-3 col-12">
                   <input
                     v-model="shopId"
                     type="number"
@@ -58,7 +61,7 @@
         </div>
       </div>
     </div>
-    <div class="separator separator-bottom separator-skew zindex-100">
+    <!-- <div class="separator separator-bottom separator-skew">
       <svg
         x="0"
         y="0"
@@ -69,7 +72,7 @@
       >
         <polygon class="fill-white" points="2560 0 2560 100 0 100" />
       </svg>
-    </div>
+    </div>-->
   </div>
 </template>
 <script>
@@ -120,6 +123,9 @@ export default {
 }
 .formCenter {
   background: #1b838f;
+}
+.text1{
+  color: #D3B001;
 }
 .signUp {
   color: white;

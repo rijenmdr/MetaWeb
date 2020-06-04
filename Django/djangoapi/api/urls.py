@@ -14,6 +14,8 @@ urlpatterns = [
     path('get_review/<int:shopid>',views.get_review),
     path('add_message',views.add_message),
     path('search',views.search),
+    path('search_paid_user',views.search_paid_user),
+    path('set_paid_user',views.set_paid_user),
     path(r'password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset'))
     # path('get_review_count',views.get_review_count),
 

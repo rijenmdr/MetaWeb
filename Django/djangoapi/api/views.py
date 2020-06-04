@@ -5,8 +5,8 @@ from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from .models import Website, Visitor, MetaWebFeedback
-from .serializers import WebsiteSerializer, VisitorSerializer
+from .models import Website, Visitor, MetaWebFeedback, PaidUser
+from .serializers import WebsiteSerializer, VisitorSerializer, PaidUserSerializer
 from django.core.exceptions import ObjectDoesNotExist
 import json
 import re
@@ -16,7 +16,6 @@ from django.dispatch import receiver
 from django.template.loader import render_to_string
 from django.urls import reverse
 from django_rest_passwordreset.signals import reset_password_token_created
-
 
 
 @api_view(["GET"])
@@ -272,7 +271,6 @@ def search(request):
         return JsonResponse({'error': "Something went wrong"}, safe=False, status=status.HTTP_404_NOT_FOUND)
 
 
-
 @receiver(reset_password_token_created)
 def password_reset_token_created(sender, instance, reset_password_token, *args, **kwargs):
     # send an e-mail to the user
@@ -284,8 +282,10 @@ def password_reset_token_created(sender, instance, reset_password_token, *args, 
     }
 
     # render email text
-    email_html_message = render_to_string('email/user_reset_password.html', context)
-    email_plaintext_message = render_to_string('email/user_reset_password.txt', context)
+    email_html_message = render_to_string(
+        'email/user_reset_password.html', context)
+    email_plaintext_message = render_to_string(
+        'email/user_reset_password.txt', context)
 
     msg = EmailMultiAlternatives(
         # title:
@@ -299,3 +299,39 @@ def password_reset_token_created(sender, instance, reset_password_token, *args, 
     )
     msg.attach_alternative(email_html_message, "text/html")
     msg.send()
+
+    # for paid users
+
+
+@api_view(["POST"])
+@csrf_exempt
+def set_paid_user(request):
+    payload = json.loads(request.body)
+    print(payload)
+    try:
+        paiduser = PaidUser.objects.create(
+            username=payload["username"]
+        )
+        print('vayoo')
+        serializer = PaidUserSerializer(paiduser)
+        return JsonResponse({'paidUser': serializer.data}, safe=False, status=status.HTTP_201_CREATED)
+    except ObjectDoesNotExist as e:
+        return JsonResponse({'error': str(e)}, safe=False, status=status.HTTP_404_NOT_FOUND)
+    except Exception:
+        return JsonResponse({'error': "Something went wrong"}, safe=False, status=status.HTTP_404_NOT_FOUND)
+
+
+@api_view(["POST"])
+@csrf_exempt
+def search_paid_user(request):
+    payload = json.loads(request.body)
+    try:
+        print(payload)
+        user = PaidUser.objects.filter(username=payload['username'])
+        print(user)
+        serializer = PaidUserSerializer(user, many=True)
+        return JsonResponse({'paidUser': serializer.data}, safe=False, status=status.HTTP_200_OK)
+    except ObjectDoesNotExist as e:
+        return JsonResponse({'error': str(e)}, safe=False, status=status.HTTP_404_NOT_FOUND)
+    except Exception:
+        return JsonResponse({'error': "Something went wrong"}, safe=False, status=status.HTTP_404_NOT_FOUND)

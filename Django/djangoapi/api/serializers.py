@@ -1,5 +1,5 @@
 
-from .models import Website, Visitor
+from .models import Website, Visitor,PaidUser
 from rest_framework import serializers
 
 
@@ -21,6 +21,9 @@ class VisitorSerializer(serializers.ModelSerializer):
         fields = ['id', 'user', 'first_name', 'last_name',
                   'email', 'address', 'message', 'shopId']
 
-
+class PaidUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PaidUser
+        fields = ['id', 'username','created_date']
 
 

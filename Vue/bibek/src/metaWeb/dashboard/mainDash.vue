@@ -8,18 +8,49 @@
           <div class="row align-items-center bibek">
             <div class="col-lg-7 col-7"></div>
             <div class="col-lg-5 col-7">
-              <h6 class="h4 text-white d-inline-block mb-0 mt">Welcome {{user}}</h6>
-              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-5">
-                <ol
-                  @click="logout"
-                  class="breadcrumb breadcrumb-links breadcrumb-dark logout-button"
+              <h6 class="h4 text-white d-inline-block mb-0 ml-5">Welcome {{user}}</h6>
+              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-5 float-right">
+                <button
+                  type="button"
+                  class="btn btn-white btn-sm"
+                  data-toggle="modal"
+                  data-target="#exampleModalCenter"
                 >
-                  <li class="breadcrumb-item active" aria-current="page">Logout</li>
-                </ol>
+                  <i class="fa fa-sign-out" aria-hidden="true"></i>Logout
+                </button>
               </nav>
             </div>
           </div>
-
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="exampleModalCenter"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Alert</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">You will be logged out of the session !!!</div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button
+                    @click="logout"
+                    type="button"
+                    data-dismiss="modal"
+                    class="btn btn-primary"
+                  >Continue</button>
+                </div>
+              </div>
+            </div>
+          </div>
           <!-- Card stats -->
           <div class="row">
             <div class="col-xl-3 col-md-6">
@@ -105,7 +136,8 @@
                   <div class="row">
                     <div class="col">
                       <h5 class="card-title text-uppercase text-muted mb-0">Remaining Days</h5>
-                      <span class="h2 font-weight-bold mb-0">24</span>
+                      <span v-if="paidUserInfo" class="h2 font-weight-bold mb-0">{{remainingDays}}</span>
+                      <span v-else class="h2 font-weight-bold mb-0">000</span>
                     </div>
                     <div class="col-auto">
                       <div
@@ -115,11 +147,14 @@
                       </div>
                     </div>
                   </div>
-                  <p class="mt-3 mb-0 text-sm">
+                  <p v-if="paidUserInfo" class="mt-3 mb-0 text-sm">
                     <span class="text-success mr-2">
-                      <i class="fa fa-arrow-up"></i> 3.48%
+                      <i class="fa fa-arrow-up"></i> Upgraded On :
                     </span>
-                    <span class="text-nowrap">Since last month</span>
+                    <span class="text-nowrap">{{created_year}}/{{created_month}}/{{created_day}}</span>
+                  </p>
+                  <p v-else class="mt-3 mb-0 text-sm">
+                    <span class="text-nowrap text-danger">Please Upgrade to Standard plan</span>
                   </p>
                 </div>
               </div>
@@ -189,10 +224,42 @@ export default {
     return {
       sites: "",
       number: "",
-      user: this.$store.getters.getUser || localStorage.getItem("user")
+      user: this.$store.getters.getUser || localStorage.getItem("user"),
+      paidUserInfo: null,
+      remainingDays: "",
+      created_year: "",
+      created_month: "",
+      created_day: ""
     };
   },
   async created() {
+    setTimeout(() => {
+      let paidUserInfo = this.$store.getters.getPaidUserInfo;
+      if (paidUserInfo.length == 0) {
+        this.paidUserInfo = null;
+      } else this.paidUserInfo = paidUserInfo;
+      if (this.paidUserInfo.length > 0) {
+        let Ttime = this.$store.getters.getPaidUserInfo[0].created_date;
+        let time = new Date(Ttime);
+        this.created_year = time.getFullYear();
+        this.created_month = time.getMonth();
+        this.created_day = time.getDate();
+        let d = new Date();
+        let difference = (d.getTime() - time.getTime()) / 1000;
+        let days = difference / 86400;
+        this.remainingDays = 30 - Math.floor(days);
+        // this.remainingDays = 30 - 30;
+        if (this.remainingDays == 0) {
+          if (this.$store.getters.getPaidUser == "present") {
+            this.$store.dispatch("removePaidUser");
+            this.$store.dispatch("setAlert");
+            this.$router.push("/dateExpired");
+          }
+        } else {
+          this.$store.dispatch("setRemainingDays", this.remainingDays);
+        }
+      }
+    }, 3000);
     let JWTToken = localStorage.getItem("token");
     if (!JWTToken) {
       JWTToken = this.$store.getters.getToken;
@@ -201,7 +268,7 @@ export default {
     if (!user) {
       user = this.$store.getters.getUser;
     }
-    console.log(user);
+
     await axios
       .post(
         "http://localhost:8000/api/dashboard",

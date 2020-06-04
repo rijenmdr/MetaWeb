@@ -21,6 +21,9 @@ import UpgradeToPro from "../metaWeb/upgrade/upgrade";
 
 import forgotPasswordEmail from "../metaWeb/auth/forgetPassword/forgetPassword";
 import NewPasswordEmail from "../metaWeb/auth/forgetPassword/newPassword";
+import DashboardDeleteSuccess from "../metaWeb/dashboard/functions/deleteHelper/confirm";
+import PaymentConfirm from '../metaWeb/upgrade/confirm'
+import UpgradeExpired from '../metaWeb/upgrade/expired'
 
 Vue.use(VueRouter);
 
@@ -33,7 +36,7 @@ const routes = [
   {
     path: "/login",
     component: Login,
-    children: [{ path: "", component: LoginMain }]
+    children: [{ path: "", component: LoginMain }],
   },
   { path: "/new-password/:email", component: NewPasswordEmail },
   { path: "/reset-password", component: forgotPasswordEmail },
@@ -51,6 +54,7 @@ const routes = [
     children: [
       { path: "", component: DashboardMain },
       { path: "delete", component: DashboardDelete },
+
       { path: "createWebsite", component: CreateWebsite },
       { path: "feedback", component: DashboardFeedback },
       { path: "feedback/:shopid", component: DashboardFeed },
@@ -61,7 +65,9 @@ const routes = [
       },
     ],
   },
-
+  { path: "/deleteSuccess", component: DashboardDeleteSuccess },
+  { path: "/payment-confirm", component: PaymentConfirm },
+  { path: "/dateExpired", component: UpgradeExpired },
   {
     path: "/userWebsite/about",
     component: UserWebsiteAbout,

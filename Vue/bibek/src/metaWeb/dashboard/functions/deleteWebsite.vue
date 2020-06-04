@@ -18,7 +18,7 @@
                       <div
                         class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow"
                       >
-                         <i class="fas fa-trash"></i>
+                        <i class="fas fa-trash"></i>
                       </div>
                     </div>
                   </div>
@@ -66,11 +66,12 @@ export default {
             token: this.$store.getters.getToken,
             user: this.$store.getters.getUser
           });
+          
+          this.$router.push("/deleteSuccess");
         })
         .catch(err => {
           console.log(err);
         });
-      this.$router.push("/dashboard");
     }
   }
 };
