@@ -22,11 +22,12 @@ import UpgradeToPro from "../metaWeb/upgrade/upgrade";
 import forgotPasswordEmail from "../metaWeb/auth/forgetPassword/forgetPassword";
 import NewPasswordEmail from "../metaWeb/auth/forgetPassword/newPassword";
 import DashboardDeleteSuccess from "../metaWeb/dashboard/functions/deleteHelper/confirm";
-import PaymentConfirm from '../metaWeb/upgrade/confirm'
-import UpgradeExpired from '../metaWeb/upgrade/expired'
-import ProTemplate from '../metaWeb/premium/proTemplate'
-import HotelTemplate from '../metaWeb/premium/hotel'
-import PortfolioTemplate from '../metaWeb/premium/portfolio'
+import PaymentConfirm from "../metaWeb/upgrade/confirm";
+import UpgradeExpired from "../metaWeb/upgrade/expired";
+import ProTemplate from "../metaWeb/premium/proTemplate";
+import HotelTemplate from "../metaWeb/premium/hotel";
+import PortfolioTemplate from "../metaWeb/premium/portfolio";
+import Hotel from '../hotel/hotel'
 
 Vue.use(VueRouter);
 
@@ -35,6 +36,11 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
+  },
+  {
+    path: "/hotel",
+    
+    component: Hotel,
   },
   {
     path: "/login",

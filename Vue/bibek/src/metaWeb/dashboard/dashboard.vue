@@ -50,7 +50,8 @@ export default {
         }
       )
       .then(res => {
-        this.number = res.data.data.length;
+        this.number = res.data.data.length || 0;
+        console.log(this.number);
         axios
           .post(
             "http://localhost:8000/api/search_paid_user",

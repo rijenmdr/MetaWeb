@@ -23,16 +23,23 @@
               </router-link>
             </li>
 
-            <li v-if="number <=1 || paidUser" class="nav-item">
+            <li v-if="paidUser" class="nav-item">
+              <router-link to="/dashboard/createWebsite" class="nav-link">
+                <i class="fas fa-edit text-success"></i>
+                <span class="nav-link-text">Create</span>
+              </router-link>
+            </li>
+
+            <li v-if="number<=1" class="nav-item">
               <router-link to="/dashboard/createWebsite" class="nav-link">
                 <i class="fas fa-edit text-success"></i>
                 <span class="nav-link-text">Create</span>
               </router-link>
             </li>
             <li v-else class="nav-item">
-              <router-link to="/upgradetopro" class="nav-link">
+              <router-link v-if="!paidUser" to="/upgradetopro" class="nav-link">
                 <i class="fas fa-edit text-success"></i>
-                <span class="nav-link-text">Upgrate to Create</span>
+                <span  class="nav-link-text">Upgrate to Create</span>
               </router-link>
             </li>
 
@@ -61,18 +68,13 @@
                 <span class="nav-link-text">Upgrade</span>
               </router-link>
             </li>
-            <li
-              v-if="paidUser"
-              class="nav-item"
-              data-toggle="modal"
-              data-target="#modalProUser"
-            >
-              <router-link to='/dashboard/protemplates' class="nav-link">
+            <li v-if="paidUser" class="nav-item" data-toggle="modal" data-target="#modalProUser">
+              <router-link to="/dashboard/protemplates" class="nav-link">
                 <i class="fa fa-pencil-square text-primary" aria-hidden="true"></i>
                 <span class="nav-link-text">Pro Template</span>
               </router-link>
             </li>
-            
+
             <li v-if="paidUser" class="nav-item">
               <router-link class="nav-link" to="/upgradetopro">
                 <i class="fa fa-product-hunt text-success" aria-hidden="true"></i>
