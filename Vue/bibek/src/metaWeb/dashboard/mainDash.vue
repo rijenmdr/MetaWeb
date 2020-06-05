@@ -7,17 +7,26 @@
         <div class="header-body">
           <div class="row align-items-center bibek">
             <div class="col-lg-7 col-7"></div>
-            <div class="col-lg-5 col-7">
-              <h6 class="h4 text-white d-inline-block mb-0 ml-5">Welcome {{user}}</h6>
-              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-5 float-right">
+            <div class="col-lg-5 col-7 mt-3">
+              <!-- <h6 class="h5 text-white d-inline-block ml-5">Welcome {{user}}</h6> -->
+              <nav class="d-none d-md-inline-block ml-md-5 float-right">
                 <button
                   type="button"
-                  class="btn btn-white btn-sm"
+                  class="btn btn-white btn-sm buttonCustom"
                   data-toggle="modal"
                   data-target="#exampleModalCenter"
                 >
                   <i class="fa fa-sign-out" aria-hidden="true"></i>Logout
                 </button>
+              </nav>
+              <nav class="d-none d-md-inline-block ml-md-5 float-right">
+                <div
+              
+                  class="btn text-white btn-sm buttonCustom"
+                 
+                >
+                  <i class="fa fa-user" aria-hidden="true"></i> Welcome {{user}}
+                </div>
               </nav>
             </div>
           </div>
@@ -38,7 +47,7 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <div class="modal-body">You will be logged out of the session !!!</div>
+                <div class="modal-body">You will be logged out of this session !!!</div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                   <button
@@ -154,7 +163,7 @@
                     <span class="text-nowrap">{{created_year}}/{{created_month}}/{{created_day}}</span>
                   </p>
                   <p v-else class="mt-3 mb-0 text-sm">
-                    <span class="text-nowrap text-danger">Please Upgrade to Standard plan</span>
+                    <span class="text-nowrap text-danger text1">Please Upgrade to Standard plan</span>
                   </p>
                 </div>
               </div>
@@ -259,7 +268,7 @@ export default {
           this.$store.dispatch("setRemainingDays", this.remainingDays);
         }
       }
-    }, 3000);
+    }, 300);
     let JWTToken = localStorage.getItem("token");
     if (!JWTToken) {
       JWTToken = this.$store.getters.getToken;
@@ -306,11 +315,18 @@ export default {
 }
 .bibek {
   border-bottom: 1px solid white;
+  
   margin-bottom: 10px;
   padding-top: 10px;
   box-sizing: border-box;
 }
 .logout-button {
   cursor: pointer;
+}
+.buttonCustom {
+  margin-top: -20px;
+}
+.text1 {
+  font-size: 12px;
 }
 </style>

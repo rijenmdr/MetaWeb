@@ -24,6 +24,9 @@ import NewPasswordEmail from "../metaWeb/auth/forgetPassword/newPassword";
 import DashboardDeleteSuccess from "../metaWeb/dashboard/functions/deleteHelper/confirm";
 import PaymentConfirm from '../metaWeb/upgrade/confirm'
 import UpgradeExpired from '../metaWeb/upgrade/expired'
+import ProTemplate from '../metaWeb/premium/proTemplate'
+import HotelTemplate from '../metaWeb/premium/hotel'
+import PortfolioTemplate from '../metaWeb/premium/portfolio'
 
 Vue.use(VueRouter);
 
@@ -59,6 +62,9 @@ const routes = [
       { path: "feedback", component: DashboardFeedback },
       { path: "feedback/:shopid", component: DashboardFeed },
       { path: "/editWebsite/:id", component: EditWebsite },
+      { path: "protemplates", component: ProTemplate },
+      { path: "hotel", component: HotelTemplate },
+      { path: "portfolio", component: PortfolioTemplate },
       {
         path: "/upgradetopro",
         component: UpgradeToPro,
