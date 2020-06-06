@@ -49,6 +49,40 @@ class Website(models.Model):
         return self.user
 
 
+class Hotel(models.Model):
+    user = models.CharField(max_length=255, default="user")
+    name = models.CharField(max_length=255, default="name")
+    category = models.CharField(max_length=255, default="category")
+    welcomeOne = models.CharField(max_length=255, default="welcomeOne")
+    welcomeOneDes = models.CharField(max_length=255, default="welcomeOneDes")
+    welcomeOneDes = models.CharField(max_length=255, default="welcomeTwo")
+    welcomeTwoDes = models.CharField(max_length=255, default="welcomeTwoDes")
+    about = models.CharField(max_length=555, default="about")
+    galleryDes = models.CharField(max_length=255, default="galleryDes")
+    phone = models.CharField(max_length=255, default="phone")
+
+    email = models.EmailField(max_length=255, default='admin@admin.com')
+    location = models.CharField(max_length=255, default="location")
+    aboutFooter = models.CharField(max_length=255, default="aboutFooter")
+    openingHours = models.CharField(max_length=255, default="openingHours")
+    fbLink = models.CharField(max_length=255, default="fbLink")
+    instaLink = models.CharField(max_length=255, default="instaLink")
+    youtubeLink = models.CharField(max_length=255, default="youtubeLink")
+    backgroundColor = models.CharField(
+        max_length=255, default="backgroundColor")
+    photo_1 = models.ImageField(upload_to="%y/%m/%d", default='')
+    photo_2 = models.ImageField(upload_to="%y/%m/%d", default='')
+    photo_3 = models.ImageField(upload_to="%y/%m/%d", default='')
+    photo_4 = models.ImageField(upload_to="%y/%m/%d", default='')
+    photo_5 = models.ImageField(upload_to="%y/%m/%d", default='')
+    photo_6 = models.ImageField(upload_to="%y/%m/%d", default='')
+    photo_7 = models.ImageField(upload_to="%y/%m/%d", default='')
+    created_date = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.user
+
+
 class Visitor(models.Model):
     user = models.ForeignKey(Website, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=50)

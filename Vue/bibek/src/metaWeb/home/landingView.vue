@@ -17,9 +17,11 @@
         <div class="col px-0">
           <div class="row align-items-center justify-content-center">
             <div class="col-lg-8 text-center">
-              <p
-                class="lead text-white"
-              >Search for the <span class="text1">stores</span> around you Or <span class="text1">create website</span> and promote your business with us. All in here</p>
+              <p class="lead text-white">
+                Search for the
+                <span class="text1">stores</span> around you Or
+                <span class="text1">create website</span> and promote your business with us. All in here
+              </p>
               <div class="col-lg-12 col-sm-12 d-inline d-md-flex mt-4">
                 <div class="form-group has-success d-flex col-lg-5 col-12">
                   <input type="text" placeholder="Keywords" class="form-control is-valid" />
@@ -97,7 +99,11 @@ export default {
         this.category == "category" &&
         this.shopId != ""
       ) {
-        this.$router.push("/userWebsite/" + this.shopId);
+        if (this.shopId < 1000) {
+          this.$router.push("/" + this.shopId);
+        } else {
+          this.$router.push("/userWebsite/" + this.shopId);
+        }
       } else {
         this.$router.push(
           "/search?keywords=" +
@@ -124,8 +130,8 @@ export default {
 .formCenter {
   background: #1b838f;
 }
-.text1{
-  color: #D3B001;
+.text1 {
+  color: #d3b001;
 }
 .signUp {
   color: white;

@@ -96,12 +96,14 @@ WSGI_APPLICATION = 'restful.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
+'default': {
+    'ENGINE': 'django.db.backends.mysql',
+    'NAME': 'metaweb',
+    'HOST': '127.0.0.1',
+    'PORT': '3306',
+    'USER': 'root',
+    'PASSWORD': '',
+}}
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 

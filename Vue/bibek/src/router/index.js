@@ -27,7 +27,8 @@ import UpgradeExpired from "../metaWeb/upgrade/expired";
 import ProTemplate from "../metaWeb/premium/proTemplate";
 import HotelTemplate from "../metaWeb/premium/hotel";
 import PortfolioTemplate from "../metaWeb/premium/portfolio";
-import Hotel from '../hotel/hotel'
+import Hotel from "../hotel/hotel";
+import ErrorHotel from "../metaWeb/premium/errorHotel";
 
 Vue.use(VueRouter);
 
@@ -37,11 +38,7 @@ const routes = [
     name: "Home",
     component: Home,
   },
-  {
-    path: "/hotel",
-    
-    component: Hotel,
-  },
+
   {
     path: "/login",
     component: Login,
@@ -63,7 +60,7 @@ const routes = [
     children: [
       { path: "", component: DashboardMain },
       { path: "delete", component: DashboardDelete },
-
+      { path: "error", component: ErrorHotel },
       { path: "createWebsite", component: CreateWebsite },
       { path: "feedback", component: DashboardFeedback },
       { path: "feedback/:shopid", component: DashboardFeed },
@@ -96,6 +93,10 @@ const routes = [
   {
     path: "/userWebsite/:id",
     component: UserWebsite,
+  },
+  {
+    path: "/:id",
+    component: Hotel,
   },
 ];
 

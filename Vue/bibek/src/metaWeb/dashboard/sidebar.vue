@@ -23,14 +23,9 @@
               </router-link>
             </li>
 
-            <li v-if="paidUser" class="nav-item">
-              <router-link to="/dashboard/createWebsite" class="nav-link">
-                <i class="fas fa-edit text-success"></i>
-                <span class="nav-link-text">Create</span>
-              </router-link>
-            </li>
+           
 
-            <li v-if="number<=1" class="nav-item">
+            <li v-if="number<=1 || paidUser" class="nav-item">
               <router-link to="/dashboard/createWebsite" class="nav-link">
                 <i class="fas fa-edit text-success"></i>
                 <span class="nav-link-text">Create</span>

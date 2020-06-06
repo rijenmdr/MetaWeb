@@ -16,7 +16,10 @@ urlpatterns = [
     path('search',views.search),
     path('search_paid_user',views.search_paid_user),
     path('set_paid_user',views.set_paid_user),
-    path(r'password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset'))
+    path(r'password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset')),
     # path('get_review_count',views.get_review_count),
+    path('add_hotel',views.add_hotel),
+    path('get_hotels',views.get_hotels),
+    path('hotels/<int:id>',views.search_hotels),
 
 ]

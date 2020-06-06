@@ -5,8 +5,8 @@ from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from .models import Website, Visitor, MetaWebFeedback, PaidUser
-from .serializers import WebsiteSerializer, VisitorSerializer, PaidUserSerializer
+from .models import Website, Visitor, MetaWebFeedback, PaidUser, Hotel
+from .serializers import WebsiteSerializer, VisitorSerializer, PaidUserSerializer, HotelSerializer
 from django.core.exceptions import ObjectDoesNotExist
 import json
 import re
@@ -16,6 +16,7 @@ from django.dispatch import receiver
 from django.template.loader import render_to_string
 from django.urls import reverse
 from django_rest_passwordreset.signals import reset_password_token_created
+from rest_framework.parsers import FileUploadParser
 
 
 @api_view(["GET"])
@@ -135,6 +136,44 @@ def get_dashboard(request):
     else:
         content = {'status': 'error',
                    "message": "website not found", 'data': 0}
+        return JsonResponse(content)
+
+
+@api_view(["POST"])
+@csrf_exempt
+def get_hotels(request):
+    # payload = json.loads(request.body)
+    # user=request.user
+    # web = Website.objects.all()
+    # print(web)
+    # return JsonResponse({web}, safe=False, status=status.HTTP_201_CREATED)
+    payload = json.loads(request.body)
+    data = payload['user']
+    hotels = Hotel.objects.filter(user=data)
+    serializer = HotelSerializer(hotels, many=True)
+    if hotels:
+        content = {'status': '200', "message": "hotels found",
+                   'data': serializer.data}
+        return JsonResponse(content)
+    else:
+        content = {'status': 'error',
+                   "message": "website not found", 'data': 0}
+        return JsonResponse(content)
+
+
+@api_view(["GET"])
+@csrf_exempt
+@permission_classes([AllowAny])
+def search_hotels(request, id):
+    hotels = Hotel.objects.filter(id=id)
+    serializer = HotelSerializer(hotels, many=True)
+    if hotels:
+        content = {'status': '200', "message": "hotels found",
+                   'data': serializer.data}
+        return JsonResponse(content)
+    else:
+        content = {'status': 'error',
+                   "message": "hotel not found", 'data': 0}
         return JsonResponse(content)
 
 
@@ -334,4 +373,21 @@ def search_paid_user(request):
     except ObjectDoesNotExist as e:
         return JsonResponse({'error': str(e)}, safe=False, status=status.HTTP_404_NOT_FOUND)
     except Exception:
+        return JsonResponse({'error': "Something went wrong"}, safe=False, status=status.HTTP_404_NOT_FOUND)
+
+# for hotel website
+
+
+@api_view(["POST"])
+@csrf_exempt
+@permission_classes([AllowAny])
+@permission_classes(FileUploadParser)
+def add_hotel(request):
+    print(request)
+    hotel_serializer = HotelSerializer(data=request.data)
+    print(hotel_serializer)
+    if hotel_serializer.is_valid():
+        hotel_serializer.save()
+        return JsonResponse({'message': "hotel website addded success"}, safe=False, status=status.HTTP_204_NO_CONTENT)
+    else:
         return JsonResponse({'error': "Something went wrong"}, safe=False, status=status.HTTP_404_NOT_FOUND)

@@ -49,17 +49,107 @@
         </p>
       </div>
     </div>
+    <!-- Modal -->
+
+    <div v-if="modal" class="modal-dialog modal-dialog-centered alertCustom" role="document" :class="{show:modal}">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Alert</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div
+          class="modal-body"
+        >You can only create one site. You already have site created with name "{{sitename}}"" and shopId: "{{shopId}}"</div>
+        <div class="modal-footer">
+          <button @click="cancel" type="button" class="btn btn-primary">Ok</button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
+import axios from "axios";
 export default {
-    methods:{
-        portfolio(){
-            this.$router.push('/dashboard/portfolio')
-        },
-        hotel(){
-            this.$router.push('/dashboard/hotel')
-        }
+  data() {
+    return {
+      modal: "",
+      sitename: "",
+      shopId: ""
+    };
+  },
+  methods: {
+    cancel(){
+      this.$router.push("/dashboard");
+    },
+    portfolio() {
+      this.$router.push("/dashboard/portfolio");
+    },
+    hotel() {
+      let JWTToken = localStorage.getItem("token");
+      if (!JWTToken) {
+        JWTToken = this.$store.getters.getToken;
+      }
+      let user = localStorage.getItem("user");
+      if (!user) {
+        user = this.$store.getters.getUser;
+      }
+
+      axios
+        .post(
+          "http://localhost:8000/api/get_hotels",
+          {
+            user: user
+          },
+          {
+            headers: {
+              Authorization: `Token ${JWTToken}`
+            }
+          }
+        )
+        .then(res => {
+          if (res.data.data == 0) {
+            this.$router.push("/dashboard/hotel");
+          }
+          this.modal = "true";
+          this.sitename = res.data.data[0].name;
+          this.shopId = res.data.data[0].id;
+        })
+        .catch(err => {
+          this.$router.push("/dashboard/hotel");
+        });
     }
-}
+  }
+};
 </script>
+<style scoped>
+.alertCustom {
+  position: absolute;
+  top: 0px;
+  left: 20vw;
+  width: 50vw;
+
+  
+}
+.show{
+  opacity: 1;
+  z-index: 2;
+  animation: show 0.5s;
+
+  transform: scale(1);
+}
+@keyframes show {
+  from{
+    
+transform: scale(0);
+    opacity:0;
+      z-index:-1;
+  } to{
+    
+transform: scale(1);
+    opacity: 1;
+      z-index:2;
+  }
+}
+</style>

@@ -20,12 +20,9 @@
                 </button>
               </nav>
               <nav class="d-none d-md-inline-block ml-md-5 float-right">
-                <div
-              
-                  class="btn text-white btn-sm buttonCustom"
-                 
-                >
-                  <i class="fa fa-user" aria-hidden="true"></i> Welcome {{user}}
+                <div class="btn text-white btn-sm buttonCustom">
+                  <i class="fa fa-user" aria-hidden="true"></i>
+                  Welcome {{user}}
                 </div>
               </nav>
             </div>
@@ -180,7 +177,7 @@
             <div class="card-header border-0">
               <div class="row align-items-center">
                 <div class="col">
-                  <h3 class="mb-0">Your Websites</h3>
+                  <h3 class="mb-0">Your Websites :</h3>
                 </div>
                 <div class="col text-right">
                   <a href="#!" class="btn btn-sm btn-primary">See all</a>
@@ -216,6 +213,27 @@
                       </div>
                     </td>
                   </tr>
+
+                  <tr></tr>
+
+                  <p v-if="hotels" class="premium Site">Premium Site</p>
+
+                  <tr v-if="hotels">
+                    <th scope="row">{{hotelId}}</th>
+                    <td>{{hotels[0].name}}</td>
+                    <td>{{hotels[0].created_date}}</td>
+                    <td>
+                      <div class="btn btn-secondary">
+                        <i class="fas fa-edit"></i> Edit
+                      </div>
+                    </td>
+                    <td>
+                      <div class="btn btn-secondary">
+                        View
+                        <i class="fas fa-angle-double-right"></i>
+                      </div>
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -231,6 +249,8 @@ import axios from "axios";
 export default {
   data() {
     return {
+      hotels: "",
+      hotelId: "",
       sites: "",
       number: "",
       user: this.$store.getters.getUser || localStorage.getItem("user"),
@@ -251,7 +271,7 @@ export default {
         let Ttime = this.$store.getters.getPaidUserInfo[0].created_date;
         let time = new Date(Ttime);
         this.created_year = time.getFullYear();
-        this.created_month = time.getMonth();
+        this.created_month = time.getMonth()+1;
         this.created_day = time.getDate();
         let d = new Date();
         let difference = (d.getTime() - time.getTime()) / 1000;
@@ -293,6 +313,25 @@ export default {
       .then(res => {
         this.sites = res.data.data;
         this.number = res.data.data.length;
+        axios
+          .post(
+            "http://localhost:8000/api/get_hotels",
+            {
+              user: user
+            },
+            {
+              headers: {
+                Authorization: `Token ${JWTToken}`
+              }
+            }
+          )
+          .then(res => {
+            this.hotels = res.data.data;
+            this.hotelId = res.data.data[0].id;
+          });
+      })
+      .catch(err => {
+        console.log(err);
       });
   },
   methods: {
@@ -315,7 +354,7 @@ export default {
 }
 .bibek {
   border-bottom: 1px solid white;
-  
+
   margin-bottom: 10px;
   padding-top: 10px;
   box-sizing: border-box;
@@ -328,5 +367,11 @@ export default {
 }
 .text1 {
   font-size: 12px;
+}
+.premium {
+  border: 1px solid #cacfc9;
+  color: #67ee46;
+  padding-left: 10px;
+  box-sizing: border-box;
 }
 </style>

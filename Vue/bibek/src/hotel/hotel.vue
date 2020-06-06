@@ -2,9 +2,10 @@
   <div>
     <header class="top-navbar">
       <nav class="navbar navbar-expand-lg">
-        <div class="container">
-          <a class="navbar-brand" href="index.html">
+        <div class="con">
+          <a class="navbar-brand ml-5" href="index.html">
             <img src="./images/logo.png" class="logo-image" alt />
+            {{name}}
           </a>
           <button
             class="navbar-toggler"
@@ -20,17 +21,20 @@
           <div class="collapse navbar-collapse" id="navbars-rs-food">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item home-icon">
-                <a class="nav-link text" href="index.html">Home</a>
+               <div class="nav-link text" >Home</div>
               </li>
               <li class="nav-item">
-                <a class="nav-link text" href="menu.html">Menu</a>
+               <div class="nav-link text" >Menu</div>
               </li>
               <li class="nav-item">
-                <a class="nav-link text" href="about.html">About</a>
+                <div class="nav-link text" >About</div>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link text" href="contact.html">Contact</a>
+                <div class="nav-link text" >Contact</div>
+              </li>
+              <li class="nav-item">
+                <router-link class="nav-link text" to="/">MetaWeb</router-link>
               </li>
             </ul>
           </div>
@@ -46,34 +50,23 @@
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item carousel-image-1 active">
-            <img src="./images/slider-03.jpg" />
+            <img :src="photo_1" />
             <div class="container">
               <div class="carousel-caption d-none d-sm-block text-center title-box">
-                <h1 class="title">Welcome To Yamifood Restaurant</h1>
+                <h1 class="title">{{welcomeOne}}</h1>
 
-                <p class="des">this</p>
+                <p class="des">{{welcomeOneDes}}</p>
               </div>
             </div>
           </div>
 
           <div class="carousel-item carousel-image-2">
-            <img src="./images/slider-02.jpg" />
+            <img :src="photo_2" />
             <div class="container">
               <div class="carousel-caption d-none d-sm-block mb-5 title-box">
-                <h1 class="title">this</h1>
+                <h1 class="title">{{welcomeTwo}}</h1>
 
-                <p class="des">this</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="carousel-item carousel-image-3">
-            <img src="./images/slider-01.jpg" />
-            <div class="container">
-              <div class="carousel-caption d-none d-sm-block text-right title-box">
-                <h1 class="title">this</h1>
-
-                <p class="des">this</p>
+                <p class="des">{{welcomeTwoDes}}</p>
               </div>
             </div>
           </div>
@@ -86,26 +79,27 @@
         </a>
       </div>
     </section>
-    <div class="about-section-box">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-12">
-            <img src="./images/about-img.jpg" alt class="img-fluid" />
-          </div>
-          <div class="col-lg-6 col-md-6 col-sm-12 text-center">
-            <div class="inner-column">
-              <h1>
-                Welcome To
-                <span>Yamifood Restaurant</span>
-              </h1>
-              <h4>Little Story</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque auctor suscipit feugiat. Ut at pellentesque ante, sed convallis arcu. Nullam facilisis, eros in eleifend luctus, odio ante sodales augue, eget lacinia lectus erat et sem.</p>
-              <p>Sed semper orci sit amet porta placerat. Etiam quis finibus eros. Sed aliquam metus lorem, a pellentesque tellus pretium a. Nulla placerat elit in justo vestibulum, et maximus sem pulvinar.</p>
+    <section id="about">
+      <div class="about-section-box">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+              <img :src="photo_3" alt class="img-fluid" />
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 text-center">
+              <div class="inner-column">
+                <h1>
+                  Welcome To
+                  <span>{{name}} Restaurant</span>
+                </h1>
+                <h4>About Us</h4>
+                <p>{{about}}</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
     <!-- Start Gallery -->
     <div class="gallery-box">
       <div class="container-fluid">
@@ -113,7 +107,7 @@
           <div class="col-lg-12">
             <div class="heading-title text-center">
               <h2>Gallery</h2>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+              <p>{{galleryDes}}</p>
             </div>
           </div>
         </div>
@@ -121,32 +115,32 @@
           <div class="row">
             <div class="col-sm-12 col-md-4 col-lg-4">
               <a class="lightbox" href="images/gallery-img-01.jpg">
-                <img class="img-fluid" src="./images/gallery-img-01.jpg" alt="Gallery Images" />
+                <img class="img-fluid" :src="photo_4" alt="Gallery Images" />
               </a>
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4">
               <a class="lightbox" href="images/gallery-img-02.jpg">
-                <img class="img-fluid" src="./images/gallery-img-02.jpg" alt="Gallery Images" />
+                <img class="img-fluid" :src="photo_5" alt="Gallery Images" />
               </a>
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4">
               <a class="lightbox" href="images/gallery-img-03.jpg">
-                <img class="img-fluid" src="./images/gallery-img-03.jpg" alt="Gallery Images" />
+                <img class="img-fluid" :src="photo_6" alt="Gallery Images" />
               </a>
             </div>
             <div class="col-sm-12 col-md-4 col-lg-4">
               <a class="lightbox" href="images/gallery-img-04.jpg">
-                <img class="img-fluid" src="./images/gallery-img-04.jpg" alt="Gallery Images" />
+                <img class="img-fluid" :src="photo_1" alt="Gallery Images" />
               </a>
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4">
               <a class="lightbox" href="images/gallery-img-05.jpg">
-                <img class="img-fluid" src="./images/gallery-img-05.jpg" alt="Gallery Images" />
+                <img class="img-fluid" :src="photo_7" alt="Gallery Images" />
               </a>
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4">
               <a class="lightbox" href="images/gallery-img-06.jpg">
-                <img class="img-fluid" src="./images/gallery-img-06.jpg" alt="Gallery Images" />
+                <img class="img-fluid" :src="photo_2" alt="Gallery Images" />
               </a>
             </div>
           </div>
@@ -162,21 +156,21 @@
             <i class="fa fa-volume-control-phone"></i>
             <div class="overflow-hidden">
               <h4>Phone</h4>
-              <p class="lead">+01 123-456-4590</p>
+              <p class="lead">{{phone}}</p>
             </div>
           </div>
           <div class="col-md-4">
             <i class="fa fa-envelope"></i>
             <div class="overflow-hidden">
               <h4>Email</h4>
-              <p class="lead">yourmail@gmail.com</p>
+              <p class="lead">{{email}}</p>
             </div>
           </div>
           <div class="col-md-4">
             <i class="fa fa-map-marker"></i>
             <div class="overflow-hidden">
               <h4>Location</h4>
-              <p class="lead">800, Lorem Street, US</p>
+              <p class="lead">{{location}}</p>
             </div>
           </div>
         </div>
@@ -190,31 +184,20 @@
         <div class="row">
           <div class="col-lg-3 col-md-6">
             <h3>About Us</h3>
-            <p>Integer cursus scelerisque ipsum id efficitur. Donec a dui fringilla, gravida lorem ac, semper magna. Aenean rhoncus ac lectus a interdum. Vivamus semper posuere dui, at ornare turpis ultrices sit amet. Nulla cursus lorem ut nisi porta, ac eleifend arcu ultrices.</p>
+            <p>{{aboutFooter}}</p>
           </div>
           <div class="col-lg-3 col-md-6">
             <h3>Opening hours</h3>
-            <p>
-              <span class="text-color">Monday:</span>Closed
-            </p>
-            <p>
-              <span class="text-color">Tue-Wed :</span> 9:Am - 10PM
-            </p>
-            <p>
-              <span class="text-color">Thu-Fri :</span> 9:Am - 10PM
-            </p>
-            <p>
-              <span class="text-color">Sat-Sun :</span> 5:PM - 10PM
-            </p>
+            <p>{{openingHours}}</p>
           </div>
           <div class="col-lg-3 col-md-6">
             <h3>Contact</h3>
-            <p class="lead">Ipsum Street, Lorem Tower, MO, Columbia, 508000</p>
+            <p class="lead">{{location}}</p>
             <p class="lead">
-              <a href="#">+01 2000 800 9999</a>
+              <a href="#">{{phone}}</a>
             </p>
             <p>
-              <a href="#">info@admin.com</a>
+              <a href="#">{{email}}</a>
             </p>
           </div>
           <div class="col-lg-3 col-md-6">
@@ -234,28 +217,18 @@
             </div>
             <ul class="list-inline f-social">
               <li class="list-inline-item">
-                <a href="#">
+                <a :href="fbLink" target="_blank">
                   <i class="fa fa-facebook" aria-hidden="true"></i>
                 </a>
               </li>
               <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-twitter" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-linkedin" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-google-plus" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
+                <a :href="instaLink" target="_blank">
                   <i class="fa fa-instagram" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a :href="youtubeLink" target="_blank">
+                  <i class="fa fa-youtube" aria-hidden="true"></i>
                 </a>
               </li>
             </ul>
@@ -268,9 +241,9 @@
           <div class="row">
             <div class="col-lg-12">
               <p class="company-name">
-                All Rights Reserved. &copy; 2018
-                <a href="#">Yamifood Restaurant</a> Design By :
-                <a href="https://html.design/">html design</a>
+                All Rights Reserved. &copy; 2020
+                <a href="#">{{name}} Restaurant</a> Design By :
+                <a href="https://html.design/">MetaWeb Team</a>
               </p>
             </div>
           </div>
@@ -280,6 +253,76 @@
     <!-- End Footer -->
   </div>
 </template>
+<script>
+import axios from "axios";
+export default {
+  data() {
+    return {
+      user: "user",
+      name: "name",
+      category: "category",
+      welcomeOne: "Welcome",
+      welcomeOneDes: "Description",
+      welcomeTwo: "Welcome Two",
+      welcomeTwoDes: "Description",
+      about: "About",
+      galleryDes: "Gallery Description",
+      phone: "Phone",
+      email: "email",
+      location: "location",
+      aboutFooter: "about footer",
+      openingHours: "opening Hours",
+      fbLink: "facebook link",
+      instaLink: "intagram link",
+      youtubeLink: "youtube link",
+      backgroundColor: "background color",
+      photo_1: "photo1",
+      photo_2: "photo1",
+      photo_3: "photo1",
+      photo_4: "photo1",
+      photo_5: "photo1",
+      photo_6: "photo1",
+      photo_7: "photo1",
+      created_date: "created_date"
+    };
+  },
+  created() {
+    axios
+      .get("http://localhost:8000/api/hotels/" + this.$route.params.id)
+      .then(res => {
+        this.name = res.data.data[0].name;
+        this.user = res.data.data[0].user;
+        this.category = res.data.data[0].category;
+        this.welcomeOne = res.data.data[0].welcomeOne;
+        this.welcomeOneDes = res.data.data[0].welcomeOneDes;
+        this.welcomeTwo = res.data.data[0].welcomeTwo;
+        this.welcomeTwoDes = res.data.data[0].welcomeTwoDes;
+        this.about = res.data.data[0].about;
+        this.galleryDes = res.data.data[0].galleryDes;
+        this.phone = res.data.data[0].phone;
+        this.email = res.data.data[0].email;
+        this.location = res.data.data[0].location;
+        this.aboutFooter = res.data.data[0].aboutFooter;
+        this.openingHours = res.data.data[0].openingHours;
+        this.fbLink = res.data.data[0].fbLink;
+        this.instaLink = res.data.data[0].instaLink;
+        this.youtubeLink = res.data.data[0].youtubeLink;
+        this.backgroundColor = res.data.data[0].backgroundColor;
+        this.photo_1 = "http://localhost:8000" + res.data.data[0].photo_1;
+        this.photo_2 = "http://localhost:8000" + res.data.data[0].photo_2;
+        this.photo_3 = "http://localhost:8000" + res.data.data[0].photo_3;
+        this.photo_4 = "http://localhost:8000" + res.data.data[0].photo_4;
+        this.photo_5 = "http://localhost:8000" + res.data.data[0].photo_5;
+        this.photo_6 = "http://localhost:8000" + res.data.data[0].photo_6;
+        this.photo_7 = "http://localhost:8000" + res.data.data[0].photo_7;
+        this.created_date = res.data.data[0].created_date;
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+};
+</script>
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Athiti:400,500,600");
@@ -479,6 +522,11 @@
   border-top: 1px dashed rgba(207, 166, 113);
   padding: 30px 0;
   z-index: 1;
+}
+.con {
+  display: flex;
+  justify-content: space-between;
+  width: 100vw;
 }
 
 .copyright .company-name {
