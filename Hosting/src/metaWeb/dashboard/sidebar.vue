@@ -44,10 +44,10 @@
           </router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="profile.html">
+          <div class="nav-link" data-toggle="modal" data-target="#profile">
             <i class="ni ni-single-02 text-yellow"></i>
             <span class="nav-link-text">Profile</span>
-          </a>
+          </div>
         </li>
         <li v-if="!paidUser" class="nav-item">
           <router-link class="nav-link" to="/upgradetopro">
@@ -63,14 +63,61 @@
         </li>
 
         <li v-if="paidUser" class="nav-item">
-          <router-link class="nav-link" to="/upgradetopro">
-            <i class="fa fa-product-hunt text-success" aria-hidden="true"></i>
+          <div class="nav-link" data-toggle="modal" data-target="#customTemplates">
+            <i class="fas fa-edit"></i>
             <span class="nav-link-text">Custom Templates</span>
-          </router-link>
+          </div>
         </li>
       </ul>
-    
-    </div> 
+    </div>
+    <div
+      class="modal fade"
+      id="profile"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">This feature is under construction</div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="modal fade"
+      id="customTemplates"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">This custom templates will be available soon !!!</div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -112,7 +159,7 @@ a:hover {
 .main {
   flex-direction: column;
   height: 100vh;
-  border-right:5px solid #E9EDE8;
+  border-right: 5px solid #e9ede8;
 }
 .div1 {
   height: 15vh;

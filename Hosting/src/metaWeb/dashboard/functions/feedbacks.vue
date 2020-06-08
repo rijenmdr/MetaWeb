@@ -82,6 +82,9 @@ export default {
   border: 1px solid green;
 }
 .headerTop{
-  width: 130%;
+  width: 140%;
+}
+.main-content{
+  width: 80vw;
 }
 </style>

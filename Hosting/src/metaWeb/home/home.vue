@@ -17,51 +17,60 @@
       <div class="page-header">
         <div class="container shape-container d-flex align-items-center py-lg">
           <div class="col px-0">
-            <div class="row align-items-center justify-content-center">
-              <div class="col-lg-8 text-center">
-                <p class="lead text-white">
-                  Search for the
-                  <span class="text1">stores</span> around you Or
-                  <span class="text1">create website</span> and promote your business with us. All in here
-                </p>
-                <div class="col-lg-12 col-sm-12 d-inline d-md-flex mt-4">
-                  <div class="form-group has-success d-flex col-lg-5 col-12">
-                    <input type="text" placeholder="Keywords" class="form-control" />
+            <form @submit="search">
+              <div class="row align-items-center justify-content-center">
+                <div class="col-lg-8 text-center">
+                  <p class="lead text-white">
+                    Search for the
+                    <span class="text1">stores</span> around you Or
+                    <span class="text1">create website</span> and promote your business with us. All in here
+                  </p>
+                  <div class="col-lg-12 col-sm-12 d-inline d-md-flex mt-4">
+                    <div class="form-group has-success d-flex col-lg-5 col-12">
+                      <input
+                        type="text"
+                        v-model="keywords"
+                        placeholder="Keywords"
+                        class="form-control"
+                      />
+                    </div>
+                    <div class="form-group has-success col-lg-5 col-12">
+                      <input
+                        type="text"
+                        v-model="location"
+                        placeholder="Location"
+                        class="form-control"
+                      />
+                    </div>
+                    <div class="form-group ml-0 col-lg-3 col-12">
+                      <input
+                        v-model="shopId"
+                        type="number"
+                        placeholder="Shop Id"
+                        class="form-control"
+                      />
+                    </div>
                   </div>
-                  <div class="form-group has-success col-lg-5 col-12">
-                    <input type="text" placeholder="Location" class="form-control " />
+                  <div class="btn-wrapper mt-5">
+                    <button type="submit" class="btn btn-lg btn-white btn-icon mb-3 mb-sm-0">
+                      <span class="btn-inner--icon">
+                        <i class="fas fa-search"></i>
+                      </span>
+                      <span class="btn-inner--text">Search WEBSITE</span>
+                    </button>
+                    <div @click="search" class="btn btn-lg btn-github btn-icon mb-3 mb-sm-0">
+                      <span class="btn-inner--icon">
+                        <i class="fas fa-hand-point-right"></i>
+                      </span>
+                      <span class="btn-inner--text">
+                        <span class="text-warning">Shop Id</span> Search
+                      </span>
+                    </div>
                   </div>
-                  <div class="form-group  ml-0 col-lg-3 col-12">
-                    <input
-                      v-model="shopId"
-                      type="number"
-                      placeholder="Shop Id"
-                      class="form-control "
-                    />
-                  </div>
+                  <div class="mt-5"></div>
                 </div>
-                <div class="btn-wrapper mt-5">
-                  <a
-                    href="https://www.creative-tim.com/product/argon-design-system"
-                    class="btn btn-lg btn-white btn-icon mb-3 mb-sm-0"
-                  >
-                    <span class="btn-inner--icon">
-                      <i class="fas fa-search"></i>
-                    </span>
-                    <span class="btn-inner--text">Search WEBSITE</span>
-                  </a>
-                  <div @click="search" class="btn btn-lg btn-github btn-icon mb-3 mb-sm-0">
-                    <span class="btn-inner--icon">
-                      <i class="fas fa-hand-point-right"></i>
-                    </span>
-                    <span class="btn-inner--text">
-                      <span class="text-warning">Shop Id</span> Search
-                    </span>
-                  </div>
-                </div>
-                <div class="mt-5"></div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
@@ -79,10 +88,10 @@
       </div>-->
     </div>
     <HowItWorks />
-    <Premium/>
+    <Premium />
     <OurTeam />
     <Contact />
-    <Footer/>
+    <Footer />
   </div>
 </template>
 <script>
@@ -90,8 +99,8 @@ import Header from "./header";
 import HowItWorks from "./howItWorks";
 import OurTeam from "./ourteam";
 import Contact from "./contact";
-import Footer from './footer'
-import Premium from './premium'
+import Footer from "./footer";
+import Premium from "./premium";
 export default {
   components: {
     Header,
@@ -128,12 +137,7 @@ export default {
         }
       } else {
         this.$router.push(
-          "/search?keywords=" +
-            this.keywords +
-            "&location=" +
-            this.location +
-            "&category=" +
-            this.category
+          "/search?keywords=" + this.keywords + "&location=" + this.location
         );
       }
     },

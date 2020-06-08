@@ -84,4 +84,7 @@ export default {
 .headTop{
   width: 130%;
 }
+.main-content{
+  width: 80vw;
+}
 </style>

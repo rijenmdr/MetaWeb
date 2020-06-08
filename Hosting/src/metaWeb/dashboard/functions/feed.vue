@@ -81,3 +81,8 @@ export default {
   }
 };
 </script>
+<style scoped>
+  .main-content{
+    width:80vw;
+  }
+</style>

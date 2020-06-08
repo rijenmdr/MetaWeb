@@ -92,6 +92,7 @@ import UserWebsiteAbout from "./userSite/components/about";
 import UserWebsiteServices from "./userSite/components/services";
 import UserWebsiteContact from "./userSite/components/contact";
 import Hotel from "./hotel/hotel";
+import Search from "./metaWeb/search/search";
 
 Vue.use(VueRouter);
 
@@ -134,10 +135,8 @@ const routes = [
   { path: "/userWebsite/services", component: UserWebsiteServices },
   { path: "/userWebsite/contact", component: UserWebsiteContact },
   { path: "/userWebsite/:id", component: UserWebsite },
-  {
-    path: "/:id",
-    component: Hotel,
-  },
+  { path: "/search", component: Search },
+  { path: "/:id", component: Hotel },
 ];
 
 const router = new VueRouter({
