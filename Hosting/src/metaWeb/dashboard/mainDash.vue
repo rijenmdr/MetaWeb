@@ -246,6 +246,7 @@
 </template>
 <script>
 import axios from "axios";
+import host from '../../host.js'
 import Sidebar from "./sidebar";
 export default {
   components: {
@@ -304,7 +305,7 @@ export default {
 
     await axios
       .post(
-        "https://bibeklama.pythonanywhere.com/api/dashboard",
+        host.host+"/api/dashboard",
         {
           user: user
         },
@@ -319,7 +320,7 @@ export default {
         this.number = res.data.data.length;
         axios
           .post(
-            "https://bibeklama.pythonanywhere.com/api/get_hotels",
+            host.host+"/api/get_hotels",
             {
               user: user
             },

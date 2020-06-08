@@ -413,6 +413,7 @@
 </template>
 <script>
 import axios from "axios";
+import host from '../../../host.js'
 import {
   required,
   email,
@@ -499,8 +500,8 @@ export default {
         JWTToken = this.$store.getters.getToken;
       }
       await axios
-        .post(
-          "https://bibeklama.pythonanywhere.com/api/add_website",
+        .post(host.host+
+          "/api/add_website",
 
           {
             category: this.category,

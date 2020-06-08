@@ -38,6 +38,7 @@
   </div>
 </template>
 <script>
+import host from '../../../host.js'
 import axios from "axios";
 export default {
   data() {
@@ -52,7 +53,7 @@ export default {
         JWTToken = this.$store.getters.getToken;
       }
       await axios
-        .delete("https://bibeklama.pythonanywhere.com/api/delete_website/" + val, {
+        .delete(host.host+"/api/delete_website/" + val, {
           headers: {
             Authorization: `Token ${JWTToken}`
           }

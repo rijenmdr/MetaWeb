@@ -102,6 +102,7 @@
 </template>
 <script>
 import axios from "axios";
+import host from '../../host.js'
 export default {
   data() {
     return {
@@ -121,7 +122,8 @@ export default {
       }
       axios
         .post(
-          "https://bibeklama.pythonanywhere.com/api/set_paid_user",
+          host.host+
+          "/api/set_paid_user",
           {
             username: user
           },

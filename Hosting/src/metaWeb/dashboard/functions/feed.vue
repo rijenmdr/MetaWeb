@@ -50,6 +50,7 @@
 </template>
 <script>
 import axios from "axios";
+import host from '../../../host.js'
 export default {
   data() {
     return {
@@ -58,18 +59,18 @@ export default {
   },
   created() {
     let shopid = this.$route.params.shopid;
-    axios.get("https://bibeklama.pythonanywhere.com/api/get_review/" + shopid).then(res => {
+    axios.get(host.host + "/api/get_review/" + shopid).then(res => {
       this.feeds = res.data.feedback;
     });
   },
   methods: {
     deleteFeed(id) {
       axios
-        .delete("https://bibeklama.pythonanywhere.com/api/delete_feedback/" + id)
+        .delete(host.host+"/api/delete_feedback/" + id)
         .then(res => {
           let shopid = this.$route.params.shopid;
           axios
-            .get("https://bibeklama.pythonanywhere.com/api/get_review/" + shopid)
+            .get(host.host+"/api/get_review/" + shopid)
             .then(res => {
               this.feeds = res.data.feedback;
             });

@@ -52,7 +52,7 @@
             <div class="dropdown-menu dropdown-menu-xl">
               <div class="dropdown-menu-inner">
                 <a
-                  href="https://demos.creative-tim.com/argon-design-system/docs/getting-started/overview.html"
+                  href=""
                   class="media d-flex align-items-center"
                 >
                   <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
@@ -64,7 +64,7 @@
                   </div>
                 </a>
                 <a
-                  href="https://demos.creative-tim.com/argon-design-system/docs/foundation/colors.html"
+                  href=""
                   class="media d-flex align-items-center"
                 >
                   <div class="icon icon-shape bg-gradient-success rounded-circle text-white">
@@ -78,7 +78,7 @@
                   </div>
                 </a>
                 <a
-                  href="https://demos.creative-tim.com/argon-design-system/docs/components/alerts.html"
+                  href=""
                   class="media d-flex align-items-center"
                 >
                   <div class="icon icon-shape bg-gradient-warning rounded-circle text-white">
@@ -99,7 +99,7 @@
           <li class="nav-item">
             <a
               class="nav-link nav-link-icon"
-              href="https://www.facebook.com/CreativeTim/"
+              href="https://www.facebook.com"
               target="_blank"
               data-toggle="tooltip"
               title="Like us on Facebook"
@@ -111,7 +111,7 @@
           <li class="nav-item">
             <a
               class="nav-link nav-link-icon"
-              href="https://www.instagram.com/creativetimofficial"
+              href="https://www.instagram.com/"
               target="_blank"
               data-toggle="tooltip"
               title="Follow us on Instagram"
@@ -123,7 +123,7 @@
           <li class="nav-item">
             <a
               class="nav-link nav-link-icon"
-              href="https://twitter.com/creativetim"
+              href="https://twitter.com/"
               target="_blank"
               data-toggle="tooltip"
               title="Follow us on Twitter"

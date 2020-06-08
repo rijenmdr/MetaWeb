@@ -1,4 +1,5 @@
 import axios from "axios";
+import host from '../../host.js'
 const state = {
   webid: "",
   userSite: [],
@@ -25,7 +26,7 @@ const actions = {
     let JWTToken = data.token;
     await axios
       .post(
-        "https://bibeklama.pythonanywhere.com/api/dashboard",
+        host.host+"/api/dashboard",
         {
           user: data.user,
         },

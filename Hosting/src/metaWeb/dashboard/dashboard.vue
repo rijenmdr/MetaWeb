@@ -11,7 +11,7 @@
 </template>
 <script>
 import axios from "axios";
-
+import host from '../../host.js'
 import MainDash from "./mainDash";
 import Sidebar from "./sidebar";
 export default {
@@ -40,7 +40,7 @@ export default {
     await this.$store.dispatch("setUserSite", data);
     await axios
       .post(
-        "https://bibeklama.pythonanywhere.com/api/dashboard",
+        host.host+"/api/dashboard",
         {
           user: user
         },
@@ -55,7 +55,7 @@ export default {
         console.log(this.number);
         axios
           .post(
-            "https://bibeklama.pythonanywhere.com/api/search_paid_user",
+            host.host+"/api/search_paid_user",
             {
               username: user
             },

@@ -71,6 +71,7 @@
 </template>
 <script>
 import axios from "axios";
+import host from '../../host.js'
 export default {
   data() {
     return {
@@ -98,7 +99,7 @@ export default {
 
       axios
         .post(
-          "https://bibeklama.pythonanywhere.com/api/get_hotels",
+          host.host+"/api/get_hotels",
           {
             user: user
           },

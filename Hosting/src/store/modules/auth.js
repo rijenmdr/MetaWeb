@@ -1,4 +1,5 @@
 import axios from "axios";
+import host from '../../host.js'
 const state = {
   token: "",
   error: false,
@@ -22,7 +23,7 @@ const actions = {
   async Login({ commit, dispatch }, credential) {
     commit("SET_ERROR", false);
     await axios
-      .post("https://bibeklama.pythonanywhere.com/rest-auth/login/", {
+      .post(host.host+"/rest-auth/login/", {
         username: credential.username,
         password: credential.password,
       })
@@ -49,7 +50,7 @@ const actions = {
   async signUp({ commit, dispatch }, data) {
     commit("SET_ERROR", false);
     await axios
-      .post("https://bibeklama.pythonanywhere.com/registration/", {
+      .post(host.host+"/registration/", {
         username: data.username,
         email: data.email,
         password1: data.password1,

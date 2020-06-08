@@ -243,7 +243,7 @@
               <p class="company-name">
                 All Rights Reserved. &copy; 2020
                 <a href="#">{{name}} Restaurant</a> Design By :
-                <a href="https://html.design/">MetaWeb Team</a>
+                <a href>MetaWeb Team</a>
               </p>
             </div>
           </div>
@@ -255,6 +255,7 @@
 </template>
 <script>
 import axios from "axios";
+import host from "../host.js";
 export default {
   data() {
     return {
@@ -288,10 +289,7 @@ export default {
   },
   created() {
     axios
-      .get(
-        "https://bibeklama.pythonanywhere.com/api/hotels/" +
-          this.$route.params.id
-      )
+      .get(host.host + "/api/hotels/" + this.$route.params.id)
       .then(res => {
         this.name = res.data.data[0].name;
         this.user = res.data.data[0].user;
@@ -311,20 +309,13 @@ export default {
         this.instaLink = res.data.data[0].instaLink;
         this.youtubeLink = res.data.data[0].youtubeLink;
         this.backgroundColor = res.data.data[0].backgroundColor;
-        this.photo_1 =
-          "http://bibeklama.pythonanywhere.com/" + res.data.data[0].photo_1;
-        this.photo_2 =
-          "http://bibeklama.pythonanywhere.com/" + res.data.data[0].photo_2;
-        this.photo_3 =
-          "http://bibeklama.pythonanywhere.com/" + res.data.data[0].photo_3;
-        this.photo_4 =
-          "http://bibeklama.pythonanywhere.com/" + res.data.data[0].photo_4;
-        this.photo_5 =
-          "http://bibeklama.pythonanywhere.com/" + res.data.data[0].photo_5;
-        this.photo_6 =
-          "http://bibeklama.pythonanywhere.com/" + res.data.data[0].photo_6;
-        this.photo_7 =
-          "http://bibeklama.pythonanywhere.com/" + res.data.data[0].photo_7;
+        this.photo_1 = host.host + "/" + res.data.data[0].photo_1;
+        this.photo_2 = host.host + "/" + res.data.data[0].photo_2;
+        this.photo_3 = host.host + "/" + res.data.data[0].photo_3;
+        this.photo_4 = host.host + "/" + res.data.data[0].photo_4;
+        this.photo_5 = host.host + "/" + res.data.data[0].photo_5;
+        this.photo_6 = host.host + "/" + res.data.data[0].photo_6;
+        this.photo_7 = host.host + "/" + res.data.data[0].photo_7;
         this.created_date = res.data.data[0].created_date;
       })
       .catch(err => {

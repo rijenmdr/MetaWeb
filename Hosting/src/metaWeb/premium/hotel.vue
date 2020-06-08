@@ -351,6 +351,7 @@ import {
   sameAs
 } from "vuelidate/lib/validators";
 import axios from "axios";
+import host from '../../host.js'
 export default {
   data() {
     return {
@@ -455,7 +456,7 @@ export default {
       formData.append("photo_7", this.photo_7);
 
       axios
-        .post("https://bibeklama.pythonanywhere.com/api/add_hotel", formData, {
+        .post(host.host+"/api/add_hotel", formData, {
           headers: {
             "Content-Type": "multipart/form-data"
           }

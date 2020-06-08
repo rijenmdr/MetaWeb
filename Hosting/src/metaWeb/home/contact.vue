@@ -70,6 +70,7 @@ import {
   email,
   minLength
 } from "vuelidate/lib/validators";
+import host from '../../host.js'
 export default {
   data() {
     return {
@@ -94,7 +95,7 @@ export default {
   methods: {
     submitFeedBack() {
       axios
-        .post("https://bibeklama.pythonanywhere.com/api/add_message", {
+        .post(host.host+"/api/add_message", {
           name: this.name,
           email: this.email,
           message: this.message

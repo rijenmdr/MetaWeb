@@ -9,7 +9,7 @@
         <div class="col-lg-6 text-lg-center btn-wrapper">
           <button
             target="_blank"
-            href="https://twitter.com/creativetim"
+            href="https://twitter.com/"
             rel="nofollow"
             class="btn btn-icon-only btn-twitter rounded-circle"
             data-toggle="tooltip"
@@ -21,7 +21,7 @@
           </button>
           <button
             target="_blank"
-            href="https://www.facebook.com/CreativeTim/"
+            href="https://www.facebook.com/"
             rel="nofollow"
             class="btn-icon-only rounded-circle btn btn-facebook"
             data-toggle="tooltip"
@@ -33,7 +33,7 @@
           </button>
           <button
             target="_blank"
-            href="https://dribbble.com/creativetim"
+            href="https://dribbble.com/"
             rel="nofollow"
             class="btn btn-icon-only btn-dribbble rounded-circle"
             data-toggle="tooltip"
@@ -45,7 +45,7 @@
           </button>
           <button
             target="_blank"
-            href="https://github.com/creativetimofficial"
+            href="https://github.com/"
             rel="nofollow"
             class="btn btn-icon-only btn-github rounded-circle"
             data-toggle="tooltip"

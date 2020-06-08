@@ -24,6 +24,7 @@ import Header from "./components/header";
 import Landing from "./components/landing";
 import Features from "./components/features";
 import Footer from "./components/footer";
+import host from '../host.js'
 export default {
   data() {
     return {
@@ -60,7 +61,7 @@ export default {
   async created() {
     let id = this.$route.params.id;
 
-    await axios.get("https://bibeklama.pythonanywhere.com/api/get_website/" + id).then(res => {
+    await axios.get(host.host+"/api/get_website/" + id).then(res => {
       this.$store.dispatch("setWebsite", res.data.website);
       this.nameOfSiteH = res.data.website.nameOfSiteH;
       this.headingOneH = res.data.website.headingOneH;

@@ -29,7 +29,7 @@
             <input v-model="shopId" type="number" placeholder="Shop Id" class="form-control" />
           </div>
           <div class="form-group ml-0 col-lg-2 col-12 ml-md-3">
-            <button type="submit" class="btn btn-lg btn-white btn-icon  mb-sm-0">
+            <button type="submit" class="btn btn-lg btn-white btn-icon mb-sm-0">
               <span class="btn-inner--icon">
                 <i class="fas fa-search"></i>
               </span>
@@ -55,50 +55,53 @@
                   <div class="row row-grid">
                     <div class="col-lg-4">
                       <card class="border-0" hover shadow body-classes="py-5">
-                        <icon name="ni ni-check-bold" type="primary" rounded class="mb-4"></icon>
-                        <h6 class="text-primary text-uppercase">Download Argon</h6>
-                        <p class="description mt-3">
-                          Argon is a great free UI package based on Bootstrap 4
-                          that includes the most important components and features.
-                        </p>
+                        <icon
+                          name="fa fa-cutlery"
+                          aria-hidden="true"
+                          type="primary"
+                          rounded
+                          class="mb-4"
+                        ></icon>
+                        <h6 class="text-primary text-uppercase">Gyan Dai ko Khaja Ghar</h6>
+                        <p
+                          class="description mt-3"
+                        >The best place in the town to get the best and delicious food. We offer you the best then the rest.</p>
                         <div>
-                          <badge type="primary" rounded>design</badge>
-                          <badge type="primary" rounded>system</badge>
-                          <badge type="primary" rounded>creative</badge>
+                          <badge type="primary" rounded>9818445068</badge>
+                          <badge type="primary" rounded>khajaghar@gmail.com</badge>
+                          <badge type="primary" rounded>Balaju Kathmandu</badge>
                         </div>
-                        <base-button tag="a" href="#" type="primary" class="mt-4">Learn more</base-button>
+                        <base-button tag="a" href="#" type="primary" class="mt-4">Visit Website</base-button>
                       </card>
                     </div>
                     <div class="col-lg-4">
                       <card class="border-0" hover shadow body-classes="py-5">
-                        <icon name="ni ni-istanbul" type="success" rounded class="mb-4"></icon>
-                        <h6 class="text-success text-uppercase">Build Something</h6>
-                        <p class="description mt-3">
-                          Argon is a great free UI package based on Bootstrap
-                          4 that includes the most important components and features.
-                        </p>
+                        <icon name="fa fa-shopping-bag" type="success" rounded class="mb-4"></icon>
+                        <h6 class="text-success text-uppercase">Laxmi Fancy Store</h6>
+                        <p
+                          class="description mt-3"
+                        >All ladies and gents fancy clothes available under a roof. A warm welcome to all .</p>
                         <div>
-                          <badge type="success" rounded>business</badge>
-                          <badge type="success" rounded>vision</badge>
-                          <badge type="success" rounded>success</badge>
+                          <badge type="success" rounded>Paknajol</badge>
+                          <badge type="success" rounded>9818446582</badge>
+                          <badge type="success" rounded>laxmi@gmail.com</badge>
                         </div>
-                        <base-button tag="a" href="#" type="success" class="mt-4">Learn more</base-button>
+                        <base-button tag="a" href="#" type="success" class="mt-4">Visit Website</base-button>
                       </card>
                     </div>
                     <div class="col-lg-4">
                       <card class="border-0" hover shadow body-classes="py-5">
-                        <icon name="ni ni-planet" type="warning" rounded class="mb-4"></icon>
-                        <h6 class="text-warning text-uppercase">Prepare Launch</h6>
-                        <p class="description mt-3">
-                          Argon is a great free UI package based on Bootstrap
-                          4 that includes the most important components and features.
-                        </p>
+                        <icon name="fa fa-cutlery" type="warning" rounded class="mb-4"></icon>
+                        <h6 class="text-warning text-uppercase">RK House</h6>
+                        <p
+                          class="description mt-3"
+                        >The best newari hotel at thamel. Do visit us for the tipical newari cousines. A warm welcome to all.</p>
                         <div>
-                          <badge type="warning" rounded>marketing</badge>
-                          <badge type="warning" rounded>product</badge>
-                          <badge type="warning" rounded>launch</badge>
+                          <badge type="warning" rounded>Thamel</badge>
+                          <badge type="warning" rounded>rkghar@gmail.com</badge>
+                          <badge type="warning" rounded>9840154754</badge>
                         </div>
-                        <base-button tag="a" href="#" type="warning" class="mt-4">Learn more</base-button>
+                        <base-button tag="a" href="#" type="warning" class="mt-4">Visit Website</base-button>
                       </card>
                     </div>
                   </div>

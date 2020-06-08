@@ -126,6 +126,7 @@
 import axios from "axios";
 import Header from "./componentHead";
 import Footer from "./footer";
+import host from '../../host.js'
 import {
   required,
   email,
@@ -185,7 +186,7 @@ export default {
   methods: {
     submitFeedback() {
       axios
-        .post("https://bibeklama.pythonanywhere.com/api/add_review", {
+        .post(host.host+"/api/add_review", {
           user: this.$store.getters.getWebsite.user,
           first_name: this.first_name,
           last_name: this.last_name,

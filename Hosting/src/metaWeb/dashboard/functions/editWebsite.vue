@@ -306,6 +306,7 @@
 </template>
 <script>
 import axios from "axios";
+import host from '../../../host.js'
 export default {
   data() {
     return {
@@ -346,7 +347,7 @@ export default {
     }
     let id = this.$route.params.id;
     axios
-      .get("https://bibeklama.pythonanywhere.com/api/get_website/" + id, {
+      .get(host.host+"/api/get_website/" + id, {
         headers: {
           Authorization: `Token ${JWTToken}`
         }
@@ -393,8 +394,8 @@ export default {
       }
 
       await axios
-        .put(
-          "https://bibeklama.pythonanywhere.com/api/update_website/" + this.$route.params.id,
+        .put(host.host+
+          "/api/update_website/" + this.$route.params.id,
 
           {
             nameOfSiteH: this.nameOfSiteH,

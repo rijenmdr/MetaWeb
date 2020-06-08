@@ -88,8 +88,8 @@
           </div>
           <div class="modal-body">This feature is under construction</div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
           </div>
         </div>
       </div>
@@ -112,8 +112,8 @@
           </div>
           <div class="modal-body">This custom templates will be available soon !!!</div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+            
           </div>
         </div>
       </div>
@@ -134,7 +134,7 @@ export default {
     logout() {
       this.$store.dispatch("logout");
       this.$router.push("/");
-    }
+    },
   },
   created() {
     setTimeout(() => {
